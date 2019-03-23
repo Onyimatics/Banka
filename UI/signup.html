@@ -1,0 +1,97 @@
+<!DOCTYPE <!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Banka - Sign Up</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" media="screen" href="./assets/css/styles.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=PT+Sans">
+    <script src="./assets/js/main.js"></script>
+</head>
+<body>
+    <!-- Begin Header -->
+    <Header>
+        <nav class="navbar">
+            <a href="./index.html" class="navbar-logo">Banka</a>
+            <button class="hamburger-menu"><a class="hamburger"></a></button>
+            <ul class="navbar-menu">
+                <li class="navbar-link"><a href="./index.html">Home</a></li>
+                <li class="navbar-link"><a href="./login.html">Log In</a></li>
+                <li class="navbar-link"><a href="./signup.html">Sign Up<hr> </a></li>
+            </ul>
+        </nav>
+    </Header>
+    <!-- End Header -->
+    <!-- Begin Main Section -->
+    <main>
+            <section class="container form-container">
+              <h2 class="section-title">Sign Up</h2>
+              <form class="form-card" action="" method="post">
+                <label for="firstname">Enter First Name (Required)</label>
+                <input
+                  type="text"
+                  id="firstname"
+                  name="firstname"
+                  class="form-element"
+                  placeholder="Enter First Name"
+                  required/>
+                <label for="lastname">Enter Last name (Required)</label>
+                <input
+                  type="text"
+                  id="lastname"
+                  name="lastname"
+                  class="form-element"
+                  placeholder="Enter Last Name"
+                  required/>
+                <label for="othername">Enter other name (Optional)</label>
+                <input
+                  type="text"
+                  id="othername"
+                  name="othername"
+                  class="form-element"
+                  placeholder="Enter Other Name"/>
+                <label for="email">Enter Email (Required)</label>
+                <input
+                  type="text"
+                  id="email"
+                  name="email"
+                  class="form-element"
+                  placeholder="Enter Email"
+                  required/>
+                <label for="password">Enter Password (Required)</label>
+                <input
+                  type="password"
+                  id="password"
+                  name="password"
+                  class="form-element"
+                  placeholder="Enter Password"
+                  required/>
+                <label for="password">Confirm Password (Required)</label>
+                <input
+                  type="password"
+                  id="password"
+                  name="password"
+                  class="form-element"
+                  placeholder="Enter Password"
+                  required/>
+                <button type="submit" class="btn btn-primary">Sign Up</button>
+                <div class="message-box"></div>
+                <div class="margin--top--10 margin--below ">
+                    <p class="text--primary1">Already have an account?
+                        <a href="./login.html" class="text--color--grey">login</a>
+                    </p>
+                </div>
+              </form>
+            </section>
+          </main>
+    <!-- End Main Section -->
+    <!-- Begin Footer -->
+    <footer>
+        <p class="credits">Banka | Copyright &copy; Andela 2019</p>
+    </footer>
+    <!-- End Footer -->
+
+
+</body>
+</html>
