@@ -1,0 +1,23 @@
+{
+  "name": "banka",
+  "version": "1.0.0",
+  "description": "Banka is a light-weight core banking application that powers banking operations like account creation, customer deposit and withdrawals. This app is meant to support a single bank, where users can signup and create bank accounts online, but must visit the branch to withdraw or deposit money..",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Onyimatics/Banka.git"
+  },
+  "author": "Onyin",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Onyimatics/Banka/issues"
+  },
+  "homepage": "https://github.com/Onyimatics/Banka#readme",
+  "dependencies": {},
+  "devDependencies": {
+    "nodemon": "^1.18.10"
+  }
+}
