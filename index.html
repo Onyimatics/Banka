@@ -3,28 +3,75 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>BANKA</title>
+    <title>Banka - Your Money Is Safe With Us</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" type="text/css" media="screen" href="./assets/css/index.css">
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" media="screen" href="./assets/css/styles.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=PT+Sans">
     <script src="./assets/js/main.js"></script>
 </head>
+
 <body>
-    <header>
-        <div class="welcome">WELCOME TO BANKA</div>
-        <nav>
-            <ul>
-                <li><a href="#" class="active">Home</a></li>
-                <li><a href="#">Sign-In</a></li>
-                <li><a href="#">Log-In</a></li>
-                <li><a href="#">Create-Account</a></li>
+    <div class="modal-toggle"></div>
+    <!-- Begin Header -->
+<header>
+        <nav class="navbar">
+            <a href="./" class="navbar-logo">Banka</a>
+            <button class="hamburger-menu"><a class="hamburger"></a></button>
+            <ul class="navbar-menu">
+                <li class="navbar-link"><a href="./signup.html">Sign Up</a></li>
+                <li class="navbar-link"><a href="./login.html">Log In</a></li>
+                <li class="navbar-link"><a href="./signup.html">Personal Banking</a></li>
+                <li class="navbar-link"><a href="./signup.html">About Us</a></li>
             </ul>
         </nav>
-        <div class="menu-toggle"><i class="fas fa-bars"></i></div>
-    </header>
-
     
-    <script>
-    </script>
+</header>
+<!-- End Header -->
+<!-- Begin Super Section -->
+<main>
+    <section class="super">
+        <h2 class="super-title">BUILDING THE BANK OF THE FUTURE</h2>
+        <p class="super-paragragh">
+            Banka is a banking application that powers bankig operations account creation, customer deposit and withdrawals. As a user of this platform, you can also view your account history after any transaction.  
+        </p>
+        <div class="super-cta">
+            <a href="./sign-up.html" class="btn btn-white">Get Started</a>
+        </div>
+    </section>
+    <!-- End Super Section -->
+    <!-- Begin How It works -->
+    <section class="how-to">
+        <h2 class="section-title">Join Us Today</h2>
+        <p class="section-text">Follow The Steps Below:</p>
+        <div class="steps">
+            <div class="column step">
+                <span class="circle-icon">1</span>
+                <p class="section-text">
+                        Sign up and log in as a user. You can decide to update your profile for better
+                        view on the platform.
+                </p>
+            </div>
+            <div class="column step">
+                <span class="circle-icon">2</span>
+                <p class="section-text">
+                        Create an account as a user. By doing this, a unique account number will be generated for you by the system.
+                </p>
+            </div>
+            <div class="column step">
+                <span class="circle-icon">3</span>
+                <p class="section-text">
+                    Your account will be activated and you can now enjoy our services.
+                </p>
+            </div>
+        </div>
+    </section>
+    <!-- End How It Works Section -->
+</main>
+    <!-- Begin Footer -->
+<footer class="in">
+    <p class="credits">Banka | Copyright &copy; Andela 2019</p>
+</footer>
+    <!-- End Footer -->
 </body>
+
 </html>
