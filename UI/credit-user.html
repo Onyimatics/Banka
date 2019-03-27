@@ -1,0 +1,108 @@
+<!DOCTYPE <!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Banka - Credit Page</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" media="screen" href="./assets/css/styles.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=PT+Sans">
+</head>
+<body>
+    <!-- Begin Header -->
+    <header>
+            <nav class="navbar">
+                    <a href="./" class="navbar-logo">Banka</a>
+                    <button class="hamburger-menu"><a class="hamburger"></a></button>
+                    <ul class="navbar-menu">
+                            <li class="navbar-link"><a href="./credit-user.html">Credit User <hr></a></li>
+                        <li class="navbar-link"><a href="./debit-user.html">Debit User</a></li>
+                        <li class="navbar-link"><a href="./index.html">Log Out</a></li>
+                    </ul>
+                </nav>
+
+          </header>
+          <!-- End Header -->
+          <main>
+            <section class="container form-container">
+              <h2 class="section-title">Depositor's Slip</h2>
+              <form class="form-card" action="./staff-dashboard.html" method="post">
+                    <label for="accounttype">Select Account Type</label>
+                    <select
+                      type="text"
+                      id="accounttype"
+                      name="accounttype"
+                      class="form-element"
+                      required>
+                      <option default>-- Select Account Type --</option>
+                      <option value="savings">Savings</option>
+                      <option value="current">Current</option>
+                    </select>
+
+                    <label for="todaysdate">Date</label>
+                    <input
+                      type="date"
+                      id="todaysdate"
+                      name="todaysdate"
+                      class="form-element"
+                      required/>
+
+                <label for="accountnumber">Account Number</label>
+                <input
+                  type="number"
+                  id="accountnumber"
+                  name="accountnumber"
+                  class="form-element"
+                  placeholder="Enter Account Number"
+                  required/>
+
+                  <label for="accountname">Account Name</label>
+                <input
+                  type="text"
+                  id="accountname"
+                  name="accountname"
+                  class="form-element"
+                  placeholder="Enter Account Name"
+                  required/>
+
+                  <label for="amount">Amount(N)</label>
+                <input
+                  type="number"
+                  id="amount"
+                  name="amount"
+                  class="form-element"
+                  placeholder="Amount In Figure"
+                  required/>
+
+                  <label for="amountinwords">Amount In Words</label>
+                <input
+                  type="text"
+                  id="amountinwords"
+                  name="amountinwords"
+                  class="form-element"
+                  placeholder="Amount In Words"
+                  required/>
+
+                  
+                  <label for="narration">Narration</label>
+                <input
+                  type="text"
+                  id="narration"
+                  name="narration"
+                  class="form-element"
+                  placeholder="Summary"
+                  required/>
+
+                  <button type="submit" class="btn btn-primary">Submit</button>
+                </form>
+                </section>
+            </main>
+    <!-- End Main Section -->
+    <!-- Begin Footer -->
+    <footer>
+        <p class="credits">Banka | Copyright &copy; Andela 2019</p>
+    </footer>
+    <!-- End Footer -->
+</body>
+<script src="./assets/js/main.js"></script>
+</html>
