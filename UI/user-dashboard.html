@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>
+        Banka - User Dashboard 
+    </title>
+    <link rel="stylesheet" href="./assets/css/styles.css" />
+    <link href="https://fonts.googleapis.com/css?family=PT+Sans" rel="stylesheet" />
+</head>
+
+<body>
+    <div class="modal-toggle"></div>
+    <!-- Begin Header -->
+    <header>
+        <nav class="navbar">
+            <a href="./index.html" class="navbar-logo">Banka</a>
+            <button class="hamburger-menu"><a class="hamburger"></a></button>
+            <ul class="navbar-menu">
+                    <li class="navbar-link"><a href="./create-account.html">Create Account</a></li>
+                <li class="navbar-link"><a href="./user-dashboard.html">My Profile <hr></a></li>
+                <li class="navbar-link"><a href="./index.html">Log Out</a></li>
+            </ul>
+        </nav>
+    </header>
+    <!-- End Header -->
+    <!-- Begin Main Section -->
+    <main>
+        <section class="container">
+            <!-- <h2 class="section-title">User Profile</h2> -->
+            <h2 class="feature">Transaction History</h2>
+            <div class="profile">
+                <div class="card profile-card">
+                    <img class="profile-image" src="https://res.cloudinary.com/onyimatics/image/upload/v1553475100/Banka/Onyii.jpg" alt="Upload Picture" />
+                    <p class="profile-name">Onyinye Ezike</p>
+                    <p>3057131738</p>
+                    <p>Savings</p>
+                    <p>Balance(NGN): 40,000 </p>
+                    <div class="file-upload">
+                            <label for="upload" class="file-upload__label">Upload photo </label>
+                            <input id="upload" class="file-upload__input" type="file" name="file-upload">
+                        </div>
+                </div>
+                <div class="profile-table">
+                    <table class="stats-table">
+                        <tbody>
+                            <tr>
+                                <th>S/N</th>
+                                <th>Account Name</th>
+                                <th class="creation">CreatedOn</th>
+                                <th>Type</th>
+                                <th>Account Number</th>
+                                <th>Cashier</th>
+                                <th>Amount(NGN)</th>
+                                <th>Old Balance(NGN)</th>
+                                <th>New Balance(NGN)</th>
+                            </tr>
+                            <tr>
+                                <td>1.</td>
+                                <td>Onyinye Ezike</td>
+                                <td>16-02-2016 11:30am</td>
+                                <td>Credit</td>
+                                <td>3057131738</td>
+                                <td>014</td>
+                                <td>20,000</td>
+                                <td>30,000</td>
+                                <td>50,000</td>
+                            </tr>
+                            <tr>
+                                <td>2.</td>
+                                <td>Onyinye Ezike</td>
+                                <td>16-02-2016 11:30am</td>
+                                <td>Credit</td>
+                                <td>3057131738</td>
+                                <td>014</td>
+                                <td>5,000</td>
+                                <td>50,000</td>
+                                <td>45,000</td>
+                            </tr>
+                            <tr>
+                                <td>3.</td>
+                                <td>Onyinye Ezike</td>
+                                <td>16-02-2016 11:30am</td>
+                                <td>Credit</td>
+                                <td>3057131738</td>
+                                <td>014</td>
+                                <td>20,000</td>
+                                <td>34,000</td>
+                                <td>20,000</td>
+                            </tr>
+                            <tr>
+                                <td>4.</td>
+                                <td>Onyinye Ezike</td>
+                                <td>16-02-2016 11:30am</td>
+                                <td>Credit</td>
+                                <td>3057131738</td>
+                                <td>014</td>
+                                <td>20,000</td>
+                                <td>10,000</td>
+                                <td>20,000</td>
+                            </tr>
+                            <tr>
+                                <td>5.</td>
+                                <td>Onyinye Ezike</td>
+                                <td>16-02-2016 11:30am</td>
+                                <td>Credit</td>
+                                <td>3057131738</td>
+                                <td>014</td>
+                                <td>20,000</td>
+                                <td>30,000</td>
+                                <td>50,000</td>
+                            </tr>
+                            <tr>
+                                <td>6.</td>
+                                <td>Onyinye Ezike</td>
+                                <td>16-02-2016 11:30am</td>
+                                <td>Debit</td>
+                                <td>3057131738</td>
+                                <td>014</td>
+                                <td>5,000</td>
+                                <td>50,000</td>
+                                <td>45,000</td>
+                            </tr>
+                            <tr>
+                                <td>7.</td>
+                                <td>Onyinye Ezike</td>
+                                <td>16-02-2016 11:30am</td>
+                                <td>Credit</td>
+                                <td>3057131738</td>
+                                <td>014</td>
+                                <td>20,000</td>
+                                <td>56,000</td>
+                                <td>20,000</td>
+                            </tr>
+                            <tr>
+                                <td>8.</td>
+                                <td>Onyinye Ezike</td>
+                                <td>16-02-2016 11:30am</td>
+                                <td>Credit</td>
+                                <td>3057131738</td>
+                                <td>014</td>
+                                <td>20,000</td>
+                                <td>45,900</td>
+                                <td>20,000</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </section>
+    </main>
+    <!-- End Main Section -->
+    <!-- Begin Footer -->
+    <footer>
+        <p class="credits">Banka | Copyright &copy; Andela 2019</p>
+    </footer>
+    <!-- End Footer -->
+</body>
+<script src="./assets/js/main.js"></script>
+
+</html>
