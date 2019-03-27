@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>
+        Banka - Staff Dashboard
+    </title>
+    <link rel="stylesheet" href="./assets/css/styles.css" />
+    <link href="https://fonts.googleapis.com/css?family=PT+Sans" rel="stylesheet" />
+</head>
+
+<body>
+    <div class="modal-toggle"></div>
+    <!-- Begin Header -->
+    <header>
+        <nav class="navbar">
+                <a href="./index.html" class="navbar-logo">Banka</a>
+            <button class="hamburger-menu"><a class="hamburger"></a></button>
+            <ul class="navbar-menu">
+                <li class="navbar-link"><a href="./credit-user.html">Credit User</a</li>
+                <li class="navbar-link"><a href="./debit-user.html">Debit User</a</li>
+                <li class="navbar-link"><a href="./index.html">Log Out</a></li>
+            </ul>
+        </nav>
+    </header>
+    <!-- End Header -->
+    <!-- Begin Main Section -->
+    <main>
+        <section class="container">
+            <h2 class="section-title">Staff Profile</h2>
+            <div class="profile">
+                <div class="card profile-card">
+                    <img class="profile-image" src="https://res.cloudinary.com/onyimatics/image/upload/v1553475100/Banka/Onyii.jpg" alt="Profile Image" />
+                    <p class="profile-name">Onyinye Ezike: Staff</p>
+                    <div class="file-upload">
+                            <label for="upload" class="file-upload__label">Upload photo </label>
+                            <input id="upload" class="file-upload__input" type="file" name="file-upload">
+                        </div>
+                </div>
+                <div class="profile-table">
+                    <table class="stats-table">
+                        <tbody>
+                            <tr>
+                                <th>S/N</th>
+                                <th>Account Name</th>
+                                <th>Account Number</th>
+                                <th>CreatedOn</th>
+                                <th>View</th>
+                                <th>Delete</th>
+                            </tr>
+                            <tr class="translate2d">
+                                <td>1.</td>
+                                <td>Onyinye Ezike</td>
+                                <td>0123456789</td>
+                                <td>16-02-2011 09:16am</td>
+                                <td><button type="button" class="btn btn-primary" onclick="triggerModal()">View</button></td>
+                                <td><button class="btn btn-warning delete-report" onclick="triggerDeleteModal()">Delete</button></td>
+                            </tr>
+                            <tr class="translate2d">
+                                    <td>2.</td>
+                                    <td>Onyinye Ezike</td>
+                                    <td>0123456789</td>
+                                    <td>16-02-2011 09:16am</td>
+                                    <td><button type="button" class="btn btn-primary" onclick="triggerModal()">View</button></td>
+                                    <td><button class="btn btn-warning delete-report" onclick="triggerDeleteModal()">Delete</button></td>
+                            </tr>
+                            <tr class="translate2d">
+                                    <td>3.</td>
+                                    <td>Onyinye Ezike</td>
+                                    <td>0123456789</td>
+                                    <td>16-02-2011 09:16am</td>
+                                    <td><button type="button" class="btn btn-primary" onclick="triggerModal()">View</button></td>
+                                    <td><button class="btn btn-warning delete-report" onclick="triggerDeleteModal()">Delete</button></td>
+                            </tr>
+                            <tr class="translate2d">
+                                <td>4.</td>
+                                <td>Onyinye Ezike</td>
+                                    <td>0123456789</td>
+                                    <td>16-02-2011 09:16am</td>
+                                    <td><button type="button" class="btn btn-primary" onclick="triggerModal()">View</button></td>
+                                    <td><button class="btn btn-warning delete-report">Delete</button></td>
+                            </tr>
+                            <tr class="translate2d">
+                                <td>5.</td>
+                                    <td>Onyinye Ezike</td>
+                                    <td>0123456789</td>
+                                    <td>16-02-2011 09:16am</td>
+                                    <td><button type="button" class="btn btn-primary" onclick="triggerModal()">View</button></td>
+                                    <td><button class="btn btn-warning delete-report" onclick="triggerDeleteModal()">Delete</button></td>
+                            </tr>
+                            <tr class="translate2d">
+                                <td>6.</td>
+                                <td>Onyinye Ezike</td>
+                                    <td>0123456789</td>
+                                    <td>16-02-2011 09:16am</td>
+                                    <td><button type="button" class="btn btn-primary" onclick="triggerModal()">View</button></td>
+                                    <td><button class="btn btn-warning delete-report" onclick="triggerDeleteModal()">Delete</button></td>
+                            </tr>
+                            <tr class="translate2d">
+                                <td>7.</td>
+                                    <td>Onyinye Ezike</td>
+                                    <td>0123456789</td>
+                                    <td>16-02-2011 09:16am</td>
+                                    <td><button type="button" class="btn btn-primary" onclick="triggerModal()">View</button></td>
+                                    <td><button class="btn btn-warning delete-report" onclick="triggerDeleteModal()">Delete</button></td>
+                            </tr>
+                            <tr class="translate2d">
+                                <td>8.</td>
+                                <td>Onyinye Ezike</td>
+                                    <td>0123456789</td>
+                                    <td>16-02-2011 09:16am</td>
+                                    <td><button type="button" class="btn btn-primary" onclick="triggerModal()">View</button></td>
+                                    <td><button class="btn btn-warning delete-report" onclick="triggerDeleteModal()">Delete</button></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+             <!-- The Modal -->
+    <div id="myModal" class="modal">
+            <!-- Modal content -->
+            <div class="modal-content">
+                <span class="close-modal" onclick="closeModal()">&times;</span>
+                <div>
+                    <div class="modal-header">
+                        <h1>Bank Account Details</h1>
+                    </div>
+                    <div><img class="banka-logo"
+                            src="https://res.cloudinary.com/onyimatics/image/upload/v1553484865/Banka/Banka.png" />
+                    </div>
+                    <div class="modal-body">
+                        <div></div>
+                        <div class="modal-account-details">
+                            <div>
+                                <h3>Owner</h3><span>Onyinye Ezike</span>
+                            </div>
+                            <div>
+                                <h3>Account Number</h3> <span>5454545545</span>
+                            </div>
+                            <div>
+                                <h3>Account Type</h3> <span>Savings</span>
+                            </div>
+                            <div>
+                                <h3>Balance</h3> <span> 20000NGN</span>
+                            </div>
+                            <div>
+                                <h3>Status</h3><span> Active</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="deleteModal" class="modal">
+                <!-- Modal content -->
+                <div class="modal-content">
+                    <span class="close-modal" onclick="closeDeleteModal()">&times;</span>
+                    <div>
+
+    <div class="account-delete" id="delete">
+        <div class="modal-header"><h1>Delete Account</h1></div>
+        <div>
+            <h3>Are You Sure You Want To Delete This Accout?</h3>
+            <br>
+            <button onclick="window.location='./admin-dashboard.html';" value="" class="btn-submit">Yes</button>
+            <button onclick="window.location='./admin-dashboard.html';" value="" class="btn-remove">Cancel</button>
+            <br>
+            <br>
+        </div>
+    </div>
+    </div>
+    </div>
+    </div>
+            
+    </section>
+    </main>
+    <!-- End Main Section -->
+    <!-- Begin Footer -->
+    <footer>
+        <p class="credits">Banka | Copyright &copy; Andela 2019</p>
+    </footer>
+    <!-- End Footer -->
+    <script src="./assets/js/main.js"></script>
+</body>
+
+</html>
