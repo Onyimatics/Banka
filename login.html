@@ -1,5 +1,6 @@
 <!DOCTYPE <!DOCTYPE html>
 <html>
+
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -7,49 +8,49 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" type="text/css" media="screen" href="./assets/css/styles.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=PT+Sans">
-    <script src="./assets/js/main.js"></script>
 </head>
+
 <body>
     <!-- Begin Header -->
     <Header>
-            <nav class="navbar">
-                <a href="./" class="navbar-logo">Banka</a>
-                <button class="hamburger-menu"><a class="hamburger"></a></button>
-                <ul class="navbar-menu">
-                    <li class="navbar-link"><a href="./index.html">Home</a></li>
-                    <li class="navbar-link"><a href="./login.html">Log In <hr></a></li>
-                    <li class="navbar-link"><a href="./signup.html">Sign Up</a></li>
-                </ul>
-            </nav>
-        </Header>
-        <!-- End Header -->
-        <!-- Begin Main Section -->
-        <main>
-                <section class="container form-container">
-                    <h2 class="section-title">Login</h2>
-                    <form class="form-card" onsubmit="return submitForm()" action="" method="post">
-                        <label for="email">Enter Email (Required)</label>
-                        <input type="email" name="email" id="email" class="form-element" placeholder="Enter Email" required />
-                        <label for="password">Enter Password (Required)</label>
-                        <input type="password" name="password" id="password" class="form-element" placeholder="Enter Password"
-                            required />
-                        <div class="forgot--reset">
-                            <a href="./password-reset.html" class="text--color--grey">Forgot Password?</a>
-                        </div>
-                        <button type="submit" class="btn btn-primary user-form">Login</button>
-                        <div class="margin--top--10 margin--below ">
-                            <p class="text--primary1">Dont have an account?
-                                <a href="./signup.html" class="text--color--grey">Sign Up</a>
-                            </p>
-                        </div>
-                    </form>
-                </section>
-            </main>
-            <!-- End Main Section -->
+        <nav class="navbar">
+            <a href="./" class="navbar-logo">Banka</a>
+            <button class="hamburger-menu"><a class="hamburger"></a></button>
+            <ul class="navbar-menu">
+                <li class="navbar-link"><a href="./index.html">Home</a></li>
+                <li class="navbar-link"><a href="./login.html">Log In
+                        <hr></a></li>
+                <li class="navbar-link"><a href="./signup.html">Sign Up</a></li>
+            </ul>
+        </nav>
+    </Header>
+    <!-- End Header -->
+    <!-- Begin Main Section -->
+    <main>
+        <section class="container form-container">
+            <h2 class="section-title">Login</h2>
+            <form class="form-card" action="./user-dashboard.html">
+                <label for="email">Enter Email (Required)</label>
+                <input type="email" name="email" id="email" class="form-element" placeholder="Enter Email" required />
+                <label for="password">Enter Password (Required)</label>
+                <input type="password" name="password" id="password" class="form-element" placeholder="Enter Password"required />
+                <div class="forgot--reset"><a href="./password-reset.html" class="text--color--grey">Forgot Password?</a></div>
+                <input type="submit" class="btn btn-primary user-form" value="Login">
+                <div class="margin--top--10 margin--below ">
+                    <p class="text--primary1">Dont have an account?
+                        <a href="./signup.html" class="text--color--grey">Sign Up</a>
+                    </p>
+                </div>
+            </form>
+        </section>
+    </main>
+    <!-- End Main Section -->
     <!-- Begin Footer -->
     <footer>
         <p class="credits">Banka | Copyright &copy; Andela 2019</p>
     </footer>
-        <!-- End Footer -->
+    <!-- End Footer -->
+    <script src="./assets/js/main.js"></script>
 </body>
+
 </html>
