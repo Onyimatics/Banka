@@ -1,0 +1,150 @@
+<!DOCTYPE <!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Banka - Create Account</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" media="screen" href="./assets/css/styles.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=PT+Sans">
+</head>
+<body>
+    <!-- Begin Header -->
+    <header>
+            <nav class="navbar">
+                    <a href="./" class="navbar-logo">Banka</a>
+                    <button class="hamburger-menu"><a class="hamburger"></a></button>
+                    <ul class="navbar-menu">
+                        <li class="navbar-link"><a href="./signup.html">Create Account</a></li>
+                        <li class="navbar-link"><a href="./login.html">Log Out</a></li>
+                    </ul>
+                </nav>
+
+          </header>
+          <!-- End Header -->
+          <!-- Begin Main Section -->
+          <main>
+            <section class="container form-container">
+              <h2 class="section-title">Create Admin/Staff User Account</h2>
+              <form class="form-card" action="" method="post">
+
+                    <label for="adminstaffaccount">Admin/Staff</label>
+                    <select
+                      type="text"
+                      id="adminstaffaccount"
+                      name="adminstaffaccount"
+                      class="form-element"
+                      required>
+                      <option default>-- Admin or  Staff Account --</option>
+                      <option value="married">Admin</option>
+                      <option value="single">Staff</option>
+                    </select>
+                    <label for="accounttype">Select Account Type</label>
+                    <select
+                      type="text"
+                      id="accounttype"
+                      name="accounttype"
+                      class="form-element"
+                      required>
+                      <option default>-- Select Account Type --</option>
+                      <option value="savings">Savings</option>
+                      <option value="current">Current</option>
+                    </select>
+
+                <label for="bvn">Enter BVN</label>
+                <input
+                  type="number"
+                  id="bvn"
+                  name="bvn"
+                  class="form-element"
+                  placeholder="Enter BVN"
+                  required/>
+
+                  <label for="surname">Surname</label>
+                <input
+                  type="text"
+                  id="surname"
+                  name="surname"
+                  class="form-element"
+                  placeholder="Enter Surname"
+                  required/>
+
+                  <label for="firstname">First Name</label>
+                <input
+                  type="text"
+                  id="firstname"
+                  name="firstname"
+                  class="form-element"
+                  placeholder="Enter First Name"
+                  required/>
+
+                  <label for="othername">Other Name</label>
+                <input
+                  type="text"
+                  id="othername"
+                  name="othername"
+                  class="form-element"
+                  placeholder="Enter Other Name"
+                  required/>
+
+                  <label for="gender">Gender</label>
+                    <select
+                      type="text"
+                      id="gender"
+                      name="gender"
+                      class="form-element"
+                      required>
+                      <option default>-- Choose Gender --</option>
+                      <option value="red-flag">Male</option>
+                      <option value="intervention">Female</option>
+                    </select>
+
+                    <label for="maritalstatus">Marital Status</label>
+                    <select
+                      type="text"
+                      id="maritalstatus"
+                      name="maritalstatus"
+                      class="form-element"
+                      required>
+                      <option default>-- Marital Status --</option>
+                      <option value="married">Married</option>
+                      <option value="single">Single</option>
+                    </select>
+
+                <label for="dateofbirth">Surname</label>
+                <input
+                  type="date"
+                  id="dateofbirth"
+                  name="dateofbirth"
+                  class="form-element"
+                  required/>
+
+                  <label for="maidenname">Mother's Maiden Name</label>
+                <input
+                  type="text"
+                  id="maidenname"
+                  name="maidenname"
+                  class="form-element"
+                  required/>
+
+                  <label for="address">Residential Address</label>
+                <input
+                  type="text"
+                  id="address"
+                  name="address"
+                  class="form-element"
+                  required/>
+
+                  <button type="submit" class="btn btn-primary">Create Account</button>
+                </form>
+                </section>
+            </main>
+    <!-- End Main Section -->
+    <!-- Begin Footer -->
+    <footer>
+        <p class="credits">Banka | Copyright &copy; Andela 2019</p>
+    </footer>
+    <!-- End Footer -->
+    <script src="./assets/js/main.js"></script>
+</body>
+</html>
