@@ -15,8 +15,8 @@
                     <a href="./" class="navbar-logo">Banka</a>
                     <button class="hamburger-menu"><a class="hamburger"></a></button>
                     <ul class="navbar-menu">
-                            <li class="navbar-link"><a href="./credit-user.html">Credit User <hr></a></li>
-                        <li class="navbar-link"><a href="./debit-user.html">Debit User</a></li>
+                            <li class="navbar-link"><a href="./credit-debit-user.html">Credit/Debit User <hr></a></li>
+                            <li class="navbar-link"><a href="./staff-dashboard.html">Dashboard</a></li>
                         <li class="navbar-link"><a href="./index.html">Log Out</a></li>
                     </ul>
                 </nav>
@@ -25,8 +25,19 @@
           <!-- End Header -->
           <main>
             <section class="container form-container">
-              <h2 class="section-title">Depositor's Slip</h2>
+              <h2 class="section-title">Credit/Debit Slip</h2>
               <form class="form-card" action="./staff-dashboard.html" method="post">
+                <label for="adminstaffaccount">Credit/Debit</label>
+                <select
+                  type="text"
+                  id="adminstaffaccount"
+                  name="adminstaffaccount"
+                  class="form-element"
+                  required>
+                  <option default>-- Credit or Debit? --</option>
+                  <option value="married">Credit</option>
+                  <option value="single">Debit</option>
+                </select>  
                     <label for="accounttype">Select Account Type</label>
                     <select
                       type="text"
@@ -65,7 +76,7 @@
                   placeholder="Enter Account Name"
                   required/>
 
-                  <label for="amount">Amount(N)</label>
+                  <label for="amount">Amount(NGN)</label>
                 <input
                   type="number"
                   id="amount"
@@ -74,16 +85,6 @@
                   placeholder="Amount In Figure"
                   required/>
 
-                  <label for="amountinwords">Amount In Words</label>
-                <input
-                  type="text"
-                  id="amountinwords"
-                  name="amountinwords"
-                  class="form-element"
-                  placeholder="Amount In Words"
-                  required/>
-
-                  
                   <label for="narration">Narration</label>
                 <input
                   type="text"
