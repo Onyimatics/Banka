@@ -319,7 +319,7 @@ td.issue {
   bottom: -3px;
   left: 0;
   width: 60px;
-  border: 1.5px solid #8B008B;
+  /* border: 1.5px solid #8B008B; */
 }
 
 .feature {
