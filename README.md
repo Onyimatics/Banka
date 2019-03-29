@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/Onyimatics/Banka.svg?branch=develop)](https://travis-ci.org/Onyimatics/Banka) [![Coverage Status](https://coveralls.io/repos/github/Onyimatics/Banka/badge.svg?branch=develop)](https://coveralls.io/github/Onyimatics/Banka?branch=develop) [![Maintainability](https://api.codeclimate.com/v1/badges/c3c8e1797a3962684d3f/maintainability)](https://codeclimate.com/github/Onyimatics/Banka/maintainability) [![Test Coverage](https://api.codeclimate.com/v1/badges/c3c8e1797a3962684d3f/test_coverage)](https://codeclimate.com/github/Onyimatics/Banka/test_coverage)
+
 # Banka
 
 **Project Overview*

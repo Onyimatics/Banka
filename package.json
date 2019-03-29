@@ -2,8 +2,10 @@
   "name": "banka",
   "version": "1.0.0",
   "description": "Banka is a light-weight core banking application that powers banking operations like account creation, customer deposit and withdrawals. This app is meant to support a single bank, where users can signup and create bank accounts online, but must visit the branch to withdraw or deposit money..",
-  "main": "index.js",
+  "main": "app.js",
   "scripts": {
+    "start": "babel-node app.js",
+    "start:dev": "nodemon --watch server --exec babel-node -- app.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -11,13 +13,30 @@
     "url": "git+https://github.com/Onyimatics/Banka.git"
   },
   "author": "Onyin",
-  "license": "ISC",
+  "license": "MIT",
   "bugs": {
     "url": "https://github.com/Onyimatics/Banka/issues"
   },
   "homepage": "https://github.com/Onyimatics/Banka#readme",
-  "dependencies": {},
+  "dependencies": {
+    "babel-cli": "^6.26.0",
+    "babel-core": "^6.26.3",
+    "babel-plugin-transform-object-rest-spread": "^6.26.0",
+    "babel-polyfill": "^6.26.0",
+    "babel-preset-env": "^1.7.0",
+    "babel-register": "^6.26.0",
+    "body-parser": "^1.18.3",
+    "chai": "^4.2.0",
+    "express": "^4.16.4",
+    "mocha": "^6.0.2",
+    "morgan": "^1.9.1",
+    "nyc": "^13.3.0"
+  },
   "devDependencies": {
+    "eslint": "^5.15.3",
+    "eslint-config-airbnb": "^17.1.0",
+    "eslint-config-airbnb-base": "^13.1.0",
+    "eslint-plugin-import": "^2.16.0",
     "nodemon": "^1.18.10"
   }
 }
