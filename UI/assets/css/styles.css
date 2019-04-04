@@ -252,10 +252,10 @@ label {
   font-weight: 600;
 }
 
-label span {
+/* label span {
   color: #ef271b;
   font-size: 18px;
-}
+} */
 
 table {
   background: transparent;
