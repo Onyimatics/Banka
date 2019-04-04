@@ -7,5 +7,9 @@
         "browser": true,
         "mocha": true,
         "jquery": true
+    },
+    "rules":{
+        "linebreak-style": 0
     }
 }
+

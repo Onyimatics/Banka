@@ -27,54 +27,26 @@
             <section class="container form-container">
               <h2 class="section-title">Credit/Debit Slip</h2>
               <form class="form-card" action="./staff-dashboard.html" method="post">
-                <label for="adminstaffaccount">Credit/Debit</label>
-                <select
-                  type="text"
-                  id="adminstaffaccount"
-                  name="adminstaffaccount"
-                  class="form-element"
-                  required>
-                  <option default>-- Credit or Debit? --</option>
-                  <option value="married">Credit</option>
-                  <option value="single">Debit</option>
-                </select>  
-                    <label for="accounttype">Select Account Type</label>
-                    <select
-                      type="text"
-                      id="accounttype"
-                      name="accounttype"
-                      class="form-element"
-                      required>
-                      <option default>-- Select Account Type --</option>
-                      <option value="savings">Savings</option>
-                      <option value="current">Current</option>
-                    </select>
 
-                    <label for="todaysdate">Date</label>
+                <label for="todaysDate">Date</label>
                     <input
                       type="date"
-                      id="todaysdate"
-                      name="todaysdate"
+                      id="todaysDate"
+                      name="todaysDate"
                       class="form-element"
                       required/>
 
-                <label for="accountnumber">Account Number</label>
-                <input
-                  type="number"
-                  id="accountnumber"
-                  name="accountnumber"
-                  class="form-element"
-                  placeholder="Enter Account Number"
-                  required/>
-
-                  <label for="accountname">Account Name</label>
-                <input
+                <label for="transaction">Credit/Debit</label>
+                <select
                   type="text"
-                  id="accountname"
-                  name="accountname"
+                  id="transaction"
+                  name="transaction"
                   class="form-element"
-                  placeholder="Enter Account Name"
-                  required/>
+                  required>
+                  <option default>-- Credit or Debit? --</option>
+                  <option value="credit">Credit</option>
+                  <option value="debit">Debit</option>
+                </select> 
 
                   <label for="amount">Amount(NGN)</label>
                 <input

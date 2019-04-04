@@ -30,8 +30,8 @@
                     <label for="accounttype">Select Account Type</label>
                     <select
                       type="text"
-                      id="accounttype"
-                      name="accounttype"
+                      id="type"
+                      name="type"
                       class="form-element"
                       required>
                       <option default>-- Select Account Type --</option>
@@ -39,88 +39,31 @@
                       <option value="current">Current</option>
                     </select>
 
-                <label for="bvn">Enter BVN</label>
-                <input
-                  type="number"
-                  id="bvn"
-                  name="bvn"
-                  class="form-element"
-                  placeholder="Enter BVN"
-                  required/>
-
-                  <label for="surname">Surname</label>
+                  <label for="firstName">First Name</label>
                 <input
                   type="text"
-                  id="surname"
-                  name="surname"
-                  class="form-element"
-                  placeholder="Enter Surname"
-                  required/>
-
-                  <label for="firstame">First Name</label>
-                <input
-                  type="text"
-                  id="firstname"
-                  name="firstname"
+                  id="firstName"
+                  name="firstName"
                   class="form-element"
                   placeholder="Enter First Name"
                   required/>
 
-                  <label for="othername">Other Name</label>
+                  <label for="lastName">Last Name</label>
                 <input
                   type="text"
-                  id="othername"
-                  name="othername"
+                  id="lastName"
+                  name="lastName"
                   class="form-element"
-                  placeholder="Enter Other Name"
+                  placeholder="Enter First Name"
                   required/>
-
-                  <label for="gender">Gender</label>
-                    <select
-                      type="text"
-                      id="gender"
-                      name="gender"
-                      class="form-element"
-                      required>
-                      <option default>-- Choose Gender --</option>
-                      <option value="red-flag">Male</option>
-                      <option value="intervention">Female</option>
-                    </select>
-
-                    <label for="maritalstatus">Marital Status</label>
-                    <select
-                      type="text"
-                      id="marital status"
-                      name="maritalstatus"
-                      class="form-element"
-                      required>
-                      <option default>-- Marital Status --</option>
-                      <option value="married">Married</option>
-                      <option value="single">Single</option>
-                    </select>
-
-                <label for="dateofbirth">Date</label>
+                  
+                  <label for="createdOn">Date</label>
                 <input
                   type="date"
-                  id="dateofbirth"
-                  name="dateofbirth"
+                  id="createdOn"
+                  name="createdOn"
                   class="form-element"
-                  required/>
-
-                  <label for="maidenname">Mother's Maiden Name</label>
-                <input
-                  type="text"
-                  id="maidenname"
-                  name="maidenname"
-                  class="form-element"
-                  required/>
-
-                  <label for="address">Residential Address</label>
-                <input
-                  type="text"
-                  id="address"
-                  name="address"
-                  class="form-element"
+                  placeholder="Today's Date"
                   required/>
 
                   <button type="submit" class="btn btn-primary">Create Account</button>
