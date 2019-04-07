@@ -30,6 +30,28 @@ class UserController {
         const { id } = newUser;
         response(res, 200, 'Successfully created a new user account', { id, token, firstName, email, lastName })
     }
+    // login controller
+static login(req, res) {
+    const { email, password } = req.body;
+
+    const userDetailArr = users.filter(user => {
+        return user.email === email
+    });
+    if (userDetailArr.length === 0) {
+        response(res, 400, 'Invalid Password or Email')
+    }
+    const userDetails = userDetailArr[0];
+    const { id, firstName, lastName, password: hashPassword } = userDetails;
+
+    const isPasswordValid = PasswordManager.verifyPassword(password, hashPassword);
+
+    if (isPasswordValid) {
+        const token = TokenManager.sign(userDetails)
+        userDetails['token'] = token;
+        response(res, 200, 'Successfully logged in', { id, token, firstName, email, lastName })
+    };
+    response(res, 400, 'Invalid Password or Email')
+}
 
     
 

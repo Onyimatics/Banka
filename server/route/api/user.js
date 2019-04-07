@@ -11,7 +11,7 @@ import DoValidation from '../../middleaware/validation/dovalidation';
 //user routes
 const userRoutes = Router();
 
-
+// signup route
 userRoutes.post(
     '/auth/signup',
     DoValidation.email,
@@ -19,7 +19,13 @@ userRoutes.post(
     DoValidation.name,
     UserController.register
 );
-
+// login route
+userRoutes.post(
+    '/auth/login',
+    DoValidation.email,
+    DoValidation.password,
+    UserController.login
+);
 
 
 export default userRoutes;
