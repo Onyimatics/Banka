@@ -1,8 +1,20 @@
-import express from 'express';
-import controller from './../controller/controller';
-
-const router = express();
-router.get('/', controller.welcome);
+import { Router } from 'express';
 
 
-export default router;
+
+import userRoutes from './api/user';
+
+const routes = Router();
+
+routes.use(userRoutes)
+routes.all('*', (req, res) => {
+    res.status(404).json({
+        status: '404',
+        data: {
+            message: 'Route does not exist'
+        }
+    });
+});
+
+
+export default routes;
