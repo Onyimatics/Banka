@@ -6,7 +6,7 @@
   "scripts": {
     "test": "cross-env NODE_ENV=test nyc --require @babel/register  mocha server/test --exit",
     "start": "rimraf dist/ && babel  ./server -d dist && node dist/app.js",
-    "startdev": "nodemon --exec babel-node Server/app.js",
+    "start:dev": "nodemon --exec babel-node Server/app.js",
     "coverage": "nyc report --reporter=text-lcov | coveralls"
   },
   "nyc": {
@@ -51,6 +51,7 @@
     "@babel/cli": "^7.4.3",
     "@babel/core": "^7.4.3",
     "@babel/node": "^7.2.2",
+    "@babel/plugin-proposal-object-rest-spread": "^7.4.3",
     "@babel/plugin-transform-regenerator": "^7.4.3",
     "@babel/plugin-transform-runtime": "^7.4.3",
     "@babel/preset-env": "^7.4.3",
