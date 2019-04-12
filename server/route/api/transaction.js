@@ -20,4 +20,9 @@ transactionRoutes.get('/:transactionId',
   AccountValidation.checkIfTransactiontExist,
   TransactionController.fetchTransactionByTransactionId);
 
+transactionRoutes.post('/:accountNumber/debit',
+  AuthMiddleware.checkIfUserIsAuthenticated,
+  AccountValidation.checkIfAccountExist,
+  AccountValidation.staffChecker,
+  TransactionController.debitAccount);
 export default transactionRoutes;
