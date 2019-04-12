@@ -8,13 +8,16 @@ app.use(bodyparser.urlencoded({ extended: true }));
 app.use('/api/v1/', routes);
 
 app.get('/', (req, res) => {
-    res.status(200).json("Welcome to Banka");
+  res.status(200).json({
+    status: '200',
+    message: 'Welcome to Banka API',
+  });
 });
 
-const port = process.env.PORT || 3000;
+const port = process.env.PORT || 3001;
 app.listen(port, () => {
-    console.log(`App is on ${port}`)
+// eslint-disable-next-line no-console
+  console.log(`App is running on ${port}`);
 });
 
 export default app;
-

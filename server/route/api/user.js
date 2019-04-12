@@ -1,30 +1,28 @@
 // exoress libraries
 import { Router } from 'express';
 
-
-
-//controllers
+// controllers
 import UserController from '../../controller/userController';
 import DoValidation from '../../middleaware/validation/dovalidation';
 
 
-//user routes
+// user routes
 const userRoutes = Router();
 
 // signup route
 userRoutes.post(
-    '/auth/signup',
-    DoValidation.email,
-    DoValidation.password,
-    DoValidation.name,
-    UserController.register
+  '/signup',
+  DoValidation.email,
+  DoValidation.password,
+  DoValidation.name,
+  UserController.register,
 );
-// login route
+// signin route
 userRoutes.post(
-    '/auth/login',
-    DoValidation.email,
-    DoValidation.password,
-    UserController.login
+  '/signin',
+  DoValidation.email,
+  DoValidation.password,
+  UserController.signin,
 );
 
 

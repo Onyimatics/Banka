@@ -1,7 +1,7 @@
 import jwt from 'jsonwebtoken';
-import env from 'dotenv';
+import dotenv from 'dotenv';
 
-env.config();
+dotenv.config();
 
 const secret = process.env.JWT_SECRET;
 
@@ -11,20 +11,20 @@ const secret = process.env.JWT_SECRET;
  * @class TokenManager
  */
 class TokenManager {
-    /**
+  /**
      *
      * @description Encodes a passed token and returns a jwt token
      * @static
      * @param {*} payload
-     * @param {string} [ttl='2h']
+     * @param {string} [ttl='1d']
      * @returns {string} Jwt token
      * @memberof Tokenize
      */
-    static sign(payload, ttl = '1d') {
-        return jwt.sign(payload, secret, { expiresIn: ttl });
-    }
+  static sign(payload, ttl = '1d') {
+    return jwt.sign(payload, secret, { expiresIn: ttl });
+  }
 
-    /**
+  /**
      *
      * @description Verifies a passed token and returns a decoded payload
      * @static
@@ -32,9 +32,11 @@ class TokenManager {
      * @returns {object} Payload
      * @memberof Tokenize
      */
-    static verify(token) {
-        return jwt.verify(token, secret);
-    }
+  static verify(token) {
+    const payload = jwt.verify(token, secret, (err, decoded) => decoded);
+    delete payload.password;
+    return payload;
+  }
 }
 
 export default TokenManager;
