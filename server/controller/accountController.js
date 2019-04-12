@@ -7,6 +7,18 @@ class AccountController {
     await response(res, 200, 'All Accounts fetched Successfully', accounts);
   }
 
+  static async fetchAccountByAccountNumber(req, res) {
+    const { type } = req.user;
+    if (type) {
+      const { accountDetails, accountExist } = req;
+      if (accountExist === 0) {
+        response(res, 404, 'Account not found', accountDetails);
+      } else {
+        await response(res, 200, 'Account details Successfully Retrieved', accountDetails);
+      }
+    }
+  }
+
   static createAccount(req, res) {
     const {
       email, firstName, lastName,

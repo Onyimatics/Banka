@@ -15,6 +15,11 @@ accountRoutes.get('/',
   AccountValidation.adminChecker,
   AccountController.fetchAllAccounts);
 
+accountRoutes.get('/:accountNumber',
+  AuthMiddleware.checkIfUserIsAuthenticated,
+  AccountValidation.checkIfAccountExist,
+  AccountController.fetchAccountByAccountNumber);
+
 accountRoutes.post('/',
   AuthMiddleware.checkIfUserIsAuthenticated,
   AuthMiddleware.checkUserById,
