@@ -10,6 +10,14 @@ import AuthMiddleware from '../../middleaware/authMiddleware/authMiddleware';
 // account routes
 const transactionRoutes = Router();
 
-transactionRoutes.get('/', AuthMiddleware.checkIfUserIsAuthenticated, AccountValidation.adminChecker, TransactionController.fetchAllTransactions);
+transactionRoutes.get('/',
+  AuthMiddleware.checkIfUserIsAuthenticated,
+  AccountValidation.adminChecker,
+  TransactionController.fetchAllTransactions);
+
+transactionRoutes.get('/:transactionId',
+  AuthMiddleware.checkIfUserIsAuthenticated,
+  AccountValidation.checkIfTransactiontExist,
+  TransactionController.fetchTransactionByTransactionId);
 
 export default transactionRoutes;
