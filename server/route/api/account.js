@@ -24,13 +24,18 @@ accountRoutes.post('/',
   AuthMiddleware.checkIfUserIsAuthenticated,
   AuthMiddleware.checkUserById,
   AccountController.createAccount);
-  
+
 accountRoutes.patch('/:accountNumber',
   AuthMiddleware.checkIfUserIsAuthenticated,
   AccountValidation.staffChecker,
   AccountValidation.checkIfAccountExist,
   AccountValidation.accountStatusChecker,
   AccountController.updateAccountStatus);
+accountRoutes.delete('/:accountNumber',
+  AuthMiddleware.checkIfUserIsAuthenticated,
+  AccountValidation.staffChecker,
+  AccountValidation.checkIfAccountExist,
+  AccountController.deleteAccount);
 
 
 export default accountRoutes;
