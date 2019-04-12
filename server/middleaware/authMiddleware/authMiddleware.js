@@ -1,6 +1,6 @@
 import TokenManager from '../../helper/tokenManager/index';
 import response from '../../helper/response/index';
-
+import users from '../../model/users';
 /**
  * @class AuthMiddleware
  * @description class contains function for implementing Authentication middleware
@@ -19,24 +19,32 @@ class AuthMiddleware {
     try {
       const { authorization } = req.headers;
       if (!authorization) {
-        return response(res, 401, 'You are not signed in.');
+        return response(res, 401, 'You are not logged in.');
       }
-      // console.log(req.headers);
       const token = authorization;
       const decoded = await TokenManager.verify(token);
       if (decoded) {
         req.user = decoded;
-        
         return next();
       }
     } catch (error) {
       const { name } = error;
-      // eslint-disable-next-line no-constant-condition
-      if (name === 'TokenExpiredError' || name === 'JsonWebTokenError' || 'typeError') {
-        return response(res, 401, 'You are not signed in.');
+      if (name === 'TokenExpiredError' || name === 'JsonWebTokenError' || name === 'TypeError') {
+        return response(res, 401, 'You need to login.');
       }
-      return response(res, 500, 'An error occured on the server.');
+      return response(res, 500, 'An error occured on the server', null);
     }
+  }
+
+  static async checkUserById(req, res, next) {
+    const { id } = req.body;
+    const userDetails = users.find(user => user.id === Number(id));
+    if (!userDetails) {
+      return response(res, 404, 'User account not found', null);
+    }
+    delete userDetails.password;
+    req.customer = userDetails;
+    return next();
   }
 }
 

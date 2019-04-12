@@ -86,7 +86,7 @@ const accounts = [
     accountNumber: 9901234567,
     createdOn: Date.now(),
     owner: 10, // user id
-    // type: 'current', // savings, current
+    type: 'current', // savings, current
     status: 'active', // draft, active, or dormant
     balance: 100000.00,
   },
