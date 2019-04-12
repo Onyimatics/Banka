@@ -3,7 +3,7 @@
 
     "env": {
         "node": true,
-        "esb": true,
+        "es6": true,
         "browser": true,
         "mocha": true,
         "jquery": true

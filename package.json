@@ -4,10 +4,11 @@
   "description": "Banka is a light-weight core banking application that powers banking operations like account creation, customer deposit and withdrawals. This app is meant to support a single bank, where users can signup and create bank accounts online, but must visit the branch to withdraw or deposit money..",
   "main": "app.js",
   "scripts": {
-    "test": "cross-env NODE_ENV=test nyc --require @babel/register  mocha server/test --exit",
+    "test": "cross-env NODE_ENV=test nyc --require @babel/register  mocha server/spec --exit",
     "start": "rimraf dist/ && babel  ./server -d dist && node dist/app.js",
-    "start:dev": "nodemon --exec babel-node Server/app.js",
-    "coverage": "nyc report --reporter=text-lcov | coveralls"
+    "start:dev": "nodemon --exec babel-node server/app.js",
+    "coverage": "nyc report --reporter=text-lcov | coveralls",
+    "test-watch": "nodemon --exec \"npm test\""
   },
   "nyc": {
     "require": [
@@ -45,7 +46,8 @@
     "jsonwebtoken": "^8.5.1",
     "mocha": "^6.0.2",
     "morgan": "^1.9.1",
-    "nyc": "^13.3.0"
+    "nyc": "^13.3.0",
+    "randomatic": "^3.1.1"
   },
   "devDependencies": {
     "@babel/cli": "^7.4.3",

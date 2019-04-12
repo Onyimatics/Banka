@@ -28,118 +28,63 @@
             <section class="container form-container">
               <h2 class="section-title">Create Admin/Staff User Account</h2>
               <form class="form-card" action="" method="post">
-
-                    <label for="adminstaffaccount">Admin/Staff</label>
-                    <select
-                      type="text"
-                      id="adminstaffaccount"
-                      name="adminstaffaccount"
-                      class="form-element"
-                      required>
-                      <option default>-- Admin or  Staff Account --</option>
-                      <option value="married">Admin</option>
-                      <option value="single">Staff</option>
-                    </select>
-                    <label for="accounttype">Select Account Type</label>
-                    <select
-                      type="text"
-                      id="accounttype"
-                      name="accounttype"
-                      class="form-element"
-                      required>
-                      <option default>-- Select Account Type --</option>
-                      <option value="savings">Savings</option>
-                      <option value="current">Current</option>
-                    </select>
-
-                <label for="bvn">Enter BVN</label>
-                <input
-                  type="number"
-                  id="bvn"
-                  name="bvn"
-                  class="form-element"
-                  placeholder="Enter BVN"
-                  required/>
-
-                  <label for="surname">Surname</label>
+                <label for="firstname">Enter First Name (Required)</label>
                 <input
                   type="text"
-                  id="surname"
-                  name="surname"
-                  class="form-element"
-                  placeholder="Enter Surname"
-                  required/>
-
-                  <label for="firstname">First Name</label>
-                <input
-                  type="text"
-                  id="firstname"
-                  name="firstname"
+                  id="firstName"
+                  name="firstName"
                   class="form-element"
                   placeholder="Enter First Name"
                   required/>
-
-                  <label for="othername">Other Name</label>
+                <label for="lastName">Enter Last name (Required)</label>
+                <input
+                  type="text"
+                  id="lastName"
+                  name="lastName"
+                  class="form-element"
+                  placeholder="Enter Last Name"
+                  required/>
+                <label for="othername">Enter other name (Optional)</label>
                 <input
                   type="text"
                   id="othername"
                   name="othername"
                   class="form-element"
-                  placeholder="Enter Other Name"
-                  required/>
-
-                  <label for="gender">Gender</label>
-                    <select
-                      type="text"
-                      id="gender"
-                      name="gender"
-                      class="form-element"
-                      required>
-                      <option default>-- Choose Gender --</option>
-                      <option value="red-flag">Male</option>
-                      <option value="intervention">Female</option>
-                    </select>
-
-                    <label for="maritalstatus">Marital Status</label>
-                    <select
-                      type="text"
-                      id="maritalstatus"
-                      name="maritalstatus"
-                      class="form-element"
-                      required>
-                      <option default>-- Marital Status --</option>
-                      <option value="married">Married</option>
-                      <option value="single">Single</option>
-                    </select>
-
-                <label for="dateofbirth">Surname</label>
-                <input
-                  type="date"
-                  id="dateofbirth"
-                  name="dateofbirth"
-                  class="form-element"
-                  required/>
-
-                  <label for="maidenname">Mother's Maiden Name</label>
+                  placeholder="Enter Other Name"/>
+                <label for="email">Enter Email (Required)</label>
                 <input
                   type="text"
-                  id="maidenname"
-                  name="maidenname"
+                  id="email"
+                  name="email"
                   class="form-element"
+                  placeholder="Enter Email"
                   required/>
-
-                  <label for="address">Residential Address</label>
+                <label for="password">Enter Password (Required)</label>
                 <input
-                  type="text"
-                  id="address"
-                  name="address"
+                  type="password"
+                  id="password"
+                  name="password"
                   class="form-element"
+                  placeholder="Enter Password"
                   required/>
-
-                  <button type="submit" class="btn btn-primary">Create Account</button>
-                </form>
-                </section>
-            </main>
+                <label for="password">Confirm Password (Required)</label>
+                <input
+                  type="password"
+                  id="password"
+                  name="password"
+                  class="form-element"
+                  placeholder="Enter Password"
+                  required/>
+                <button type="submit" class="btn btn-primary">Create Acount</button>
+                <!-- <div class="message-box"></div> -->
+                <div class="margin--top--10 margin--below ">
+                    <!-- <p class="text--primary1">Already have an account?
+                        <a href="./login.html" class="text--color--grey">login</a>
+                    </p> -->
+                </div>
+              </form>
+            </section>
+          </main>
     <!-- End Main Section -->
     <!-- Begin Footer -->
     <footer>
