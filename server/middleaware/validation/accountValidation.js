@@ -1,6 +1,6 @@
 /* eslint-disable max-len */
 import accounts from '../../model/accounts';
-// import transactions from '../../model/transactions';
+import transactions from '../../model/transactions';
 import response from '../../helper/response/index';
 
 class AccountValidation {
@@ -24,6 +24,25 @@ class AccountValidation {
     const { isAdmin } = req.user;
     // eslint-disable-next-line no-unused-expressions
     (isAdmin === true) ? next() : response(res, 401, 'Unauthorised', null);
+  }
+
+  static async accountStatusChecker(req, res, next) {
+    const { accountDetails, accountExist } = req;
+    if (accountExist === 0) {
+      return response(res, 400, 'Account not found', null);
+    }
+    req.accountStatus = accountDetails.status;
+    return next();
+  }
+
+  static async checkIfTransactiontExist(req, res, next) {
+    let transactionExist = 0;
+    const { transactionId } = req.params;
+    const transactionDetails = transactions.find(transaction => transaction.id === Number(transactionId));
+    transactionExist = (transactionDetails) ? (transactionExist = 1) : 0;
+    req.transactionDetails = transactionDetails;
+    req.transactionExist = transactionExist;
+    return next();
   }
 }
 

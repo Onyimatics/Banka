@@ -19,6 +19,19 @@ class AccountController {
     }
   }
 
+  static updateAccountStatus(req, res) {
+    const { accountDetails } = req;
+    let { status } = req;
+    status = req.body;
+    if (status === 'active' || status === 'dormant') {
+      const accountIndex = accounts.indexOf(accountDetails);
+      accountDetails.status = status;
+      accounts[accountIndex] = accountDetails;
+    }
+    const { accountNumber } = accountDetails;
+    return response(res, 200, 'Successfully updated an account status', { accountNumber, status });
+  }
+
   static createAccount(req, res) {
     const {
       email, firstName, lastName,
