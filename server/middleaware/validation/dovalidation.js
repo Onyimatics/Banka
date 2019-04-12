@@ -3,15 +3,6 @@ import response from '../../helper/response/index';
 import RegularExpression from './regularExpressions';
 
 class DoValidation {
-  /**
-    * @static
-    * @description Validate user email
-    * @param {object} req - Request object
-    * @param {object} res - Response object
-    * @param {Object} next - Next function call
-    * @returns {object} Json
-    * @memberof Controllers
-    */
   static email(req, res, next) {
     const { email } = req.body;
     if (!RegularExpression.email.test(email)) {
@@ -20,15 +11,6 @@ class DoValidation {
     return next();
   }
 
-  /**
-    * @static
-    * @description Validate user password
-    * @param {object} req - Request object
-    * @param {object} res - Response object
-    * @param {Object} next - Next function call
-    * @returns {object} Json
-    * @memberof Controllers
-    */
   static password(req, res, next) {
     const { password } = req.body;
     if (!password) {
@@ -38,15 +20,6 @@ class DoValidation {
   }
 
   static name(req, res, next) {
-    /** 
-    * @static
-    * @description Validate user firstName and lastName
-    * @param {object} req - Request object
-    * @param {object} res - Response object
-    * @param {Object} next - Next function call
-    * @returns {object} Json
-    * @memberof Controllers
-    */
     const { firstName, lastName } = req.body;
     if (!firstName || !lastName) {
       return response(res, 400, ValidationMessages.firstLastName);

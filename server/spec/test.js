@@ -18,8 +18,9 @@ describe('Banka tests', () => {
     });
     it('should throw an error for an invalid url', (done) => {
       chai.request(app)
-        .get('/api/v1/dytuurifoo')
+        .get('/uuu')
         .end((err, res) => {
+          // expect(res.body.message).to.equal('Page Not Found');
           expect(res).to.have.status(404);
           done();
         });

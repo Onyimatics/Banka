@@ -4,7 +4,7 @@ const users = [
     email: 'ezikeonyinyefavour@gmail.com',
     firstName: 'Onyinye',
     lastName: 'Ezike',
-    password: "$2a$10$2Sm23gSh7yPMZfFCHAEOhOF./dfvNx9zDb8vCX6VabRTe4/1SC7EG",
+    password: '$2a$10$2Sm23gSh7yPMZfFCHAEOhOF./dfvNx9zDb8vCX6VabRTe4/1SC7EG',
     type: 'staff', // client or staff
     isAdmin: true, // must be a staff user account
   },
@@ -13,7 +13,7 @@ const users = [
     email: 'mercyjohnson@gmail.com',
     firstName: 'Mercy',
     lastName: 'Johnson',
-    password: "$2a$10$2Sm23gSh7yPMZfFCHAEOhOF./dfvNx9zDb8vCX6VabRTe4/1SC7EG",
+    password: '$2a$10$2Sm23gSh7yPMZfFCHAEOhOF./dfvNx9zDb8vCX6VabRTe4/1SC7EG',
     type: 'staff', // client or staff
     isAdmin: false, // must be a staff user account
   },
@@ -22,7 +22,7 @@ const users = [
     email: 'jackieappiah@gmail.com',
     firstName: 'Jackie',
     lastName: 'Appiah',
-    password: "$2a$10$2Sm23gSh7yPMZfFCHAEOhOF./dfvNx9zDb8vCX6VabRTe4/1SC7EG",
+    password: '$2a$10$2Sm23gSh7yPMZfFCHAEOhOF./dfvNx9zDb8vCX6VabRTe4/1SC7EG',
     type: 'staff', // client or staff
     isAdmin: false, // must be a staff user account
   },
@@ -31,7 +31,7 @@ const users = [
     email: 'johndumelo@gmail.com',
     firstName: 'John',
     lastName: 'Dumelo',
-    password: "$2a$10$2Sm23gSh7yPMZfFCHAEOhOF./dfvNx9zDb8vCX6VabRTe4/1SC7EG",
+    password: '$2a$10$2Sm23gSh7yPMZfFCHAEOhOF./dfvNx9zDb8vCX6VabRTe4/1SC7EG',
     type: 'staff', // client or staff
     isAdmin: false, // must be a staff user account
   },
@@ -40,7 +40,7 @@ const users = [
     email: 'desmondelliot@gmail.com',
     firstName: 'Desmond',
     lastName: 'Elliot',
-    password: "$2a$10$2Sm23gSh7yPMZfFCHAEOhOF./dfvNx9zDb8vCX6VabRTe4/1SC7EG",
+    password: '$2a$10$2Sm23gSh7yPMZfFCHAEOhOF./dfvNx9zDb8vCX6VabRTe4/1SC7EG',
     type: 'staff', // client or staff
     isAdmin: false, // must be a staff user account
   },
@@ -49,7 +49,7 @@ const users = [
     email: 'jeniferakindele@gmail.com',
     firstName: 'Jenifer',
     lastName: 'Akindele',
-    password: "$2a$10$2Sm23gSh7yPMZfFCHAEOhOF./dfvNx9zDb8vCX6VabRTe4/1SC7EG",
+    password: '$2a$10$2Sm23gSh7yPMZfFCHAEOhOF./dfvNx9zDb8vCX6VabRTe4/1SC7EG',
     type: 'client', // client or staff
     isAdmin: false, // must be a staff user account
   },
@@ -58,7 +58,7 @@ const users = [
     email: 'emekaike@gmail.com',
     firstName: 'Emeka',
     lastName: 'Ike',
-    password: "$2a$10$2Sm23gSh7yPMZfFCHAEOhOF./dfvNx9zDb8vCX6VabRTe4/1SC7EG",
+    password: '$2a$10$2Sm23gSh7yPMZfFCHAEOhOF./dfvNx9zDb8vCX6VabRTe4/1SC7EG',
     type: 'staff', // client or staff
     isAdmin: false, // must be a staff user account
   },
@@ -67,16 +67,16 @@ const users = [
     email: 'markzuckerberg@gmail.com',
     firstName: 'Mark',
     lastName: 'Zuckerberg',
-    password: "$2a$10$2Sm23gSh7yPMZfFCHAEOhOF./dfvNx9zDb8vCX6VabRTe4/1SC7EG",
+    password: '$2a$10$2Sm23gSh7yPMZfFCHAEOhOF./dfvNx9zDb8vCX6VabRTe4/1SC7EG',
     type: 'client', // client or staff
-    isAdmin: true, // must be a staff user account
+    isAdmin: false, // must be a staff user account
   },
   {
     id: 9,
     email: 'alikodangote@gmail.com',
     firstName: 'Aliko',
     lastName: 'Dangote',
-    password: "$2a$10$2Sm23gSh7yPMZfFCHAEOhOF./dfvNx9zDb8vCX6VabRTe4/1SC7EG",
+    password: '$2a$10$2Sm23gSh7yPMZfFCHAEOhOF./dfvNx9zDb8vCX6VabRTe4/1SC7EG',
     type: 'client', // client or staff
     isAdmin: false, // must be a staff user account
   },
@@ -85,13 +85,10 @@ const users = [
     email: 'femiotedola@gmail.com',
     firstName: 'Femi',
     lastName: 'Otedola',
-    password: "$2a$10$2Sm23gSh7yPMZfFCHAEOhOF./dfvNx9zDb8vCX6VabRTe4/1SC7EG",
+    password: '$2a$10$2Sm23gSh7yPMZfFCHAEOhOF./dfvNx9zDb8vCX6VabRTe4/1SC7EG',
     type: 'client', // client or staff
     isAdmin: false, // must be a staff user account
   },
 
-]
-
-
-
+];
 export default users;

@@ -2,23 +2,16 @@ import accounts from '../model/accounts';
 import response from '../helper/response/index';
 import AccountGenerator from '../helper/accountGenerator/accountGenerator';
 
-/**
- * Class representing AccountController
- * @class AccountController
- */
 class AccountController {
-  /**
-         * @description Create a bank account
-         * @param {object} req - The request object
-         * @param {object} res - The response object
-         * @return {object} JSON representing data object
-         * @memberof createAccount
-         */
+  static async fetchAllAccounts(req, res) {
+    await response(res, 200, 'All Accounts fetched Successfully', accounts);
+  }
+
   static createAccount(req, res) {
     const {
-      email, firstName, lastName, id,
-    } = req.user;
-    const { type } = req.body;
+      email, firstName, lastName,
+    } = req.customer;
+    const { type, id } = req.body;
     if (type === 'savings' || type === 'current') {
       const accountNumber = AccountGenerator.accountGenerator();
       const newAccount = {

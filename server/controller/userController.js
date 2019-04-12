@@ -3,19 +3,8 @@ import users from '../model/users';
 import TokenManager from '../helper/tokenManager';
 import PasswordManager from '../helper/passwordManager';
 
-/**
- * Class representing UserController
- * @class UserController
- */
 class UserController {
   static async register(req, res) {
-    /**
-         * @description Create a user account
-         * @param {object} req - The request object
-         * @param {object} res - The response object
-         * @return {object} JSON representing data object
-         * @memberof register
-         */
     const {
       firstName, lastName, email, password,
     } = req.body;
@@ -43,13 +32,7 @@ class UserController {
     }
   }
 
-  /**
-         * @description Signin user account
-         * @param {object} req - The request object
-         * @param {object} res - The response object
-         * @return {object} JSON representing data object
-         * @memberof signin
-         */
+  // login controller
   static signin(req, res) {
     const { email, password } = req.body;
 
