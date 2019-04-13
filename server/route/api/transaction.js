@@ -25,4 +25,11 @@ transactionRoutes.post('/:accountNumber/debit',
   AccountValidation.checkIfAccountExist,
   AccountValidation.staffChecker,
   TransactionController.debitAccount);
+
+transactionRoutes.post('/:accountNumber/credit',
+  AuthMiddleware.checkIfUserIsAuthenticated,
+  AccountValidation.checkIfAccountExist,
+  AccountValidation.accountStatusChecker,
+  AccountValidation.staffChecker,
+  TransactionController.creditAccount);
 export default transactionRoutes;
