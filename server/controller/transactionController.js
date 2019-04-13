@@ -54,5 +54,37 @@ class TransactionController {
     }
     return response(res, 401, 'Forbidden');
   }
+
+  static creditAccount(req, res) {
+    const { accountDetails, accountStatus } = req;
+    const { amount } = req.body;
+    const { isAdmin, id } = req.user;
+    if (accountStatus !== 'active') {
+      return response(res, 400, 'Account is currently inactive', null);
+    }
+    if (isAdmin === true) {
+      return response(res, 400, 'Unauthorized', null);
+    }
+    if (amount > 0) {
+      const { balance: oldBalance } = accountDetails;
+      accountDetails.balance = Number(oldBalance) + Number(amount);
+      const newTransactions = {
+        id: transactions.length + 1,
+        createdOn: new Date(),
+        type: 'credit', // credit or debit
+        accountNumber: accountDetails.accountNumber,
+        cashier: id, // cashier who consummated the transaction
+        amount,
+        oldBalance,
+        newBalance: accountDetails.balance,
+      };
+      transactions.push(newTransactions);
+      const { id: transactionId } = newTransactions;
+      return response(res, 200, 'Successfully credited an account', {
+        transactionId, accountNumber: newTransactions.accountNumber, amount, cashier: id, transactionType: 'credit', accountBalance: accountDetails.balance,
+      });
+    }
+    return response(res, 401, 'Forbidden');
+  }
 }
 export default TransactionController;
