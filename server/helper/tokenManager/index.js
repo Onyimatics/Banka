@@ -16,11 +16,11 @@ class TokenManager {
      * @description Encodes a passed token and returns a jwt token
      * @static
      * @param {*} payload
-     * @param {string} [ttl='1d']
+     * @param {string} [ttl='365 days']
      * @returns {string} Jwt token
      * @memberof Tokenize
      */
-  static sign(payload, ttl = '1d') {
+  static sign(payload, ttl = '365 days') {
     return jwt.sign(payload, secret, { expiresIn: ttl });
   }
 

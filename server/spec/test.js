@@ -20,7 +20,7 @@ describe('Banka tests', () => {
       chai.request(app)
         .get('/uuu')
         .end((err, res) => {
-          // expect(res.body.message).to.equal('Page Not Found');
+          expect(res.body.message).to.equal('Page Not Found');
           expect(res).to.have.status(404);
           done();
         });

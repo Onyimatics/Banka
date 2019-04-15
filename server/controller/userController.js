@@ -4,6 +4,14 @@ import TokenManager from '../helper/tokenManager';
 import PasswordManager from '../helper/passwordManager';
 
 class UserController {
+  /**
+    * @static
+    * @description Allow a user to signup
+    * @param {object} req - Request object
+    * @param {object} res - Response object
+    * @returns {object} Json
+    * @memberof UserControllers
+    */
   static async register(req, res) {
     const {
       firstName, lastName, email, password,
@@ -34,6 +42,14 @@ class UserController {
 
   // login controller
   static signin(req, res) {
+    /**
+    * @static
+    * @description Allow a user to signin
+    * @param {object} req - Request object
+    * @param {object} res - Response object
+    * @returns {object} Json
+    * @memberof UserControllers
+    */
     const { email, password } = req.body;
 
     const userDetails = users.find(user => user.email === email);

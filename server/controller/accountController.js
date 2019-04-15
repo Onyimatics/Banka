@@ -4,6 +4,14 @@ import AccountGenerator from '../helper/accountGenerator/accountGenerator';
 
 class AccountController {
   static createAccount(req, res) {
+    /**
+    * @static
+    * @description Allow a user to create bank account
+    * @param {object} req - Request object
+    * @param {object} res - Response object
+    * @returns {object} Json
+    * @memberof AccountController
+    */
     const {
       email, firstName, lastName,
     } = req.customer;
@@ -20,6 +28,7 @@ class AccountController {
         balance: 0,
       };
 
+
       const createdOn = new Date().getTime();
       accounts.push(newAccount);
       const { balance } = newAccount;
@@ -31,10 +40,26 @@ class AccountController {
   }
 
   static async fetchAllAccounts(req, res) {
+    /**
+    * @static
+    * @description Allow Admin/Staff view all accounts
+    * @param {object} req - Request object
+    * @param {object} res - Response object
+    * @returns {object} Json
+    * @memberof AccountController
+    */
     await response(res, 200, 'All Accounts fetched Successfully', accounts);
   }
 
   static async fetchAccountByAccountNumber(req, res) {
+    /**
+    * @static
+    * @description Allow Admin/Staff view a specific account
+    * @param {object} req - Request object
+    * @param {object} res - Response object
+    * @returns {object} Json
+    * @memberof AccountController
+    */
     const { type } = req.user;
     if (type) {
       const { accountDetails, accountExist } = req;
@@ -47,9 +72,20 @@ class AccountController {
   }
 
   static updateAccountStatus(req, res) {
-    const { accountDetails } = req;
+    /**
+    * @static
+    * @description Allow Admin/Staff to activate or deactivate an account
+    * @param {object} req - Request object
+    * @param {object} res - Response object
+    * @returns {object} Json
+    * @memberof AccountController
+    */
+    const { accountDetails, accountExist } = req;
     let { status } = req;
     status = req.body;
+    if (accountExist === 0) {
+      return response(res, 400, 'Account not found');
+    }
     if (status === 'active' || status === 'dormant') {
       const accountIndex = accounts.indexOf(accountDetails);
       accountDetails.status = status;
@@ -60,10 +96,19 @@ class AccountController {
   }
 
   static deleteAccount(req, res) {
+    /**
+    * @static
+    * @description Allow Admin/Staff to delete an account
+    * @param {object} req - Request object
+    * @param {object} res - Response object
+    * @returns {object} Json
+    * @memberof AccountController
+    */
     const { accountDetails, accountExist } = req;
     if (accountExist === 0) {
       return response(res, 400, 'Account not found');
     }
+    // eslint-disable-next-line max-len
     const index = accounts.findIndex(account => account.accountNumber === Number(accountDetails.accountNumber));
     accounts.splice(index, 1);
     return response(res, 200, 'Account successfully deleted');

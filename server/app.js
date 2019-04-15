@@ -13,6 +13,12 @@ app.get('/', (req, res) => {
     message: 'Welcome to Banka API',
   });
 });
+app.all('*', (req, res) => {
+  res.status(404).json({
+    status: '404',
+    message: 'Page Not Found',
+  });
+});
 
 const port = process.env.PORT || 3001;
 app.listen(port, () => {
