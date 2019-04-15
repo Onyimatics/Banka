@@ -15,7 +15,7 @@ const users = [
     lastName: 'Johnson',
     password: '$2a$10$2Sm23gSh7yPMZfFCHAEOhOF./dfvNx9zDb8vCX6VabRTe4/1SC7EG',
     type: 'staff', // client or staff
-    isAdmin: false, // must be a staff user account
+    isAdmin: true, // must be a staff user account
   },
   {
     id: 3,

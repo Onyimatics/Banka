@@ -14,7 +14,7 @@ describe('POST/auth signup', () => {
         firstName: 'Blessing',
         lastName: 'Onwughara',
         email: 'bgirlohara@gmail.com',
-        password: 'kunlejoseph',
+        password: 'Blessing',
       })
       .end((err, res) => {
         // console.log(res.body);
