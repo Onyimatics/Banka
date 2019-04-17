@@ -90,5 +90,5 @@ const accounts = [
     status: 'active', // draft, active, or dormant
     balance: 100000.00,
   },
-]
+];
 export default accounts;

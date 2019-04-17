@@ -5,7 +5,8 @@ import RegularExpression from './regularExpressions';
 class DoValidation {
   static email(req, res, next) {
     const { email } = req.body;
-    if (!RegularExpression.email.test(email)) {
+    const validate = RegularExpression.validate();
+    if (!validate.email.test(email)) {
       return response(res, 400, ValidationMessages.email);
     }
     return next();

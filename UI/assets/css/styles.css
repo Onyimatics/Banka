@@ -46,10 +46,6 @@ select {
   background: transparent;
 }
 
-input[type="file"] {
-  padding-top: 8px;
-}
-
 button {
   cursor: pointer;
 }
@@ -211,17 +207,23 @@ section > .btn {
   font-size: 1.5em;
   font-weight: 600;
 }
+span {
+  color: #ef271b;
+}
 
 .margin--top--10 {
   margin-top: 10px;
   margin-left: -70px;
 }
+
 .margin--below {
   padding-top: 0px;
 }
+
 .text--color--grey {
-  color: #828282;
+  color: #8B008B;
 }
+
 .text--primary1{
   color: #8B008B;
   margin-left: 4.5rem;
@@ -230,12 +232,13 @@ section > .btn {
 /* Profile Section */
 
 .container {
-  background: #bcc6d9;
+  background: #eef0f3;
   padding: 50px 40px 130px;
   position: relative;
 }
+
 .container-flip {
-  background: #bcc6d9;
+  background: #eef0f3;
   padding: 0px 4px 1px;
   position: relative;
 }
@@ -244,18 +247,13 @@ section > .btn {
 .form-card {
   align-self: center;
   position: inline-block;
-  margin: 60px;
+  margin: 0px;
 }
 
 label {
   margin-bottom: 5px;
   font-weight: 600;
 }
-
-/* label span {
-  color: #ef271b;
-  font-size: 18px;
-} */
 
 table {
   background: transparent;
@@ -285,7 +283,6 @@ td.issue {
   margin-bottom: 15px;
 }
 
-
 .steps {
   display: flex;
   justify-content: space-between;
@@ -308,18 +305,12 @@ td.issue {
   margin-bottom: 15px;
 }
 
-/* .section-title {
-  margin-top: 1rem;
-  text-align: left;
-} */
-
 .section-title::after {
   content: "";
   position: absolute;
   bottom: -3px;
   left: 0;
   width: 60px;
-  /* border: 1.5px solid #8B008B; */
 }
 
 .feature {
@@ -339,6 +330,9 @@ td.issue {
   text-align: center;
 }
 
+#delete-account {
+  background-color: #ee0d0d;
+}
 
 /* Form Card */
 .form-card {
@@ -348,6 +342,7 @@ td.issue {
   flex-direction: column;
   padding: 50px 40px;
   margin-top: 25px;
+  box-shadow: 10px 10px grey;
 }
 
 
@@ -368,20 +363,31 @@ td.issue {
   align-items: center;
   padding: 20px;
   margin-top: 20px;
+  box-shadow: 10px 10px grey;
 }
 
-.profile-image {
-  width: 200px;
-  height: 200px;
-  border-radius: 50%;
-  margin-bottom: 20px;
+.profileImageContainer{
+  width:150px; 
+  height:150px; 
+  margin:auto; 
+  position:relative; 
+  border-radius:100%; 
+  background-image:url(https://res.cloudinary.com/onyimatics/image/upload/v1553475100/Banka/Onyii.jpg); 
+  background-size: contain; 
+  cursor: pointer;
+}
+.profileImageContainer__imageupload{
+  border:none; margin-top:90px; opacity: 0;
+}
+.profileImageContainer__imageupload:hover{
+  opacity: 1;
+  cursor: pointer;
 }
 
 .profile-name {
   font-size: 1.5em;
   font-weight: 200;
 }
-
 
 p.stat-value {
   margin-bottom: 0;
@@ -396,12 +402,14 @@ p.stat-value {
   margin-top: 20px;
   background: #fffffa;
   width: 100%;
+  box-shadow: 10px 10px grey;
 }
 
 .profile-table {
   z-index: 100;
   flex-basis: 73%;
-  border-bottom: 3px #828282 solid;  
+  /* border-bottom: 3px #828282 solid;  */
+  box-shadow: 50px,50px purple;
 }
 
 td {
@@ -440,19 +448,6 @@ tr > td:last-child {
   cursor: pointer;
   background: #3c4859;
 }
-    
-.file-upload__input {
-    position: absolute;
-    left: 0;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    font-size: 1;
-    width:0;
-    height: 100%;
-    opacity: 0;
-}
-
 
 /* Dashboard */
 
@@ -485,7 +480,7 @@ h3 {
   display: none; /* Hidden by default */
   position: fixed; /* Stay in place */
   z-index: 100; /* Sit on top */
-  padding-top: 100px; /* Location of the box */
+  padding: 10px 25px 20px; /* Location of the box */
   left: 0;
   top: 0;
   width: 100%; /* Full width */
@@ -504,6 +499,19 @@ h3 {
   width: 80%;
 }
 
+.modal-body {
+  margin-top: 20px;
+}
+
+.modal-group {
+  margin: 25px;
+  display: flex;
+  justify-content: space-evenly;
+}
+.modal-message {
+  font-size: 1.2em;
+  text-align: center;
+}
 /* The Close Button */
 .close {
   color: #aaaaaa;
@@ -540,15 +548,25 @@ h3 {
 }
 
 .modal-account-details {
-  margin-top: 20px;
-  margin-left: 50%;
+  margin: 20px 20px;
 }
+
 .modal-header {
-    background-color: #8B008B;
-    padding: .5em;
+    background-color: #c7c5c5;
+    /* padding: .5em; */
     margin-bottom: 1em;
-    color: #c7c5c5;
+    color:#8B008B;
    text-align: center;
+}
+.words {
+  clear: both;
+  width: 100%;
+  border-bottom: 1px solid grey;
+}
+.meaning {
+  width:50%; 
+  float:left;
+  margin-bottom: 10px;
 }
 
 .banka-logo {
@@ -564,7 +582,7 @@ h3 {
   padding: .25em 1em;
   font-size: 1em;
   cursor: pointer;
-  background-color:rgb(21, 221, 98);
+  background-color: #ee0d0d;
   color: #ffffff;
   opacity: .8;
 }
@@ -575,18 +593,18 @@ h3 {
   padding: .25em 1em;
   font-size: 1em;
   cursor: pointer;
-  background-color: #ff6666;
+  background-color:rgb(21, 221, 98);
   color: #ffffff;
   opacity: .8;
 }
 
 /* Transition Animation */
 
-.translate2d{
+#translate2d {
   transition: transform 0.3s ease;
 }
 
-.translate2d:hover{
+#translate2d:hover{
   transform: translate(2px, 2px);
 }
 

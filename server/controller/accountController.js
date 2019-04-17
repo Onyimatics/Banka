@@ -1,6 +1,7 @@
 import accounts from '../model/accounts';
 import response from '../helper/response/index';
 import AccountGenerator from '../helper/accountGenerator/accountGenerator';
+import RegularExpression from '../middleaware/validation/regularExpressions';
 
 class AccountController {
   static createAccount(req, res) {
@@ -16,7 +17,8 @@ class AccountController {
       email, firstName, lastName,
     } = req.customer;
     const { type, id } = req.body;
-    if (type === 'savings' || type === 'current') {
+    const validate = RegularExpression.validate();
+    if (validate.accountType.test(type)) {
       const accountNumber = AccountGenerator.accountGenerator();
       const newAccount = {
         id: accounts.length + 1,
@@ -27,11 +29,10 @@ class AccountController {
         status: 'draft',
         balance: 0,
       };
-
-
       const createdOn = new Date().getTime();
       accounts.push(newAccount);
       const { balance } = newAccount;
+
       return response(res, 201, 'Successfully created a new bank account', {
         accountNumber, firstName, lastName, createdOn, email, type, openingBalance: balance,
       });
@@ -80,20 +81,22 @@ class AccountController {
     * @returns {object} Json
     * @memberof AccountController
     */
-    const { accountDetails, accountExist } = req;
-    let { status } = req;
-    status = req.body;
-    if (accountExist === 0) {
-      return response(res, 400, 'Account not found');
+    const { accountDetails, accountStatus } = req;
+    const { status } = req.body;
+    if (accountStatus === status) {
+      return response(res, 304, 'Not Modified', accountDetails);
     }
-    if (status === 'active' || status === 'dormant') {
-      const accountIndex = accounts.indexOf(accountDetails);
-      accountDetails.status = status;
-      accounts[accountIndex] = accountDetails;
+    const validate = RegularExpression.validate();
+    if (!validate.status.test(status)) {
+      return response(res, 400, 'Invalid Account status', null);
     }
+    const accountIndex = accounts.indexOf(accountDetails);
+    accountDetails.status = status;
+    accounts[accountIndex] = accountDetails;
     const { accountNumber } = accountDetails;
     return response(res, 200, 'Successfully updated an account status', { accountNumber, status });
   }
+
 
   static deleteAccount(req, res) {
     /**

@@ -54,4 +54,76 @@ describe('All Test Report for Banka App', () => {
         });
     });
   });
+  describe('POST/transactions/:accountnumber/debit and credit', () => {
+    // it('should debit a user account', (done) => {
+    //   chai.request(app)
+    //     .post('/api/v1/transactions/9601234578/debit')
+    //     .send({ amount: 30000 })
+    //     .set('authorization', staff1)
+    //     .end((err, res) => {
+    //       expect(res.body.message).to.equal('Account has been successfully debited');
+    //       expect(res).to.have.status(200);
+    //       expect(res.body).to.be.an('object');
+    //       // eslint-disable-next-line no-unused-expressions
+    //       expect(res).to.be.json;
+    //       done();
+    //     });
+    // });
+
+    it('should credit a user account', (done) => {
+      chai.request(app)
+        .post('/api/v1/transactions/9601234578/credit')
+        .send({ amount: 30000 })
+        .set('authorization', staff1)
+        .end((err, res) => {
+          expect(res.body.message).to.equal('Account has been successfully credited');
+          expect(res).to.have.status(200);
+          expect(res.body).to.be.an('object');
+          // eslint-disable-next-line no-unused-expressions
+          expect(res).to.be.json;
+          done();
+        });
+    });
+
+    it('should allow only staff to perform action', (done) => {
+      chai.request(app)
+        .post('/api/v1/transactions/9901234567/debit')
+        .set('authorization', admin1)
+        .send({ amount: 30000 })
+        .end((err, res) => {
+          expect(res.body.message).to.equal('Unauthorized');
+          expect(res).to.have.status(401);
+          expect(res.body).to.be.an('object');
+          // eslint-disable-next-line no-unused-expressions
+          expect(res).to.be.json;
+          done();
+        });
+    });
+    it('should flag an error if the account balance to be debited is inactive', (done) => {
+      chai.request(app)
+        .post('/api/v1/transactions/9801234567/debit')
+        .set('authorization', staff1)
+        .send({ status: 'draft' })
+        .end((err, res) => {
+          expect(res.body.message).to.equal('Account is currently inactive');
+          expect(res.body.status).to.equal(400);
+          done();
+        });
+    });
+
+    // it('should flag an error if the account balance to be debited is insufficient', (done) => {
+    //   chai.request(app)
+    //     .post('/api/v1/transactions/9301245678/debit')
+    //     .set('authorization', staff1)
+    //     .send({
+    //       Balance: 0,
+    //       status: 'active',
+    //     })
+    //     .end((err, res) => {
+    //       expect(res.body.message).to.equal('Insufficient fund');
+    //       expect(res.body.status).to.equal(400);
+    //       done();
+    //     });
+    // });
+  });
 });

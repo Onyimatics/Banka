@@ -97,7 +97,7 @@ class TransactionController {
       return response(res, 400, 'Account is currently inactive', null);
     }
     if (isAdmin === true) {
-      return response(res, 400, 'Unauthorized', null);
+      return response(res, 401, 'Unauthorized', null);
     }
     if (amount > 0) {
       const { balance: oldBalance } = accountDetails;
@@ -114,7 +114,7 @@ class TransactionController {
       };
       transactions.push(newTransactions);
       const { id: transactionId } = newTransactions;
-      return response(res, 200, 'Successfully credited an account', {
+      return response(res, 200, 'Account has been successfully credited', {
         transactionId, accountNumber: newTransactions.accountNumber, amount, cashier: id, transactionType: 'credit', accountBalance: accountDetails.balance,
       });
     }
