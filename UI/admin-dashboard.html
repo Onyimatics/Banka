@@ -20,110 +20,109 @@
                 <a href="./index.html" class="navbar-logo">Banka</a>
             <button class="hamburger-menu"><a class="hamburger"></a></button>
             <ul class="navbar-menu">
-                <li class="navbar-link"><a href="./create-admin-staff-account.html">Create Account</a</li>
+                <li class="navbar-link"><a href="./create-admin-staff-account.html">Create Admin/Staff Account</a</li>
                 <li class="navbar-link"><a href="./index.html">Log Out</a></li>
             </ul>
         </nav>
     </header>
     <!-- End Header -->
     <main>
-        <section class="container">
-            <h2 class="section-title">Admin Profile</h2>
+        <section class="container form-container">
+            <h2 class="section-title">Clients Account Details</h2>
             <div class="profile">
                 <div class="card profile-card">
-                    <img class="profile-image" src="https://res.cloudinary.com/onyimatics/image/upload/v1553475100/Banka/Onyii.jpg" alt="Profile Image" />
-                    <p class="profile-name">Onyinye Ezike: Admin</p>
-                    <div class="file-upload">
-                            <label for="upload" class="file-upload__label">Upload Photo </label>
-                            <input id="upload" class="file-upload__input" type="file" name="file-upload">
-                        </div>
-                </div>
+                        <div class ="image-upload">
+                                <label for="file-input">
+                                        <div class="profileImageContainer">
+                                            <input type="file" class="profileImageContainer__imageupload">
+                                        </div>
+                                    </label>
+                        </div><p class="profile-name">Onyinye Ezike: Admin</p></div>
                 <div class="profile-table">
                     <table class="stats-table">
-                        <tbody>
-                            <tr>
-                                <th>S/N</th>
-                                <th>Account Name</th>
-                                <th>Account Number</th>
-                                <th>CreatedOn</th>
-                                <th>View Account Record</th>
-                                <th>Activate/Deactivate</th>
-                                <th>Delete</th>
-                            </tr>
-                            <tr class="translate2d">
-                                <td>1.</td>
-                                <td>Onyinye Ezike</td>
-                                <td>0123456789</td>
-                                <td>16-02-2011 09:16am</td>
-                                <td><button type="button" class="btn btn-primary" onclick="triggerModal()">View</button></td>
-                                <!-- <td><div class="pointer-cursor" onclick="triggerModal()">View</div></td> -->
-                                <td><button class="btn btn-warning">Deactivate</button></td>
-                                <td><button class="btn btn-warning delete-account" onclick="triggerDeleteModal()">Delete</button></td>
-                            </tr>
-                            <tr class="translate2d">
-                                    <td>2.</td>
-                                    <td>Onyinye Ezike</td>
-                                    <td>0123456789</td>
-                                    <td>16-02-2011 09:16am</td>
-                                    <td><button type="button" class="btn btn-primary" onclick="triggerModal()">View</button></td>
-                                    <td><button class="btn btn-warning">Deactivate</button></td>
-                                    <td><button class="btn btn-warning delete-account" onclick="triggerDeleteModal()">Delete</button></td>
-                            </tr>
-                            <tr class="translate2d">
-                                    <td>3.</td>
-                                    <td>Onyinye Ezike</td>
-                                    <td>0123456789</td>
-                                    <td>16-02-2011 09:16am</td>
-                                    <td><button type="button" class="btn btn-primary" onclick="triggerModal()">View</button></td>
-                                    <td><button class="btn btn-warning1">Activate</button></td>
-                                    <td><button class="btn btn-warning delete-account" onclick="triggerDeleteModal()">Delete</button></td>
-                            </tr>
-                            <tr class="translate2d">
-                                <td>4.</td>
-                                <td>Onyinye Ezike</td>
-                                    <td>0123456789</td>
-                                    <td>16-02-2011 09:16am</td>
-                                    <td><button type="button" class="btn btn-primary" onclick="triggerModal()">View</button></td>
-                                    <td><button class="btn btn-warning delete-account">Deactivate</button></td>
-                                    <td><button class="btn btn-warning delete-account" onclick="triggerDeleteModal()">Delete</button></td>
-                            </tr>
-                            <tr class="translate2d">
-                                <td>5.</td>
-                                    <td>Onyinye Ezike</td>
-                                    <td>0123456789</td>
-                                    <td>16-02-2011 09:16am</td>
-                                    <td><button type="button" class="btn btn-primary" onclick="triggerModal()">View</button></td>
-                                    <td><button class="btn btn-warning1">Activate</button></td>
-                                    <td><button class="btn btn-warning delete-account" onclick="triggerDeleteModal()">Delete</button></td>
-                            </tr>
-                            <tr class="translate2d">
-                                <td>6.</td>
-                                <td>Onyinye Ezike</td>
-                                    <td>0123456789</td>
-                                    <td>16-02-2011 09:16am</td>
-                                    <td><button type="button" class="btn btn-primary" onclick="triggerModal()">View</button></td>
-                                    <td><button class="btn btn-warning delete-account">Deactivate</button></td>
-                                    <td><button class="btn btn-warning delete-account" onclick="triggerDeleteModal()">Delete</button></td>
-                            </tr>
-                            <tr class="translate2d">
-                                <td>7.</td>
-                                    <td>Onyinye Ezike</td>
-                                    <td>0123456789</td>
-                                    <td>16-02-2011 09:16am</td>
-                                    <td><button type="button" class="btn btn-primary" onclick="triggerModal()">View</button></td>
-                                    <td><button class="btn btn-warning deactivate-account">Deactivate</button></td>
-                                    <td><button class="btn btn-warning delete-account" onclick="triggerDeleteModal()">Delete</button></td>
-                            </tr>
-                            <tr class="translate2d">
-                                <td>8.</td>
-                                <td>Onyinye Ezike</td>
-                                    <td>0123456789</td>
-                                    <td>16-02-2011 09:16am</td>
-                                    <td><button type="button" class="btn btn-primary" onclick="triggerModal()">View</button></td>
-                                    <td><button class="btn btn-warning deactivate-account">Deactivate</button></td>
-                                    <td><button class="btn btn-warning delete-account" onclick="triggerDeleteModal()">Delete</button></td>
-                            </tr>
-                        </tbody>
+                            <tbody>
+                                    <tr>
+                                        <th>S/N</th>
+                                        <th>First Name</th>
+                                        <th>Last Name</th>
+                                        <th>CreatedOn</th>
+                                        <th>User Id</th>
+                                        <th>Activate/Deactivate</th>
+                                        <th>Delete</th>
+                                    </tr>
+                                    <tr>
+                                        <td>1.</td>
+                                        <td>Onyinye</td>
+                                        <td>Ezike</td>
+                                        <td>Monday 16-02-2011</td>
+                                        <td><button id="translate2d" type="button" class="btn btn-primary" onclick="triggerModal()">1</button></td>
+                                        <td><button class="btn btn-warning">Deactivate</button></td>
+                                        <td><button id= "delete-account" class="btn btn-warning delete-account" onclick="triggerDeleteModal()">Delete</button></td>
+                                    </tr>
+                                    <tr>
+                                            <td>2.</td>
+                                            <td>Onyinye</td>
+                                            <td>Ezike</td>
+                                            <td>Monday 16-02-2011</td>
+                                            <td><button id="translate2d" type="button" class="btn btn-primary" onclick="triggerModal()">2</button></td>
+                                            <td><button class="btn btn-warning">Deactivate</button></td>
+                                            <td><button id= "delete-account" class="btn btn-warning delete-account" onclick="triggerDeleteModal()">Delete</button></td>
+                                    </tr>
+                                    <tr>
+                                            <td>3.</td>
+                                            <td>Onyinye</td>
+                                            <td>Ezike</td>
+                                            <td>Monday 16-02-2011</td>
+                                            <td><button id="translate2d" type="button" class="btn btn-primary" onclick="triggerModal()">3</button></td>
+                                            <td><button class="btn btn-warning1">Activate</button></td>
+                                            <td><button id= "delete-account" class="btn btn-warning delete-account" onclick="triggerDeleteModal()">Delete</button></td>
+                                    </tr>
+                                    <tr>
+                                        <td>4.</td>
+                                            <td>Onyinye</td>
+                                            <td>Ezike</td>
+                                            <td>Monday 16-02-2011</td>
+                                            <td><button id="translate2d" type="button" class="btn btn-primary" onclick="triggerModal()">View</button></td>
+                                            <td><button class="btn btn-warning delete-account">Deactivate</button></td>
+                                            <td><button id= "delete-account" class="btn btn-warning delete-account" onclick="triggerDeleteModal()">Delete</button></td>
+                                    </tr>
+                                    <tr>
+                                        <td>5.</td>
+                                            <td>Onyinye</td>
+                                            <td>Ezike</td>
+                                            <td>Monday 16-02-2011</td>
+                                            <td><button id="translate2d" type="button" class="btn btn-primary" onclick="triggerModal()">View</button></td>
+                                            <td><button class="btn btn-warning1">Activate</button></td>
+                                            <td><button id= "delete-account" class="btn btn-warning delete-account" onclick="triggerDeleteModal()">Delete</button></td>
+                                    </tr>
+                                    <tr>
+                                            <td>6.</td>
+                                            <td>Onyinye</td>
+                                            <td>Ezike</td>
+                                            <td>Monday 16-02-2011</td>
+                                            <td><button id="translate2d" type="button" class="btn btn-primary" onclick="triggerModal()">View</button></td>
+                                            <td><button class="btn btn-warning delete-account">Deactivate</button></td>
+                                            <td><button id= "delete-account" class="btn btn-warning delete-account" onclick="triggerDeleteModal()">Delete</button></td>
+                                    </tr>
+                                    <tr>
+                                        <td>7.</td>
+                                            <td>Onyinye</td>
+                                            <td>Ezike</td>
+                                            <td>Monday 16-02-2011</td>
+                                            <td><button id="translate2d" type="button" class="btn btn-primary" onclick="triggerModal()">View</button></td>
+                                            <td><button class="btn btn-warning deactivate-account">Deactivate</button></td>
+                                            <td><button id= "delete-account" class="btn btn-warning delete-account" onclick="triggerDeleteModal()">Delete</button></td>
+                                    </tr>
+                                    <tr>
+                                            <td>8.</td>
+                                            <td>Onyinye</td>
+                                            <td>Ezike</td>
+                                            <td>Monday 16-02-2011</td>
+                                            <td><button id="translate2d" type="button" class="btn btn-primary" onclick="triggerModal()">View</button></td>
+                                            <td><button class="btn btn-warning deactivate-account">Deactivate</button></td>
+                                            <td><button id= "delete-account" class="btn btn-warning delete-account" onclick="triggerDeleteModal()">Delete</button></td>
+                                    </tr>
+                                </tbody>
                     </table>
                 </div>
             </div>
@@ -138,34 +137,63 @@
                     <div class="modal-header">
                         <h1>Account Record</h1>
                     </div>
-                    <div><img class="banka-logo"
-                            src="https://res.cloudinary.com/onyimatics/image/upload/v1553484865/Banka/Banka.png" />
-                    </div>
                     <div class="modal-body">
-                        <div></div>
+                        
+                        <!-- <div></div> -->
                         <div class="modal-account-details">
-                            <h3>User ID</h3><span>014</span>
-                            <div>
-                                <h3>Owner</h3><span>Onyinye Ezike</span>
+                            <div class="words">
+                                <div class="meaning">
+                                    <h3>User ID</h3>
+                                </div>
+                                <div class="meaning">
+                                    014
+                                </div>
                             </div>
-                            <div>
-                                <h3>Account Number</h3> <span>3057131738</span>
+                            <div class="words">
+                                <div class="meaning">
+                                    <h3>Owner</h3>
+                                </div>
+                                <div class="meaning">
+                                    Onyinye Ezike
+                                </div>
                             </div>
-                            <div>
-                                <h3>Account Type</h3> <span>Savings</span>
-                            </div>
-                            <div>
-                                <h3>Balance</h3> <span> 20000NGN</span>
-                            </div>
-                            <div>
-                                <h3>Status</h3><span> Active</span>
+                            <div class="words">
+                                    <div class="meaning">
+                                        <h3>Account Number</h3>
+                                    </div>
+                                    <div class="meaning">
+                                        98755356457
+                                    </div>
+                                </div>
+                                <div class="words">
+                                        <div class="meaning">
+                                            <h3>Account Type</h3>
+                                        </div>
+                                        <div class="meaning">
+                                            Savings
+                                        </div>
+                                    </div>
+                                    <div class="words">
+                                            <div class="meaning">
+                                                <h3>Balance</h3>
+                                            </div>
+                                            <div class="meaning">
+                                                NGN100000
+                                            </div>
+                                        </div>
+                                        <div class="words">
+                                                <div class="meaning">
+                                                    <h3>Status</h3>
+                                                </div>
+                                                <div class="meaning">
+                                                    Active
+                                                </div>
+                                            </div>
+                                    </div>
                             </div>
                         </div>
                     </div>
-                </div>
-            </div>
-    
-        </div>
+    </div>
 
         <div id="deleteModal" class="modal">
                 <!-- Modal content -->
@@ -176,11 +204,11 @@
     <div class="account-delete" id="delete">
         <div class="modal-header"><h1>Delete Account</h1></div>
         <div>
-            <h3>Are You Sure You Want To Delete This Account?</h3>
-            <br>
+            <h3 class="modal-message">Are You Sure You Want To Delete This Account?</h3>
+            <div class="modal-group">
             <button onclick="window.location='./admin-dashboard.html';" value="" class="btn-submit">Yes</button>
             <button onclick="window.location='./admin-dashboard.html';" value="" class="btn-remove">Cancel</button>
-            <br>
+            </div>
             <br>
         </div>
     </div>
