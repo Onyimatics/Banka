@@ -28,52 +28,40 @@
             <section class="container form-container">
               <h2 class="section-title">Create Admin/Staff User Account</h2>
               <form class="form-card" action="" method="post">
-                <label for="firstname">Enter First Name (Required)</label>
+                  <label for="transaction">Admin/Staff<span>*</span></label>
+                  <select
+                    type="text"
+                    id="transaction"
+                    name="transaction"
+                    class="form-element"
+                    required>
+                    <option default>-- Admin/Staff ? --</option>
+                    <option value="admin">Admin</option>
+                    <option value="staff">Staff</option>
+                  </select> 
+                <label for="firstname">Enter First Name<span>*</span></label>
                 <input
                   type="text"
                   id="firstName"
                   name="firstName"
                   class="form-element"
-                  placeholder="Enter First Name"
+                  placeholder="Onyinye"
                   required/>
-                <label for="lastName">Enter Last name (Required)</label>
+                <label for="lastName">Enter Last name<span>*</span></label>
                 <input
                   type="text"
                   id="lastName"
                   name="lastName"
                   class="form-element"
-                  placeholder="Enter Last Name"
+                  placeholder="Ezike"
                   required/>
-                <label for="othername">Enter other name (Optional)</label>
-                <input
-                  type="text"
-                  id="othername"
-                  name="othername"
-                  class="form-element"
-                  placeholder="Enter Other Name"/>
-                <label for="email">Enter Email (Required)</label>
+                <label for="email">Enter Email<span>*</span></label>
                 <input
                   type="text"
                   id="email"
                   name="email"
                   class="form-element"
-                  placeholder="Enter Email"
-                  required/>
-                <label for="password">Enter Password (Required)</label>
-                <input
-                  type="password"
-                  id="password"
-                  name="password"
-                  class="form-element"
-                  placeholder="Enter Password"
-                  required/>
-                <label for="password">Confirm Password (Required)</label>
-                <input
-                  type="password"
-                  id="password"
-                  name="password"
-                  class="form-element"
-                  placeholder="Enter Password"
+                  placeholder="ezikeonyinyefavour@gmail.com"
                   required/>
                 <button type="submit" class="btn btn-primary">Create Acount</button>
                 <!-- <div class="message-box"></div> -->

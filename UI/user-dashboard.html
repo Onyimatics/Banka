@@ -30,126 +30,199 @@
     <!-- Begin Main Section -->
     <main>
         <section class="container">
-            <!-- <h2 class="section-title">User Profile</h2> -->
             <h2 class="feature">Transaction History</h2>
             <div class="profile">
                 <div class="card profile-card">
-                    <img class="profile-image" src="https://res.cloudinary.com/onyimatics/image/upload/v1553475100/Banka/Onyii.jpg" alt="Upload Picture" />
-                    <p class="profile-name">Onyinye Ezike</p>
-                    <p>3057131738</p>
-                    <p>Savings</p>
-                    <p>Balance(NGN): 40,000 </p>
-                    <div class="file-upload">
-                            <label for="upload" class="file-upload__label">Upload photo </label>
-                            <input id="upload" class="file-upload__input" type="file" name="file-upload">
+                        <div class ="image-upload">
+                                <label for="file-input">
+                                        <div class="profileImageContainer">
+                                            <input type="file" class="profileImageContainer__imageupload">
+                                        </div>
+                                    </label>
                         </div>
+                    <p class="profile-name">Onyinye Ezike</p>
+                    <div class="words">
+                        <div class="meaning">
+                            <h3>Acct Number</h3>
+                        </div>
+                        <div class="meaning">
+                            90867565343
+                        </div>
+                    </div>
+                    
+                    <div class="words">
+                        <div class="meaning">
+                            <h3>Balance(&#x20A6;)</h3>
+                        </div>
+                        <div class="meaning">
+                                100,000.00
+                        </div>
+                    </div>
+
+                    <div class="words">
+                        <div class="meaning">
+                            <h3>Acct Type</h3>
+                        </div>
+                        <div class="meaning">
+                            90867565343
+                        </div>
+                    </div>
                 </div>
                 <div class="profile-table">
                     <table class="stats-table">
                         <tbody>
                             <tr>
                                 <th>S/N</th>
-                                <th>Account Name</th>
-                                <th class="creation">CreatedOn</th>
+                                <th>First Name</th>
+                                <th>Last Name</th>
                                 <th>Type</th>
-                                <th>Account Number</th>
-                                <th>Cashier</th>
-                                <th>Amount(NGN)</th>
-                                <th>Old Balance(NGN)</th>
-                                <th>New Balance(NGN)</th>
+                                <th>Amount(&#x20A6;)</th>
+                                <th>View Transaction</th>
                             </tr>
                             <tr>
                                 <td>1.</td>
-                                <td>Onyinye Ezike</td>
-                                <td>16-02-2016 11:30am</td>
+                                <td>Onyinye</td>
+                                <td>Ezike</td>
                                 <td>Credit</td>
-                                <td>3057131738</td>
-                                <td>014</td>
-                                <td>20,000</td>
-                                <td>30,000</td>
-                                <td>50,000</td>
+                                <td>100,000.00</td>
+                                <td><button id="translate2d" type="button" class="btn btn-primary" onclick="triggerModal()">View</button></td>
                             </tr>
                             <tr>
-                                <td>2.</td>
-                                <td>Onyinye Ezike</td>
-                                <td>16-02-2016 11:30am</td>
-                                <td>Credit</td>
-                                <td>3057131738</td>
-                                <td>014</td>
-                                <td>5,000</td>
-                                <td>50,000</td>
-                                <td>45,000</td>
+                                    <td>1.</td>
+                                    <td>Onyinye</td>
+                                    <td>Ezike</td>
+                                    <td>Credit</td>
+                                    <td>100,000.00</td>
+                                    <td><button id="translate2d" type="button" class="btn btn-primary" onclick="triggerModal()">View</button></td>
                             </tr>
                             <tr>
-                                <td>3.</td>
-                                <td>Onyinye Ezike</td>
-                                <td>16-02-2016 11:30am</td>
-                                <td>Credit</td>
-                                <td>3057131738</td>
-                                <td>014</td>
-                                <td>20,000</td>
-                                <td>34,000</td>
-                                <td>20,000</td>
+                                    <td>1.</td>
+                                    <td>Onyinye</td>
+                                    <td>Ezike</td>
+                                    <td>Credit</td>
+                                    <td>100,000.00</td>
+                                    <td><button id="translate2d" type="button" class="btn btn-primary" onclick="triggerModal()">View</button></td>
                             </tr>
                             <tr>
-                                <td>4.</td>
-                                <td>Onyinye Ezike</td>
-                                <td>16-02-2016 11:30am</td>
-                                <td>Credit</td>
-                                <td>3057131738</td>
-                                <td>014</td>
-                                <td>20,000</td>
-                                <td>10,000</td>
-                                <td>20,000</td>
+                                    <td>1.</td>
+                                    <td>Onyinye</td>
+                                    <td>Ezike</td>
+                                    <td>Credit</td>
+                                    <td>100,000.00</td>
+                                    <td><button id="translate2d" type="button" class="btn btn-primary" onclick="triggerModal()">View</button></td>
                             </tr>
                             <tr>
-                                <td>5.</td>
-                                <td>Onyinye Ezike</td>
-                                <td>16-02-2016 11:30am</td>
-                                <td>Credit</td>
-                                <td>3057131738</td>
-                                <td>014</td>
-                                <td>20,000</td>
-                                <td>30,000</td>
-                                <td>50,000</td>
+                                    <td>1.</td>
+                                    <td>Onyinye</td>
+                                    <td>Ezike</td>
+                                    <td>Credit</td>
+                                    <td>100,000.00</td>
+                                    <td><button id="translate2d" type="button" class="btn btn-primary" onclick="triggerModal()">View</button></td>
                             </tr>
                             <tr>
-                                <td>6.</td>
-                                <td>Onyinye Ezike</td>
-                                <td>16-02-2016 11:30am</td>
-                                <td>Debit</td>
-                                <td>3057131738</td>
-                                <td>014</td>
-                                <td>5,000</td>
-                                <td>50,000</td>
-                                <td>45,000</td>
+                                    <td>1.</td>
+                                    <td>Onyinye</td>
+                                    <td>Ezike</td>
+                                    <td>Credit</td>
+                                    <td>100,000.00</td>
+                                    <td><button id="translate2d" type="button" class="btn btn-primary" onclick="triggerModal()">View</button></td>
                             </tr>
                             <tr>
-                                <td>7.</td>
-                                <td>Onyinye Ezike</td>
-                                <td>16-02-2016 11:30am</td>
-                                <td>Credit</td>
-                                <td>3057131738</td>
-                                <td>014</td>
-                                <td>20,000</td>
-                                <td>56,000</td>
-                                <td>20,000</td>
+                                    <td>1.</td>
+                                    <td>Onyinye</td>
+                                    <td>Ezike</td>
+                                    <td>Credit</td>
+                                    <td>100,000.00</td>
+                                    <td><button id="translate2d" type="button" class="btn btn-primary" onclick="triggerModal()">View</button></td>
                             </tr>
                             <tr>
-                                <td>8.</td>
-                                <td>Onyinye Ezike</td>
-                                <td>16-02-2016 11:30am</td>
-                                <td>Credit</td>
-                                <td>3057131738</td>
-                                <td>014</td>
-                                <td>20,000</td>
-                                <td>45,900</td>
-                                <td>20,000</td>
+                                    <td>1.</td>
+                                    <td>Onyinye</td>
+                                    <td>Ezike</td>
+                                    <td>Credit</td>
+                                    <td>100,000.00</td>
+                                    <td><button id="translate2d" type="button" class="btn btn-primary" onclick="triggerModal()">View</button></td>
                             </tr>
                         </tbody>
                     </table>
                 </div>
             </div>
+            <!-- Modal Section -->
+    
+                 <!-- The Modal -->
+        <div id="myModal" class="modal">
+                <!-- Modal content -->
+                <div class="modal-content">
+                    <span class="close-modal" onclick="closeModal()">&times;</span>
+                    <div>
+                        <div class="modal-header">
+                            <h1>Transaction Record</h1>
+                        </div>
+                        <div class="modal-body">
+                            
+                            <div class="modal-account-details">
+                                <div class="words">
+                                    <div class="meaning">
+                                        <h3>Transaction ID</h3>
+                                    </div>
+                                    <div class="meaning">
+                                        0776vbhfjhglhm470s
+                                    </div>
+                                </div>
+                                <div class="words">
+                                    <div class="meaning">
+                                        <h3>Transaction Type</h3>
+                                    </div>
+                                    <div class="meaning">
+                                        Credit
+                                    </div>
+                                </div>
+                                <div class="words">
+                                        <div class="meaning">
+                                            <h3>Account Number</h3>
+                                        </div>
+                                        <div class="meaning">
+                                            98755356457
+                                        </div>
+                                    </div>
+                                    <div class="words">
+                                            <div class="meaning">
+                                                <h3>Date</h3>
+                                            </div>
+                                            <div class="meaning">
+                                                16-02-2016 11:30am
+                                            </div>
+                                        </div>
+                                        <div class="words">
+                                                <div class="meaning">
+                                                    <h3>Amount(&#x20A6;)</h3>
+                                                </div>
+                                                <div class="meaning">
+                                                    100000
+                                                </div>
+                                            </div>
+                                            <div class="words">
+                                                    <div class="meaning">
+                                                        <h3>Old Balance(&#x20A6;)</h3>
+                                                    </div>
+                                                    <div class="meaning">
+                                                        100000
+                                                    </div>
+                                                </div>
+                                                <div class="words">
+                                                        <div class="meaning">
+                                                            <h3>New Balance(&#x20A6;)</h3>
+                                                        </div>
+                                                        <div class="meaning">
+                                                            200000
+                                                        </div>
+                                                    </div>
+                                        </div>
+                                </div>
+                            </div>
+                        </div>
+        </div>
+         <!-- End Main Section -->
         </section>
     </main>
     <!-- End Main Section -->
