@@ -16,7 +16,7 @@
             <button class="hamburger-menu"><a class="hamburger"></a></button>
             <ul class="navbar-menu">
                 <li class="navbar-link"><a href="./index.html">Home</a></li>
-                <li class="navbar-link"><a href="./login.html">Log In</a></li>
+                <li class="navbar-link"><a href="./signin.html">Sign In</a></li>
                 <li class="navbar-link"><a href="./signup.html">Sign Up<hr> </a></li>
             </ul>
         </nav>
@@ -27,58 +27,43 @@
             <section class="container form-container">
               <h2 class="section-title">Sign Up</h2>
               <form class="form-card" action="" method="post">
-                <label for="firstname">Enter First Name (Required)</label>
+                <label for="firstname">Enter First Name<span>*</span></label>
                 <input
                   type="text"
                   id="firstName"
                   name="firstName"
                   class="form-element"
-                  placeholder="Enter First Name"
+                  placeholder="Onyinye"
                   required/>
-                <label for="lastName">Enter Last name (Required)</label>
+                <label for="lastName">Enter Last name<span>*</span></label>
                 <input
                   type="text"
                   id="lastName"
                   name="lastName"
                   class="form-element"
-                  placeholder="Enter Last Name"
+                  placeholder="Ezike"
                   required/>
-                <label for="othername">Enter other name (Optional)</label>
-                <input
-                  type="text"
-                  id="othername"
-                  name="othername"
-                  class="form-element"
-                  placeholder="Enter Other Name"/>
-                <label for="email">Enter Email (Required)</label>
+                <label for="email">Enter Email<span>*</span></label>
                 <input
                   type="text"
                   id="email"
                   name="email"
                   class="form-element"
-                  placeholder="Enter Email"
+                  placeholder="onyimatics@gmail.com"
                   required/>
-                <label for="password">Enter Password (Required)</label>
+                <label for="password">Enter Password<span>*</span></label>
                 <input
                   type="password"
                   id="password"
                   name="password"
                   class="form-element"
-                  placeholder="Enter Password"
-                  required/>
-                <label for="password">Confirm Password (Required)</label>
-                <input
-                  type="password"
-                  id="password"
-                  name="password"
-                  class="form-element"
-                  placeholder="Enter Password"
+                  placeholder=".........."
                   required/>
                 <button type="submit" class="btn btn-primary">Sign Up</button>
                 <!-- <div class="message-box"></div> -->
                 <div class="margin--top--10 margin--below ">
                     <p class="text--primary1">Already have an account?
-                        <a href="./login.html" class="text--color--grey">login</a>
+                        <a href="./signin.html" class="text--color--grey">siginin</a>
                     </p>
                 </div>
               </form>
