@@ -1,5 +1,6 @@
 import transactions from '../model/transactions';
 import response from '../helper/response/index';
+import accounts from '../model/accounts';
 
 class TransactionController {
   /**
@@ -10,30 +11,9 @@ class TransactionController {
     * @returns {object} Json
     * @memberof TransactionController
     */
-  static async fetchAllTransactions(req, res) {
-    await response(res, 200, 'All Transactions fetched Successfully', transactions);
-  }
-
-  static async fetchTransactionByTransactionId(req, res) {
+  // eslint-disable-next-line consistent-return
+  static debitAccount(req, res) {
     /**
-    * @static
-    * @description Allows User to fetch a transaction by Id
-    * @param {object} req - Request object
-    * @param {object} res - Response object
-    * @returns {object} Json
-    * @memberof TransactionController
-    */
-    const { type } = req.user;
-    if (type) {
-      const { transactionDetails, transactionExist } = req;
-      if (transactionExist === 0) {
-        response(res, 404, 'Transaction not found', transactionDetails);
-      } else {
-        await response(res, 200, 'Transaction details Successfully Retrieved', transactionDetails);
-      }
-    }
-  }
-  /**
     * @static
     * @description Allows Staff debit an account
     * @param {object} req - Request object
@@ -42,16 +22,21 @@ class TransactionController {
     * @memberof TransactionController
     */
 
-  static debitAccount(req, res) {
-    const { accountDetails, accountStatus } = req;
+    const { accountNumber } = req.params;
+
+    const { accountDetails } = req;
     const { amount } = req.body;
-    const { isAdmin, id } = req.user;
-    if (isAdmin === true) {
-      return response(res, 401, 'Unauthorized', null);
+    const { id } = req.user;
+
+    const account = accounts.find(paccount => paccount.accountNumber === Number(accountNumber));
+
+    if (!account) {
+      return response(res, 404, 'Account not found');
     }
-    if (accountStatus !== 'active') {
-      return response(res, 400, 'Account is currently inactive', null);
+    if (account.status !== 'active') {
+      return response(res, 400, 'Account is currently dormant');
     }
+
     if (amount > 0) {
       const { balance: oldBalance } = accountDetails;
       if (Number(oldBalance) - amount > 0) {
@@ -75,11 +60,12 @@ class TransactionController {
           });
       }
 
-      return response(res, 400, 'Insufficient fund');
+      return response(res, 403, 'Insufficient fund');
     }
-    return response(res, 401, 'Forbidden');
   }
 
+
+  // eslint-disable-next-line consistent-return
   static creditAccount(req, res) {
     /**
     * @static
@@ -92,12 +78,9 @@ class TransactionController {
 
     const { accountDetails, accountStatus } = req;
     const { amount } = req.body;
-    const { isAdmin, id } = req.user;
+    const { id } = req.user;
     if (accountStatus !== 'active') {
-      return response(res, 400, 'Account is currently inactive', null);
-    }
-    if (isAdmin === true) {
-      return response(res, 400, 'Unauthorized', null);
+      return response(res, 400, 'Account is currently dormant');
     }
     if (amount > 0) {
       const { balance: oldBalance } = accountDetails;
@@ -118,7 +101,6 @@ class TransactionController {
         transactionId, accountNumber: newTransactions.accountNumber, amount, cashier: id, transactionType: 'credit', accountBalance: accountDetails.balance,
       });
     }
-    return response(res, 401, 'Forbidden');
   }
 }
 export default TransactionController;

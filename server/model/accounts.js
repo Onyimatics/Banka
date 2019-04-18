@@ -1,3 +1,4 @@
+/* eslint-disable import/no-mutable-exports */
 const accounts = [
   {
     id: 1,
@@ -90,5 +91,6 @@ const accounts = [
     status: 'active', // draft, active, or dormant
     balance: 100000.00,
   },
-]
+];
+
 export default accounts;

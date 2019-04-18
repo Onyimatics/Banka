@@ -1,8 +1,9 @@
 class ValidationMessages {}
 
-ValidationMessages.email = 'Email is invalid.';
-ValidationMessages.userName = 'Kindly enter first name with at least two letters.';
-ValidationMessages.password = 'Kindly enter a password with at least 8 characters.';
-ValidationMessages.firstLastName = 'Kindly enter a name with at least two letters.';
-
+ValidationMessages.email = 'Enter valid email, firstName & lastName.';
+ValidationMessages.userName = 'Enter valid email, firstName & lastName.';
+ValidationMessages.password = 'Enter a password with at least 8 characters.';
+ValidationMessages.firstName = 'Enter valid email, firstName & lastName.';
+ValidationMessages.lastName = 'Enter valid email, firstName & lastName.';
+ValidationMessages.accountNumber = 'Enter a valid Account Number';
 export default ValidationMessages;

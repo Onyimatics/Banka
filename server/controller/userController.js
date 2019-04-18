@@ -5,14 +5,21 @@ import PasswordManager from '../helper/passwordManager';
 
 class UserController {
   /**
-    * @static
-    * @description Allow a user to signup
-    * @param {object} req - Request object
-    * @param {object} res - Response object
-    * @returns {object} Json
-    * @memberof UserControllers
-    */
+   * @class
+   * @description UserController
+   * @param {object} req - Request object
+   * @param {object} res - Response object
+   * @returns {object} Json
+   */
   static async register(req, res) {
+    /**
+   * @static
+   * @description Allow a user to signup
+   * @param {object} req - Request object
+   * @param {object} res - Response object
+   * @returns {object} Json
+   * @memberof UserControllers
+   */
     const {
       firstName, lastName, email, password,
     } = req.body;
@@ -35,7 +42,7 @@ class UserController {
       users.push(newUser);
       const { id } = newUser;
       response(res, 201, 'Successfully created a new user account', {
-        id, token, firstName, email, lastName,
+        id, firstName, lastName, email, token,
       });
     }
   }
@@ -43,13 +50,13 @@ class UserController {
   // login controller
   static signin(req, res) {
     /**
-    * @static
-    * @description Allow a user to signin
-    * @param {object} req - Request object
-    * @param {object} res - Response object
-    * @returns {object} Json
-    * @memberof UserControllers
-    */
+     * @static
+     * @description Allow a user to signin
+     * @param {object} req - Request object
+     * @param {object} res - Response object
+     * @returns {object} Json
+     * @memberof UserControllers
+     */
     const { email, password } = req.body;
 
     const userDetails = users.find(user => user.email === email);
@@ -63,11 +70,11 @@ class UserController {
     const isPasswordValid = PasswordManager.verifyPassword(password, hashPassword);
 
     if (isPasswordValid) {
-      const token = TokenManager.sign(userDetails);
+      const token = TokenManager.sign({ id });
       // eslint-disable-next-line dot-notation
-      userDetails['token'] = token;
-      response(res, 200, 'Successfully logged in', {
-        id, token, firstName, email, lastName,
+      // userDetails['token'] = token;
+      response(res, 200, 'Successfully signed in', {
+        id, firstName, lastName, email, token,
       });
     } else {
       response(res, 400, 'Invalid Password or Email');

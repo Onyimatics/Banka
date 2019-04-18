@@ -32,25 +32,17 @@ class AuthMiddleware {
       if (name === 'TokenExpiredError' || name === 'JsonWebTokenError' || name === 'TypeError') {
         return response(res, 401, 'You are not signed in.');
       }
-      return response(res, 500, 'An error occured on the server', null);
+      return response(res, 500, 'An error occured on the server');
     }
   }
 
-  /**
-     * @static
-     * @description a middleware function checking if a user is authenticated
-     * @param {object} req HTTP request object
-     * @param {object} res HTTP response object
-     * @param {function} next next middleware function
-     * @returns {object} returns error message if user is not authenticated
-     */
   static async checkUserById(req, res, next) {
-    const { id } = req.body;
+    const { id } = req.user;
     const userDetails = users.find(user => user.id === Number(id));
     if (!userDetails) {
       return response(res, 404, 'User account not found', null);
     }
-    delete userDetails.password;
+    // delete userDetails.password;
     req.customer = userDetails;
     return next();
   }

@@ -10,19 +10,10 @@ import AuthMiddleware from '../../middleaware/authMiddleware/authMiddleware';
 
 // account routes
 const accountRoutes = Router();
-accountRoutes.get('/',
-  AuthMiddleware.checkIfUserIsAuthenticated,
-  AccountValidation.adminChecker,
-  AccountController.fetchAllAccounts);
-
-accountRoutes.get('/:accountNumber',
-  AuthMiddleware.checkIfUserIsAuthenticated,
-  AccountValidation.checkIfAccountExist,
-  AccountController.fetchAccountByAccountNumber);
-
 accountRoutes.post('/',
   AuthMiddleware.checkIfUserIsAuthenticated,
   AuthMiddleware.checkUserById,
+  AccountValidation.type,
   AccountController.createAccount);
 
 accountRoutes.patch('/:accountNumber',
@@ -30,7 +21,9 @@ accountRoutes.patch('/:accountNumber',
   AccountValidation.staffChecker,
   AccountValidation.checkIfAccountExist,
   AccountValidation.accountStatusChecker,
+  AccountValidation.status,
   AccountController.updateAccountStatus);
+
 accountRoutes.delete('/:accountNumber',
   AuthMiddleware.checkIfUserIsAuthenticated,
   AccountValidation.staffChecker,
