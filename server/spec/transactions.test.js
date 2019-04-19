@@ -1,57 +1,132 @@
 import chai from 'chai';
 import chaihttp from 'chai-http';
 import app from '../app';
-import testData from './seeds/users.seeds';
+
 
 const { expect } = chai;
 chai.use(chaihttp);
-const {
-  client1, staff1, admin1,
-} = testData;
-const transactionUrl = '/api/v1/transactions/';
+describe('POST /api/v1/transactions/:accountNumber/debit', () => {
+  const staff = {
+    email: 'johndumelo@gmail.com',
+    password: '123456789',
+  };
 
-describe('All Test Report for Banka App', () => {
-  describe('GET requests for fetching transaction/transactions', () => {
-    it('Should fetch all transactions successfully', (done) => {
-      chai.request(app)
-        .get(transactionUrl)
-        .set('authorization', admin1)
-        .end((err, res) => {
-          expect(res.body).to.be.an('object');
-          expect(res.body.status).to.equal(200);
-          expect(res).to.have.status(200);
-          expect(res.body.message).to.equal('All Transactions fetched Successfully');
-          done();
-        });
-    });
-    it('should fetch a transacton by tranaction Id', (done) => {
-      chai.request(app)
-        .get(`${transactionUrl}/2`)
-        .set('authorization', staff1)
-        .end((err, res) => {
-          expect(res.body.status).to.equal(200);
-          expect(res.body.message).to.equal('Transaction details Successfully Retrieved');
-          expect(res).to.have.status(200);
-          expect(res.body).to.be.an('object');
-          // eslint-disable-next-line no-unused-expressions
-          expect(res).to.be.json;
-          expect(res.body.data.id).to.equal(2);
-          done();
-        });
-    });
-    it('should not fetch a transaction if transaction does not exist', (done) => {
-      chai.request(app)
-        .get(`${transactionUrl}/45`)
-        .set('authorization', client1)
-        .end((err, res) => {
-          expect(res.body.status).to.equal(404);
-          expect(res.body.message).to.equal('Transaction not found');
-          expect(res).to.have.status(404);
-          expect(res.body).to.be.an('object');
-          // eslint-disable-next-line no-unused-expressions
-          expect(res).to.be.json;
-          done();
-        });
-    });
+  let staffToken;
+  before((done) => {
+    chai.request(app)
+      .post('/api/v1/auth/signin')
+      .send(staff)
+      .end((err, res) => {
+        staffToken = res.body.data.token;
+        done();
+      });
+  });
+
+  it('should successfully debit an account', (done) => {
+    const debit = {
+      amount: '10000',
+    };
+    chai.request(app)
+      .post('/api/v1/transactions/9401235678/debit')
+      .set('authorization', staffToken)
+      .send(debit)
+      .end((err, res) => {
+        expect(res.body.status).to.equal(200);
+        expect(res.body.message).to.equal('Account has been successfully debited');
+        done();
+      });
+  });
+
+  it('should not debit an account if account does not exist', (done) => {
+    const debitss = {
+      amount: '10000',
+    };
+    chai.request(app)
+      .post('/api/v1/transactions/94012356783376483/debit')
+      .set('authorization', staffToken)
+      .send(debitss)
+      .end((err, res) => {
+        expect(res.body.status).to.equal(404);
+        expect(res.body.message).to.equal('Account not found');
+        done();
+      });
+  });
+
+  it('should not debit an account if account balance is insufficient', (done) => {
+    const debitss = {
+      amount: '150000',
+    };
+    chai.request(app)
+      .post('/api/v1/transactions/9401235678/debit')
+      .set('authorization', staffToken)
+      .send(debitss)
+      .end((err, res) => {
+        expect(res.body.status).to.equal(403);
+        expect(res.body.message).to.equal('Insufficient fund');
+        done();
+      });
+  });
+
+  it('should not debit an account if account status is dormant', (done) => {
+    const debitss = {
+      amount: '10000',
+    };
+    chai.request(app)
+      .post('/api/v1/transactions/9801234567/debit')
+      .set('authorization', staffToken)
+      .send(debitss)
+      .end((err, res) => {
+        expect(res.body.status).to.equal(400);
+        expect(res.body.message).to.equal('Account is currently dormant');
+        done();
+      });
+  });
+});
+
+describe('POST /api/v1/transactions/:accountNumber/credit', () => {
+  const staff = {
+    email: 'johndumelo@gmail.com',
+    password: '123456789',
+  };
+
+  let staffToken;
+  before((done) => {
+    chai.request(app)
+      .post('/api/v1/auth/signin')
+      .send(staff)
+      .end((err, res) => {
+        staffToken = res.body.data.token;
+        done();
+      });
+  });
+
+  it('should successfully credit an account', (done) => {
+    const debit = {
+      amount: '10000',
+    };
+    chai.request(app)
+      .post('/api/v1/transactions/9401235678/credit')
+      .set('authorization', staffToken)
+      .send(debit)
+      .end((err, res) => {
+        expect(res.body.status).to.equal(200);
+        expect(res.body.message).to.equal('Successfully credited an account');
+        done();
+      });
+  });
+
+  it('should not credit an account if account status is dormant', (done) => {
+    const debitss = {
+      amount: '10000',
+    };
+    chai.request(app)
+      .post('/api/v1/transactions/9801234567/credit')
+      .set('authorization', staffToken)
+      .send(debitss)
+      .end((err, res) => {
+        expect(res.body.status).to.equal(400);
+        expect(res.body.message).to.equal('Account is currently dormant');
+        done();
+      });
   });
 });

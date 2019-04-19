@@ -14,7 +14,7 @@ userRoutes.post(
   '/signup',
   DoValidation.email,
   DoValidation.password,
-  DoValidation.name,
+  DoValidation.userName,
   UserController.register,
 );
 // signin route

@@ -385,8 +385,8 @@ td.issue {
 }
 
 .profile-name {
-  font-size: 1.5em;
-  font-weight: 200;
+  font-size: 17px;
+  margin: 23px;
 }
 
 p.stat-value {
@@ -561,6 +561,7 @@ h3 {
   clear: both;
   width: 100%;
   border-bottom: 1px solid grey;
+  font-size: 15px;
 }
 
 .meaning {

@@ -2,11 +2,12 @@ import chai from 'chai';
 import chaihttp from 'chai-http';
 import app from '../app';
 
+
 const { expect } = chai;
 chai.use(chaihttp);
+const signupUrl = '/api/v1/auth/signup';
 
 describe('POST/auth signup', () => {
-  const signupUrl = '/api/v1/auth/signup';
   it('should signup a non existing user(client)', (done) => {
     chai.request(app)
       .post(signupUrl)
@@ -17,7 +18,6 @@ describe('POST/auth signup', () => {
         password: 'Blessing',
       })
       .end((err, res) => {
-        // console.log(res.body);
         expect(res.body).to.be.an('object');
         expect(res).to.have.status(201);
         expect(res.body.status).to.equal(201);
@@ -60,13 +60,14 @@ describe('POST/auth signup', () => {
       .end((err, res) => {
         expect(res.body).to.be.an('object');
         expect(res.body.status).to.equal(400);
-        expect(res.body.message).to.equal('Email is invalid.');
+        expect(res.body.message).to.equal('Enter valid email, firstName & lastName.');
         done();
       });
   });
   it('should not signup a user when firstName is missing', (done) => {
     const user = {
-      lastName: 'Ossai',
+      firstName: '',
+      lastName: 'Faith',
       email: 'ossaifaith@gmail.com',
       password: 'ossaifaith',
     };
@@ -76,7 +77,7 @@ describe('POST/auth signup', () => {
       .end((err, res) => {
         expect(res.body).to.be.an('object');
         expect(res.body.status).to.equal(400);
-        expect(res.body.message).to.equal('Kindly enter a name with at least two letters.');
+        expect(res.body.message).to.equal('Enter valid email, firstName & lastName.');
         done();
       });
   });
@@ -85,13 +86,14 @@ describe('POST/auth signup', () => {
       .post(signupUrl)
       .send({
         firstName: 'Lilian',
+        lastName: '',
         email: 'hayjay@gmail.com',
         password: 'ajirioghene',
       })
       .end((err, res) => {
         expect(res.body).to.be.an('object');
         expect(res.body.status).to.equal(400);
-        expect(res.body.message).to.equal('Kindly enter a name with at least two letters.');
+        expect(res.body.message).to.equal('Enter valid email, firstName & lastName.');
         done();
       });
   });
@@ -106,7 +108,7 @@ describe('POST/auth signup', () => {
       .end((err, res) => {
         expect(res.body).to.be.an('object');
         expect(res.body.status).to.equal(400);
-        expect(res.body.message).to.equal('Kindly enter a password with at least 8 characters.');
+        expect(res.body.message).to.equal('Enter a password with at least 8 characters.');
         done();
       });
   });
