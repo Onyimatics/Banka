@@ -33,14 +33,21 @@
             <h2 class="feature">Transaction History</h2>
             <div class="profile">
                 <div class="card profile-card">
-                        <div class ="image-upload">
-                                <label for="file-input">
-                                        <div class="profileImageContainer">
-                                            <input type="file" class="profileImageContainer__imageupload">
-                                        </div>
-                                    </label>
-                        </div>
-                    <!-- <p class="profile-name">Onyinye Ezike: Client</p> -->
+                    <!-- Copied and edited from https://www.w3schools.com/howto/howto_css_image_overlay.asp -->
+                        <div class="profile-picture">
+                                <img src="https://res.cloudinary.com/onyimatics/image/upload/v1553475100/Banka/Onyii.jpg" alt="Avatar" class="image" style="width:100%">
+                                <div class="middle">
+                                     <!-- copied and edited from http://jsfiddle.net/a4Jtz/6/ -->
+                                        <li class="upload">
+                                                <form>
+                                             <div class="fupload">
+                                                click to upload
+                                             </div>
+                                             <input type="file" name="upload" id="rupload" class="rupload" onchange="this.form.fupload.value = this.value;" />
+                                            </form>
+                                            </li>
+                                </div>
+                              </div>
                     <div class="words">
                         <div class="meaning">
                             <h3>Acct Number</h3>
@@ -64,7 +71,7 @@
                             <h3>Acct Type</h3>
                         </div>
                         <div class="meaning">
-                            90867565343
+                            Current
                         </div>
                     </div>
                 </div>
