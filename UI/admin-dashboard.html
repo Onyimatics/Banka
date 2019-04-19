@@ -31,13 +31,22 @@
             <h2 class="section-title">Clients Account Details</h2>
             <div class="profile">
                 <div class="card profile-card">
-                        <div class ="image-upload">
-                                <label for="file-input">
-                                        <div class="profileImageContainer">
-                                            <input type="file" class="profileImageContainer__imageupload">
-                                        </div>
-                                    </label>
-                        </div><p class="profile-name">Onyinye Ezike: Admin</p></div>
+                    <!-- Copied and edited from https://www.w3schools.com/howto/howto_css_image_overlay.asp -->
+                        <div class="profile-picture">
+                                <img src="https://res.cloudinary.com/onyimatics/image/upload/v1553475100/Banka/Onyii.jpg" alt="Avatar" class="image" style="width:100%">
+                                <div class="middle">
+                                    <!-- copied and edited from http://jsfiddle.net/a4Jtz/6/ -->
+                                        <li class="upload">
+                                                <form>
+                                             <div class="fupload">
+                                                click to upload
+                                             </div>
+                                             <input type="file" name="upload" id="rupload" class="rupload" onchange="this.form.fupload.value = this.value;" />
+                                            </form>
+                                            </li>
+                                </div>
+                              </div>
+                        <p class="profile-name">Onyinye Ezike: Admin</p></div>
                 <div class="profile-table">
                     <table class="stats-table">
                             <tbody>
@@ -46,7 +55,7 @@
                                         <th>First Name</th>
                                         <th>Last Name</th>
                                         <th>CreatedOn</th>
-                                        <th>User Id</th>
+                                        <th>View User</th>
                                         <th>Activate/Deactivate</th>
                                         <th>Delete</th>
                                     </tr>
@@ -55,7 +64,7 @@
                                         <td>Onyinye</td>
                                         <td>Ezike</td>
                                         <td>Monday 16-02-2011</td>
-                                        <td><button id="translate2d" type="button" class="btn btn-primary" onclick="triggerModal()">1</button></td>
+                                        <td><button id="translate2d" type="button" class="btn btn-primary" onclick="triggerModal()">View</button></td>
                                         <td><button class="btn btn-warning">Deactivate</button></td>
                                         <td><button id= "delete-account" class="btn btn-warning delete-account" onclick="triggerDeleteModal()">Delete</button></td>
                                     </tr>
@@ -64,7 +73,7 @@
                                             <td>Onyinye</td>
                                             <td>Ezike</td>
                                             <td>Monday 16-02-2011</td>
-                                            <td><button id="translate2d" type="button" class="btn btn-primary" onclick="triggerModal()">2</button></td>
+                                            <td><button id="translate2d" type="button" class="btn btn-primary" onclick="triggerModal()">View</button></td>
                                             <td><button class="btn btn-warning">Deactivate</button></td>
                                             <td><button id= "delete-account" class="btn btn-warning delete-account" onclick="triggerDeleteModal()">Delete</button></td>
                                     </tr>
@@ -73,7 +82,7 @@
                                             <td>Onyinye</td>
                                             <td>Ezike</td>
                                             <td>Monday 16-02-2011</td>
-                                            <td><button id="translate2d" type="button" class="btn btn-primary" onclick="triggerModal()">3</button></td>
+                                            <td><button id="translate2d" type="button" class="btn btn-primary" onclick="triggerModal()">View</button></td>
                                             <td><button class="btn btn-warning1">Activate</button></td>
                                             <td><button id= "delete-account" class="btn btn-warning delete-account" onclick="triggerDeleteModal()">Delete</button></td>
                                     </tr>

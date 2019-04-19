@@ -225,7 +225,7 @@ span {
 }
 
 .text--primary1{
-  color: #8B008B;
+  color: grey;
   margin-left: 4.5rem;
 }  
 
@@ -342,9 +342,8 @@ td.issue {
   flex-direction: column;
   padding: 50px 40px;
   margin-top: 25px;
-  box-shadow: 10px 10px grey;
+  box-shadow: 10px 10px 15px grey;
 }
-
 
 
 /* Profile Card */
@@ -363,25 +362,87 @@ td.issue {
   align-items: center;
   padding: 20px;
   margin-top: 20px;
-  box-shadow: 10px 10px grey;
+  box-shadow: 10px 10px 15px grey;
 }
 
-.profileImageContainer{
+/* Profile Picture with overlay */
+/* Copied and edited from https://www.w3schools.com/howto/howto_css_image_overlay.asp */
+
+.profile-picture {
+  position: relative;
+  width: 50%;
+}
+
+.image {
+  opacity: 1;
+  display: block;
+  width: 100%;
+  height: auto;
+  transition: .5s ease;
+  backface-visibility: hidden;
+  background-size: contain; 
+  cursor: pointer;
+  border-radius:100%;
   width:150px; 
   height:150px; 
   margin:auto; 
-  position:relative; 
-  border-radius:100%; 
-  background-image:url(https://res.cloudinary.com/onyimatics/image/upload/v1553475100/Banka/Onyii.jpg); 
-  background-size: contain; 
-  cursor: pointer;
 }
-.profileImageContainer__imageupload{
-  border:none; margin-top:90px; opacity: 0;
+
+.middle {
+  transition: .5s ease;
+  opacity: 0;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  text-align: center;
 }
-.profileImageContainer__imageupload:hover{
+
+.profile-picture:hover .image {
+  opacity: 0.9;
+}
+
+.profile-picture:hover .middle {
   opacity: 1;
+}
+
+.text {
+  background-color: #8B008B;
+  color: #eef0f3;
+  font-size: 10px;
   cursor: pointer;
+}
+
+/* copied and edited from http://jsfiddle.net/a4Jtz/6/ */
+li { list-style: none; text-align: center; }
+
+.fupload {
+  background: #f00;
+  cursor: pointer;
+  padding: 4px 0;
+  font: 8px Verdana, Arial, Helvetica, sans-serif;
+  color: #000;
+  height: 30px;
+  align-content: center;
+}
+
+.upload {
+    position: relative;
+    width: 50px;
+    overflow: hidden;
+}
+
+.rupload {
+  font-size: 28px;
+  position: absolute;
+  top: 0;
+  right: 0;
+  opacity: 0.4;
+  -moz-opacity: 0.4;
+  filter: alpha(opacity 0);
+  z-index: 2;
+  height: 100%;
 }
 
 .profile-name {
@@ -402,13 +463,13 @@ p.stat-value {
   margin-top: 20px;
   background: #fffffa;
   width: 100%;
-  box-shadow: 10px 10px grey;
+  box-shadow: 10px 10px 15px grey;
 }
 
 .profile-table {
   z-index: 100;
   flex-basis: 73%;
-  box-shadow: 50px,50px purple;
+  box-shadow: 30px,30px 10px purple;
 }
 
 td {
@@ -551,7 +612,6 @@ h3 {
 }
 
 .modal-header {
-    background-color: #c7c5c5;
     margin-bottom: 1em;
     color:#8B008B;
    text-align: center;
@@ -560,7 +620,6 @@ h3 {
 .words {
   clear: both;
   width: 100%;
-  border-bottom: 1px solid grey;
   font-size: 15px;
 }
 
