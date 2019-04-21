@@ -5,30 +5,37 @@
 ## Table of Contents
 
  - [Introduction](#introduction)
- - [UI Templates](#ui-templates)
  - [Installing](#installing)
+ - [Working Routes](#working-routes)
 
  # Introduction
 
-# *Project Overview*
+### Project Overview
 
 **Banka** is a 
 light-weight core banking application that powers banking operations like account creation, customer deposit and withdrawals. This app is meant to support a single bank, where users can signup and create bank accounts online, but must visit the branch to withdraw or deposit money.
 
 To get started with this project you need a basic knowledge of :
 
-```
-Javascript (ES6)
-```
 
-### __Style guide__
+[Javascript(ES6)](https://es6.io/)
+
+- ### __Style guide__
 
 [Airbnb ](https://github.com/airbnb/javascript)(Javascript style guide)
 
-### Useful Links
+- ### Useful Links
+## Screenshot(UI template)
+![alt](./screenShot/home-page.jpg)
 Preview UI templates : [Github Pages](https://onyimatics.github.io/Banka/)
 
-[Pivotal Tracker](https://www.pivotaltracker.com/n/projects/2320392)
+View Project Management: [Pivotal Tracker](https://www.pivotaltracker.com/n/projects/2320392)
+
+Deployed to Heroku: [Heroku](https://bankaapp.herokuapp.com/)
+
+- ### Technology Stack
+1. HTML & CSS
+2. Javascript
 
 ## Required Features
 
@@ -47,48 +54,56 @@ Preview UI templates : [Github Pages](https://onyimatics.github.io/Banka/)
 13. `User can reset password.`
 14. `User can upload a photo to their profile.`
 
-## Technology Stack
-**UI & Templates**
-1. HTML & CSS
-2. Javascript
-
-**Server Side**
-
-**Client Side**
-1. Javascript
 
 # Installing
 
-#### *Prerequisites*
+#### Prerequisites
 
 Ensure you have **NodeJS** installed by entering `node -v` on your terminal.
 If you don't have **NodeJS** installed, go to the [NodeJS Website](http://nodejs.org),  and follow the download instructions
 
 To install this app
 
-`
+- `
 git clone https://github.com/Onyimatics/Banka.git
 `
 
-And install the required dependencies 
+- To  install all the required dependencies, on your terminal run
 
-`
-npm install
-`
+`npm install` 
 
-Run server
+- To run server,
 
-`
-npm run start:dev
-`
+`npm run start:dev`
 
-Server listens on port `3000`
+- Server listens on port `3000`
 
 ## Running the tests
 
-To run test cases
+- To run test cases
 
 `
 npm run test
 `
+# Working Routes
 
+ ## *API Endpoints*
+|Endpoint                                           | Functionality                     |HTTP method 
+|---------------------------------------------------|:-----------------------------------:|-------------:
+|/api/v1/                                |Welcome to Banka API        |POST
+|/api/v1/auth/signup                               |Sign up a new user         |POST
+|/api/v1/auth/signin                               |Sign in an existing user        |POST 
+|/api/v1/accounts                               |Create bank account        |POST 
+|/api/v1/accounts/*account-number*                    |Admin/Staff can activate or deactivate an account|PATCH
+|/api/v1/transactions/*account-number*             |Admin/Staff can delete an account             |DELETE
+|/api/v1/transactions/*account-number*/debit             |Staff (cashier) can credit an account              |POST
+|/api/v1/transactions/*account-number*/credit              |Staff (cashier) can debit an account     |POST
+
+## Acknowledgments :
+
+- [Andela Home Study](https://homestudy.andela.com/)
+- [Google Search](https://google.com)
+- [MDN](https://developer.mozilla.org/en-US/)
+- [w3schools](https://www.w3schools.com/)
+- [Devdocs](https://devdocs.io/)
+- [Stackoverflow](stackoverflow.com)
