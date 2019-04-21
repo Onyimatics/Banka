@@ -1,5 +1,5 @@
 import response from '../helper/response/index';
-import users from '../model/users';
+// import users from '../model/users';
 import TokenManager from '../helper/tokenManager';
 import PasswordManager from '../helper/passwordManager';
 import pool from '../db/config';
@@ -51,7 +51,7 @@ class UserController {
   }
 
   // login controller
-  static signin(req, res) {
+  static async signin(req, res) {
     /**
      * @static
      * @description Allow a user to signin
@@ -61,27 +61,31 @@ class UserController {
      * @memberof UserControllers
      */
     const { email, password } = req.body;
-
-    const userDetails = users.find(user => user.email === email);
-    if (!userDetails) {
-      response(res, 400, 'Invalid Password or Email');
+    let userDetails; let isPasswordValid;
+    try {
+      userDetails = await pool.query('select * from users where email = $1', [email]);
+      if (!userDetails.rows[0]) {
+        return response(res, 400, 'Invalid Password or Email');
+      }
+      isPasswordValid = PasswordManager.verifyPassword(password, userDetails.rows[0].password);
+    } catch (error) {
+      return response(res, 500, 'Server error');
     }
-    const {
-      id, firstName, lastName, password: hashPassword,
-    } = userDetails;
 
-    const isPasswordValid = PasswordManager.verifyPassword(password, hashPassword);
+    const {
+      id, firstName, lastName,
+    } = userDetails.rows[0];
 
     if (isPasswordValid) {
       const token = TokenManager.sign({ id });
       // eslint-disable-next-line dot-notation
       // userDetails['token'] = token;
-      response(res, 200, 'Successfully signed in', {
+      return response(res, 200, 'Successfully signed in', {
         id, firstName, lastName, email, token,
       });
-    } else {
-      response(res, 400, 'Invalid Password or Email');
     }
+
+    return response(res, 400, 'Invalid Password or Email');
   }
 }
 export default UserController;

@@ -7,6 +7,7 @@
     "create": "babel-node server/db/create-table",
     "drop": "babel-node server/db/drop-table",
     "test": "cross-env NODE_ENV=test nyc --require @babel/register  mocha server/spec --exit",
+    "testdev": "npm run drop & npm run drop && npm run create && cross-env NODE_ENV=test nyc --require @babel/register  mocha server/spec --exit",
     "start": "rimraf dist/ && babel  ./server -d dist && node dist/app.js",
     "start:dev": "nodemon --exec babel-node server/app.js",
     "coverage": "nyc report --reporter=text-lcov | coveralls",

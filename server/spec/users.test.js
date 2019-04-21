@@ -53,14 +53,14 @@ describe('POST/auth signup', () => {
     chai.request(app)
       .post(signupUrl)
       .send({
-        firstName: 'Blessing',
-        lastName: 'Onwughara',
-        password: 'Blessing',
+        firstName: 'Abraham',
+        lastName: 'Ibrahim',
+        password: 'Abraham',
       })
       .end((err, res) => {
         expect(res.body).to.be.an('object');
         expect(res.body.status).to.equal(400);
-        expect(res.body.message).to.equal('Enter valid email, firstName & lastName.');
+        expect(res.body.message).to.equal('Enter a valid email.');
         done();
       });
   });
@@ -77,7 +77,7 @@ describe('POST/auth signup', () => {
       .end((err, res) => {
         expect(res.body).to.be.an('object');
         expect(res.body.status).to.equal(400);
-        expect(res.body.message).to.equal('Enter valid email, firstName & lastName.');
+        expect(res.body.message).to.equal('Enter a valid firstName.');
         done();
       });
   });
@@ -93,7 +93,7 @@ describe('POST/auth signup', () => {
       .end((err, res) => {
         expect(res.body).to.be.an('object');
         expect(res.body.status).to.equal(400);
-        expect(res.body.message).to.equal('Enter valid email, firstName & lastName.');
+        expect(res.body.message).to.equal('Enter a valid lastName.');
         done();
       });
   });
@@ -133,7 +133,7 @@ describe('POST/auth signup', () => {
       chai.request(app)
         .post(signinUrl)
         .send({
-          email: 'mercyjohnson@gmail.com',
+          email: 'emekaike@gmail.com',
           password: '123456789',
         })
         .end((err, res) => {
