@@ -2,6 +2,7 @@ import response from '../helper/response/index';
 import users from '../model/users';
 import TokenManager from '../helper/tokenManager';
 import PasswordManager from '../helper/passwordManager';
+import pool from '../db/config';
 
 class UserController {
   /**
@@ -23,28 +24,30 @@ class UserController {
     const {
       firstName, lastName, email, password,
     } = req.body;
-    const hashPassword = await PasswordManager.hashPassword(password);
-    const userDetails = users.find(user => user.email === email);
-    if (userDetails) {
-      response(res, 409, 'Email already in use');
-    } else {
-      const newUser = {
-        id: users.length + 1,
+    let newUser;
+    try {
+      const hashPassword = await PasswordManager.hashPassword(password);
+      const userDetails = await pool.query('select * from users where email = $1', [email]);
+
+      if (userDetails.rows[0]) {
+        return response(res, 409, 'Email already in use');
+      }
+      newUser = await pool.query('insert into users (firstName, lastName, email, password, type, isAdmin) values ($1, $2, $3, $4, $5, $6) returning id', [
         firstName,
         lastName,
         email,
-        password: hashPassword,
-        type: 'client',
-        isAdmin: false,
-      };
-      const token = TokenManager.sign(newUser);
-      newUser.token = token;
-      users.push(newUser);
-      const { id } = newUser;
-      response(res, 201, 'Successfully created a new user account', {
-        id, firstName, lastName, email, token,
-      });
+        hashPassword,
+        'client',
+        'false',
+      ]);
+    } catch (error) {
+      return response(res, 500, 'Server error');
     }
+    const { id } = newUser.rows[0];
+    const token = TokenManager.sign({ id });
+    return response(res, 201, 'Successfully created a new user account', {
+      id, firstName, lastName, email, token,
+    });
   }
 
   // login controller
