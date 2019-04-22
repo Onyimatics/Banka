@@ -1,6 +1,7 @@
+/* eslint-disable prefer-destructuring */
 import TokenManager from '../../helper/tokenManager/index';
 import response from '../../helper/response/index';
-import users from '../../model/users';
+import pool from '../../db/config';
 /**
  * @class AuthMiddleware
  * @description class contains function for implementing Authentication middleware
@@ -24,7 +25,7 @@ class AuthMiddleware {
       const token = authorization;
       const decoded = await TokenManager.verify(token);
       if (decoded) {
-        req.user = decoded;
+        req.body.userid = decoded.id;
         return next();
       }
     } catch (error) {
@@ -37,13 +38,15 @@ class AuthMiddleware {
   }
 
   static async checkUserById(req, res, next) {
-    const { id } = req.user;
-    const userDetails = users.find(user => user.id === Number(id));
-    if (!userDetails) {
-      return response(res, 404, 'User account not found', null);
+    try {
+      const userDetails = await pool.query('select * from users where id = $1', [req.body.userid]);
+      if (!userDetails.rows[0]) {
+        return response(res, 404, 'User account not found');
+      }
+      req.customer = userDetails.rows[0];
+    } catch (error) {
+      return response(res, 500, 'Server error');
     }
-    // delete userDetails.password;
-    req.customer = userDetails;
     return next();
   }
 }

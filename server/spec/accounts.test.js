@@ -1,77 +1,78 @@
-// import chai from 'chai';
-// import chaihttp from 'chai-http';
-// import app from '../app';
+import chai from 'chai';
+import chaihttp from 'chai-http';
+import app from '../app';
 
-// const { expect } = chai;
-// chai.use(chaihttp);
+const { expect } = chai;
+chai.use(chaihttp);
 
-// describe('POST /api/v1/accounts', () => {
-//   const user = {
-//     email: 'markzuckerberg@gmail.com',
-//     password: '123456789',
-//   };
-//   const user2 = {
-//     email: 'eberechebere@gmail.com',
-//     password: '123456789',
-//   };
+describe('POST /api/v1/accounts', () => {
+  const user = {
+    email: 'johndumelo@gmail.com',
+    password: '123456789',
+  };
+  const user2 = {
+    email: 'eberechebere@gmail.com',
+    password: '123456789',
+  };
 
-//   let userToken;
-//   before((done) => {
-//     chai.request(app)
-//       .post('/api/v1/auth/signin')
-//       .send(user)
-//       .end((err, res) => {
-//         userToken = res.body.data.token;
-//         done();
-//       });
-//   });
+  let userToken;
+  before((done) => {
+    chai.request(app)
+      .post('/api/v1/auth/signin')
+      .send(user)
+      .end((err, res) => {
+        userToken = res.body.data.token;
+        done();
+      });
+  });
 
 
-//   it('should successfully create an account', (done) => {
-//     const create = {
-//       type: 'savings',
-//     };
-//     chai.request(app)
-//       .post('/api/v1/accounts')
-//       .set('authorization', userToken)
-//       .send(create)
-//       .end((err, res) => {
-//         expect(res.body.status).to.equal(201);
-//         expect(res.body.message).to.equal('Successfully created a new bank account');
-//         done();
-//       });
-//   });
+  it('should successfully create an account', (done) => {
+    const create = {
+      type: 'savings',
+      openingBalance: '1000.00',
+    };
+    chai.request(app)
+      .post('/api/v1/accounts')
+      .set('authorization', userToken)
+      .send(create)
+      .end((err, res) => {
+        expect(res.body.status).to.equal(201);
+        expect(res.body.message).to.equal('Successfully created a new bank account');
+        done();
+      });
+  });
 
-//   it('should not create account if account type is not specified', (done) => {
-//     const create = {
-//       type: '',
-//     };
-//     chai.request(app)
-//       .post('/api/v1/accounts')
-//       .set('authorization', userToken)
-//       .send(create, user2)
-//       .end((err, res) => {
-//         expect(res.body.status).to.equal(400);
-//         expect(res.body.message).to.equal('Invalid account type');
-//         done();
-//       });
-//   });
+  it('should not create account if account type is not specified', (done) => {
+    const create = {
+      type: '',
+    };
+    chai.request(app)
+      .post('/api/v1/accounts')
+      .set('authorization', userToken)
+      .send(create, user2)
+      .end((err, res) => {
+        expect(res.body.status).to.equal(400);
+        expect(res.body.message).to.equal('Enter a valid account type');
+        done();
+      });
+  });
 
-//   it('should not create account if account type is not valid', (done) => {
-//     const create = {
-//       type: 'savin',
-//     };
-//     chai.request(app)
-//       .post('/api/v1/accounts')
-//       .set('authorization', userToken)
-//       .send(create, user2)
-//       .end((err, res) => {
-//         expect(res.body.status).to.equal(400);
-//         expect(res.body.message).to.equal('Invalid account type');
-//         done();
-//       });
-//   });
-// });
+  it('should not create account if account type is not valid', (done) => {
+    const create = {
+      type: 'savin',
+    };
+    chai.request(app)
+      .post('/api/v1/accounts')
+      .set('authorization', userToken)
+      .send(create, user2)
+      .end((err, res) => {
+        expect(res.body.status).to.equal(400);
+        expect(res.body.message).to.equal('Enter a valid account type');
+        done();
+      });
+  });
+});
 
 // describe('PATCH /api/v1/accounts', () => {
 //   const staff = {
