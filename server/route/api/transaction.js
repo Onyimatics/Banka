@@ -17,10 +17,10 @@ transactionRoutes.post('/:accountNumber/debit',
   AccountValidation.checkAmount,
   TransactionController.debitAccount);
 
-// transactionRoutes.post('/:accountNumber/credit',
-//   AuthMiddleware.checkIfUserIsAuthenticated,
-//   AccountValidation.checkIfAccountExist,
-//   AccountValidation.adminChecker,
-//   AccountValidation.checkAmount,
-//   TransactionController.creditAccount);
+transactionRoutes.post('/:accountNumber/credit',
+  AuthMiddleware.checkIfUserIsAuthenticated,
+  AccountValidation.checkIfAccountExist,
+  AccountValidation.adminChecker,
+  AccountValidation.checkAmount,
+  TransactionController.creditAccount);
 export default transactionRoutes;
