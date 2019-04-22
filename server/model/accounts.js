@@ -18,7 +18,7 @@ const accounts = [
     accountNumber: 1102345677,
     owner: 2, //
     type: '\'current\'', // \'savings\', \'current\'
-    status: '\'active\'', // draft, \'active\', or dormant
+    status: '\'dormant\'', // draft, \'active\', or dormant
     balance: 100000.00,
   },
 ];

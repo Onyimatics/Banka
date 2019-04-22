@@ -107,7 +107,6 @@ describe('PATCH /api/v1/accounts', () => {
   });
 
   it('should successfully activate or deactivate an account', (done) => {
-
     chai.request(app)
       .patch('/api/v1/accounts/1102345679')
       .set('authorization', adminToken)
