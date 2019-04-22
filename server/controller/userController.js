@@ -44,7 +44,7 @@ class UserController {
       return response(res, 500, 'Server error');
     }
     const { id } = newUser.rows[0];
-    const token = TokenManager.sign({ id });
+    const token = TokenManager.sign({ id, type: 'client', isAdmin: false });
     return response(res, 201, 'Successfully created a new user account', {
       id, firstName, lastName, email, token,
     });
@@ -73,11 +73,11 @@ class UserController {
     }
 
     const {
-      id, firstName, lastName,
+      id, firstName, lastName, type, isAdmin,
     } = userDetails.rows[0];
 
     if (isPasswordValid) {
-      const token = TokenManager.sign({ id });
+      const token = TokenManager.sign({ id, type, isAdmin });
       // eslint-disable-next-line dot-notation
       // userDetails['token'] = token;
       return response(res, 200, 'Successfully signed in', {
