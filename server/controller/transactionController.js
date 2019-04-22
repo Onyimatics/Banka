@@ -47,5 +47,47 @@ class TransactionController {
     }
     return response(res, 403, 'Insufficient fund');
   }
+
+  /**
+    * @static
+    * @description Allows Staff credit an account
+    * @param {object} req - Request object
+    * @param {object} res - Response object
+    * @returns {object} Json
+    * @memberof TransactionController
+    */
+
+  static async creditAccount(req, res) {
+    const {
+      accountDetails,
+      body: { amount },
+      userDetails: { id },
+      params: { accountNumber },
+    } = req;
+    if (accountDetails.status !== 'active') {
+      return response(res, 400, 'Account is currently dormant');
+    }
+    try {
+      const { balance: oldBalance } = accountDetails;
+      const newBalance = Number(oldBalance) + Number(amount);
+      const newTransactions = {
+        type: '\'credit\'',
+        accountNumber,
+        cashier: id,
+        amount,
+        oldBalance,
+        newBalance,
+      };
+      const query = `WITH transactions AS (
+        update accounts set balance = ${newBalance} where accountnumber = ${accountNumber}  
+        )
+        insert into transactions(type, accountnumber, cashier, amount, oldbalance,newbalance) values (${[...Object.values(newTransactions)]}) returning *
+        `;
+      const transaction = await pool.query(query);
+      return response(res, 200, 'Account has been successfully credited', transaction.rows[0]);
+    } catch (error) {
+      return response(res, 500, 'Server error');
+    }
+  }
 }
 export default TransactionController;

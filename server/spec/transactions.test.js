@@ -83,50 +83,50 @@ describe('POST /api/v1/transactions/:accountNumber/debit', () => {
   });
 });
 
-// describe('POST /api/v1/transactions/:accountNumber/credit', () => {
-//   const staff = {
-//     email: 'johndumelo@gmail.com',
-//     password: '123456789',
-//   };
+describe('POST /api/v1/transactions/:accountNumber/credit', () => {
+  const staff = {
+    email: 'johndumelo@gmail.com',
+    password: '123456789',
+  };
 
-//   let staffToken;
-//   before((done) => {
-//     chai.request(app)
-//       .post('/api/v1/auth/signin')
-//       .send(staff)
-//       .end((err, res) => {
-//         staffToken = res.body.data.token;
-//         done();
-//       });
-//   });
+  let staffToken;
+  before((done) => {
+    chai.request(app)
+      .post('/api/v1/auth/signin')
+      .send(staff)
+      .end((err, res) => {
+        staffToken = res.body.data.token;
+        done();
+      });
+  });
 
-//   it('should successfully credit an account', (done) => {
-//     const debit = {
-//       amount: '10000',
-//     };
-//     chai.request(app)
-//       .post('/api/v1/transactions/9401235678/credit')
-//       .set('authorization', staffToken)
-//       .send(debit)
-//       .end((err, res) => {
-//         expect(res.body.status).to.equal(200);
-//         expect(res.body.message).to.equal('Successfully credited an account');
-//         done();
-//       });
-//   });
+  it('should successfully credit an account', (done) => {
+    const debit = {
+      amount: '10000',
+    };
+    chai.request(app)
+      .post('/api/v1/transactions/1102345678/credit')
+      .set('authorization', staffToken)
+      .send(debit)
+      .end((err, res) => {
+        expect(res.body.status).to.equal(200);
+        expect(res.body.message).to.equal('Account has been successfully credited');
+        done();
+      });
+  });
 
-//   it('should not credit an account if account status is dormant', (done) => {
-//     const debitss = {
-//       amount: '10000',
-//     };
-//     chai.request(app)
-//       .post('/api/v1/transactions/9801234567/credit')
-//       .set('authorization', staffToken)
-//       .send(debitss)
-//       .end((err, res) => {
-//         expect(res.body.status).to.equal(400);
-//         expect(res.body.message).to.equal('Account is currently dormant');
-//         done();
-//       });
-//   });
-// });
+  it('should not credit an account if account status is dormant', (done) => {
+    const debitss = {
+      amount: '10000',
+    };
+    chai.request(app)
+      .post('/api/v1/transactions/1102345677/credit')
+      .set('authorization', staffToken)
+      .send(debitss)
+      .end((err, res) => {
+        expect(res.body.status).to.equal(400);
+        expect(res.body.message).to.equal('Account is currently dormant');
+        done();
+      });
+  });
+});
