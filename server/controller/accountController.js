@@ -61,5 +61,23 @@ class AccountController {
       return response(res, 500, 'Server error');
     }
   }
+
+  /**
+  * @static
+  * @description Allow Admin/Staff to delete an account
+  * @param {object} req - Request object
+  * @param {object} res - Response object
+  * @returns {object} Json
+  * @memberof AccountController
+  */
+  static async deleteAccount(req, res) {
+    try {
+      const { params: { accountNumber } } = req;
+      await pool.query('delete from accounts where accountnumber = $1;', [accountNumber]);
+      return response(res, 200, 'Account successfully deleted');
+    } catch (error) {
+      return response(res, 500, 'Server error');
+    }
+  }
 }
 export default AccountController;

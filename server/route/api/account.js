@@ -22,11 +22,11 @@ accountRoutes.patch('/:accountNumber',
   AccountValidation.checkIfAccountExist,
   AccountController.updateAccountStatus);
 
-// accountRoutes.delete('/:accountNumber',
-//   AuthMiddleware.checkIfUserIsAuthenticated,
-//   AccountValidation.staffChecker,
-//   AccountValidation.checkIfAccountExist,
-//   AccountController.deleteAccount);
+accountRoutes.delete('/:accountNumber',
+  AuthMiddleware.checkIfUserIsAuthenticated,
+  AccountValidation.staffChecker,
+  AccountValidation.checkIfAccountExist,
+  AccountController.deleteAccount);
 
 
 export default accountRoutes;
