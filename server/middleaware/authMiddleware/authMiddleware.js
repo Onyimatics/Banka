@@ -25,7 +25,7 @@ class AuthMiddleware {
       const token = authorization;
       const decoded = await TokenManager.verify(token);
       if (decoded) {
-        req.body.userid = decoded.id;
+        req.userDetails = decoded;
         return next();
       }
     } catch (error) {
@@ -39,7 +39,7 @@ class AuthMiddleware {
 
   static async checkUserById(req, res, next) {
     try {
-      const userDetails = await pool.query('select * from users where id = $1', [req.body.userid]);
+      const userDetails = await pool.query('select * from users where id = $1', [req.userDetails.id]);
       if (!userDetails.rows[0]) {
         return response(res, 404, 'User account not found');
       }

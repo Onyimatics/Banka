@@ -1,4 +1,5 @@
-import accounts from '../model/accounts';
+/* eslint-disable max-len */
+
 import response from '../helper/response/index';
 import pool from '../db/config';
 
@@ -12,7 +13,7 @@ class AccountController {
     * @memberof AccountController
     */
   static async createAccount(req, res) {
-    const { type, openingBalance, userid } = req.body;
+    const { body: { type, openingBalance }, userDetails: { id: userid } } = req;
     let accountDetails;
     if (!type) { return response(res, 400, 'Enter a valid account type'); }
 
@@ -37,7 +38,7 @@ class AccountController {
   }
 
 
-  static updateAccountStatus(req, res) {
+  static async updateAccountStatus(req, res) {
     /**
     * @static
     * @description Allow Admin/Staff to activate or deactivate an account
@@ -46,38 +47,19 @@ class AccountController {
     * @returns {object} Json
     * @memberof AccountController
     */
-    const { accountDetails, accountStatus } = req;
-    const { status } = req.body;
-
-    if (accountStatus === status) {
-      return response(res, 304, 'Not modified', accountDetails);
+    const { accountDetails } = req;
+    const { accountNumber } = req.params;
+    try {
+      const { status } = accountDetails;
+      if (status === 'active') {
+        await pool.query('update accounts set status = $1 where accountnumber = $2;', ['dormant', accountNumber]);
+        return response(res, 200, 'Account successfully deactivated');
+      }
+      await pool.query('update accounts set status = $1 where accountnumber = $2;', ['active', accountNumber]);
+      return response(res, 200, 'Account successfully activated');
+    } catch (error) {
+      return response(res, 500, 'Server error');
     }
-
-
-    const accountIndex = accounts.indexOf(accountDetails);
-    accountDetails.status = status;
-    accounts[accountIndex] = accountDetails;
-    const { accountNumber } = accountDetails;
-    return response(res, 200, 'Successfully updated an account status', { accountNumber, status });
-  }
-
-  static deleteAccount(req, res) {
-    /**
-    * @static
-    * @description Allow Admin/Staff to delete an account
-    * @param {object} req - Request object
-    * @param {object} res - Response object
-    * @returns {object} Json
-    * @memberof AccountController
-    */
-    const { accountDetails, accountExist } = req;
-    if (accountExist === 0) {
-      return response(res, 404, 'Account not found');
-    }
-    // eslint-disable-next-line max-len
-    const index = accounts.findIndex(account => account.accountNumber === Number(accountDetails.accountNumber));
-    accounts.splice(index, 1);
-    return response(res, 200, 'Account successfully deleted');
   }
 }
 export default AccountController;
