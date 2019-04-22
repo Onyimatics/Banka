@@ -1,10 +1,9 @@
 import accounts from '../model/accounts';
 import response from '../helper/response/index';
-import AccountGenerator from '../helper/accountGenerator/accountGenerator';
+import pool from '../db/config';
 
 class AccountController {
-  static createAccount(req, res) {
-    /**
+  /**
     * @static
     * @description Allow a user to create bank account
     * @param {object} req - Request object
@@ -12,31 +11,29 @@ class AccountController {
     * @returns {object} Json
     * @memberof AccountController
     */
-    const {
-      email, firstName, lastName,
-    } = req.customer;
-    const { type, id } = req.body;
-    if (type) {
-      const accountNumber = AccountGenerator.accountGenerator();
-      const newAccount = {
-        id: accounts.length + 1,
-        accountNumber,
-        createdOn: new Date(),
-        owner: id,
-        type,
-        status: 'draft',
-        balance: 0,
-      };
+  static async createAccount(req, res) {
+    const { type, openingBalance, userid } = req.body;
+    let accountDetails;
+    if (!type) { return response(res, 400, 'Enter a valid account type'); }
 
-      const createdOn = new Date().getTime();
-      // accounts = [...accounts, newAccount];
-      accounts.push(newAccount);
-      const { balance } = newAccount;
-      return response(res, 201, 'Successfully created a new bank account', {
-        accountNumber, firstName, lastName, createdOn, email, type, openingBalance: balance,
-      });
+    try {
+      const lastAccNum = await pool.query('SELECT accountnumber FROM accounts ORDER BY accountnumber DESC LIMIT 1;');
+      const { accountnumber } = lastAccNum.rows[0];
+      accountDetails = await pool.query('insert into accounts (accountnumber, owner, type, status, balance) values ($1, $2, $3, $4, $5) returning *', [
+        accountnumber + 1,
+        userid,
+        type,
+        'active',
+        openingBalance,
+      ]);
+    } catch (error) {
+      return response(res, 500, 'Server error');
     }
-    return response(res, 400, 'Enter a valid account type', null);
+    const { accountnumber, balance } = accountDetails.rows[0];
+    const { firstname, lastname, email } = req.customer;
+    return response(res, 201, 'Successfully created a new bank account', {
+      accountNumber: accountnumber, firstName: firstname, lastName: lastname, email, type, openingBalance: balance,
+    });
   }
 
 

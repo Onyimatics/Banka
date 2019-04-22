@@ -52,7 +52,7 @@ class AccountValidation {
     const { type } = req.body;
     const validate = RegularExpression.validate();
     if (!validate.accountType.test(type)) {
-      return response(res, 400, 'Invalid account type');
+      return response(res, 400, 'Enter a valid account type');
     }
     return next();
   }
