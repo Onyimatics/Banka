@@ -1,3 +1,4 @@
+/* eslint-disable no-await-in-loop */
 import pool from './config';
 import transactions from '../model/transactions';
 import accounts from '../model/accounts';
@@ -48,7 +49,7 @@ const create = async (arr, table) => {
       const values = Object.values(arr[i]);
       const keys = Object.keys(arr[i]);
       const query = `INSERT into ${table} (${keys}) values(${values})`;
-      queryDb(query);
+      await queryDb(query);
     }
   } catch (error) {
     console.log(error);

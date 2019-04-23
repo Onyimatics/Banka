@@ -1,3 +1,4 @@
+// eslint-disable-next-line no-console
 import express from 'express';
 import bodyparser from 'body-parser';
 import routes from './route/index';
@@ -5,7 +6,7 @@ import routes from './route/index';
 const app = express();
 app.use(bodyparser.json());
 app.use(bodyparser.urlencoded({ extended: true }));
-app.use('/api/v1/', routes);
+app.use('/api/v2/', routes);
 
 app.get('/', (req, res) => {
   res.status(200).json({
@@ -22,7 +23,6 @@ app.all('*', (req, res) => {
 
 const port = process.env.PORT || 3001;
 app.listen(port, () => {
-// eslint-disable-next-line no-console
   console.log(`App is running on ${port}`);
 });
 

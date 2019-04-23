@@ -1,19 +1,18 @@
+// eslint-disable-next-line dot-notation
 import response from '../helper/response/index';
-// import users from '../model/users';
 import TokenManager from '../helper/tokenManager';
 import PasswordManager from '../helper/passwordManager';
 import pool from '../db/config';
 
-class UserController {
-  /**
+/**
    * @class
    * @description UserController
    * @param {object} req - Request object
    * @param {object} res - Response object
    * @returns {object} Json
    */
-  static async register(req, res) {
-    /**
+class UserController {
+  /**
    * @static
    * @description Allow a user to signup
    * @param {object} req - Request object
@@ -21,6 +20,7 @@ class UserController {
    * @returns {object} Json
    * @memberof UserControllers
    */
+  static async register(req, res) {
     const {
       firstName, lastName, email, password,
     } = req.body;
@@ -52,14 +52,6 @@ class UserController {
 
   // login controller
   static async signin(req, res) {
-    /**
-     * @static
-     * @description Allow a user to signin
-     * @param {object} req - Request object
-     * @param {object} res - Response object
-     * @returns {object} Json
-     * @memberof UserControllers
-     */
     const { email, password } = req.body;
     let userDetails; let isPasswordValid;
     try {
@@ -78,8 +70,6 @@ class UserController {
 
     if (isPasswordValid) {
       const token = TokenManager.sign({ id, type, isAdmin });
-      // eslint-disable-next-line dot-notation
-      // userDetails['token'] = token;
       return response(res, 200, 'Successfully signed in', {
         id, firstName, lastName, email, token,
       });
@@ -88,4 +78,5 @@ class UserController {
     return response(res, 400, 'Invalid Password or Email');
   }
 }
+
 export default UserController;

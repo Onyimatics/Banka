@@ -2,8 +2,6 @@
 /* eslint-disable no-unused-vars */
 /* eslint-disable max-len */
 /* eslint-disable no-unused-expressions */
-// import accounts from '../../model/accounts';
-import users from '../../model/users';
 import response from '../../helper/response/index';
 import RegularExpression from './regularExpressions';
 import pool from '../../db/config';

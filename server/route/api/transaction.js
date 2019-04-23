@@ -7,6 +7,7 @@ import AccountValidation from '../../middleaware/validation/accountValidation';
 // helpers
 import AuthMiddleware from '../../middleaware/authMiddleware/authMiddleware';
 
+
 // account routes
 const transactionRoutes = Router();
 
@@ -23,4 +24,6 @@ transactionRoutes.post('/:accountNumber/credit',
   AccountValidation.adminChecker,
   AccountValidation.checkAmount,
   TransactionController.creditAccount);
+
+
 export default transactionRoutes;
