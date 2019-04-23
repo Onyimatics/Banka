@@ -2,10 +2,12 @@ import { Router } from 'express';
 
 // controllers
 import TransactionController from '../../controller/transactionController';
-import AccountValidation from '../../middleaware/validation/accountValidation';
+
 
 // helpers
 import AuthMiddleware from '../../middleaware/authMiddleware/authMiddleware';
+import DoValidation from '../../middleaware/validation/dovalidation';
+import AccountValidation from '../../middleaware/validation/accountValidation';
 
 
 // account routes
@@ -25,5 +27,8 @@ transactionRoutes.post('/:accountNumber/credit',
   AccountValidation.checkAmount,
   TransactionController.creditAccount);
 
-
+transactionRoutes.get('/:id',
+  AuthMiddleware.checkIfUserIsAuthenticated,
+  DoValidation.id,
+  TransactionController.getSpecificTransaction);
 export default transactionRoutes;

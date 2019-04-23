@@ -89,6 +89,28 @@ class TransactionController {
       return response(res, 500, 'Server error');
     }
   }
+
+  static async getSpecificTransaction(req, res) {
+    try {
+      const { params: { id } } = req;
+      const transaction = await pool.query('select * from transactions where id = $1', [id]);
+      const {
+        createdon, type, accountnumber, amount, oldbalance, newbalance,
+      } = transaction.rows[0];
+      const data = {
+        transactionId: id,
+        createdOn: createdon,
+        type,
+        accountNumber: accountnumber,
+        amount,
+        oldBalance: oldbalance,
+        newBalance: newbalance,
+      };
+      return response(res, 200, 'Ok', data);
+    } catch (error) {
+      return response(res, 500, 'Server error');
+    }
+  }
 }
 
 export default TransactionController;
