@@ -130,3 +130,33 @@ describe('POST /api/v2/transactions/:accountNumber/credit', () => {
       });
   });
 });
+
+describe('GET /api/v2/transactions/:id>', () => {
+  const staff = {
+    email: 'emekaike@gmail.com',
+    password: '123456789',
+  };
+
+  let staffToken;
+  before((done) => {
+    chai.request(app)
+      .post('/api/v2/auth/signin')
+      .send(staff)
+      .end((err, res) => {
+        staffToken = res.body.data.token;
+        done();
+      });
+  });
+
+  it('should successfully get a specific transaction', (done) => {
+    chai.request(app)
+      .get('/api/v2/transactions/1')
+      .set('authorization', staffToken)
+      .end((err, res) => {
+        expect(res.body.status).to.equal(200);
+        expect(res.body.data).to.not.equal(null);
+        expect(res.body.message).to.equal('Ok');
+        done();
+      });
+  });
+});
