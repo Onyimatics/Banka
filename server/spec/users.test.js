@@ -5,7 +5,7 @@ import app from '../app';
 
 const { expect } = chai;
 chai.use(chaihttp);
-const signupUrl = '/api/v1/auth/signup';
+const signupUrl = '/api/v2/auth/signup';
 
 describe('POST/auth signup', () => {
   it('should signup a non existing user(client)', (done) => {
@@ -115,7 +115,7 @@ describe('POST/auth signup', () => {
 
   // Signin Test
   describe('POST/auth signin', () => {
-    const signinUrl = '/api/v1/auth/signin';
+    const signinUrl = '/api/v2/auth/signin';
     it('should signin an existing user(Admin)', (done) => {
       chai.request(app)
         .post(signinUrl)

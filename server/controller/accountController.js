@@ -79,5 +79,37 @@ class AccountController {
       return response(res, 500, 'Server error');
     }
   }
+
+  /**
+    * @static
+    * @description Allows users to get all accounts for a user
+    * @param {object} req - Request object
+    * @param {object} res - Response object
+    * @returns {object} Json
+    * @memberof AccountController
+    */
+  static async getAccountTransactions(req, res) {
+    try {
+      const { params: { accountNumber } } = req;
+      const transactions = await pool.query('select * from transactions where accountnumber = $1', [accountNumber]);
+      const data = transactions.rows.map((transaction) => {
+        const {
+          id, createdon, type, accountnumber, amount, oldbalance, newbalance,
+        } = transaction;
+        return {
+          transactionId: id,
+          createdOn: createdon,
+          type,
+          accountNumber: accountnumber,
+          amount,
+          oldBalance: oldbalance,
+          newBalance: newbalance,
+        };
+      });
+      return response(res, 200, 'Ok', data);
+    } catch (error) {
+      return response(res, 500, 'Server error');
+    }
+  }
 }
 export default AccountController;

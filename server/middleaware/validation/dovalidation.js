@@ -4,7 +4,9 @@ import RegularExpression from './regularExpressions';
 
 class DoValidation {
   static email(req, res, next) {
-    const { email } = req.body;
+    let { email } = req.body;
+    // eslint-disable-next-line prefer-destructuring
+    if (!email) { email = req.params.email; }
     const validate = RegularExpression.validate();
     if (!validate.email.test(email)) {
       return response(res, 400, ValidationMessages.email);
@@ -32,14 +34,23 @@ class DoValidation {
     return next();
   }
 
-  // static accountNumber(req, res, next) {
-  //   const { accountNumber } = req.body;
-  //   const validate = RegularExpression.validate();
-  //   if (!validate.accountNumber.test(accountNumber)) {
-  //     return response(res, 400, ValidationMessages.accountNumber);
-  //   }
-  //   return next();
-  // }
+  static accountNumber(req, res, next) {
+    const { accountNumber } = req.params;
+    const validate = RegularExpression.validate();
+    if (!validate.accountNumber.test(accountNumber)) {
+      return response(res, 400, ValidationMessages.accountNumber);
+    }
+    return next();
+  }
+
+  static id(req, res, next) {
+    const { id } = req.params;
+    const validate = RegularExpression.validate();
+    if (!validate.accountNumber.test(id)) {
+      return response(res, 400, ValidationMessages.id);
+    }
+    return next();
+  }
 }
 
 export default DoValidation;

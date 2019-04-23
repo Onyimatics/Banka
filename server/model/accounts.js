@@ -21,6 +21,14 @@ const accounts = [
     status: '\'dormant\'', // draft, \'active\', or dormant
     balance: 100000.00,
   },
+  {
+    accountNumber: 1102345685,
+    owner: 5, //
+    type: '\'current\'', // \'savings\', \'current\'
+    status: '\'active\'', // draft, \'active\', or dormant
+    balance: 100000.00,
+  },
+
 ];
 
 export default accounts;

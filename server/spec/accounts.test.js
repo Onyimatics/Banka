@@ -5,7 +5,7 @@ import app from '../app';
 const { expect } = chai;
 chai.use(chaihttp);
 
-describe('POST /api/v1/accounts', () => {
+describe('POST /api/v2/accounts', () => {
   const user = {
     email: 'johndumelo@gmail.com',
     password: '123456789',
@@ -18,7 +18,7 @@ describe('POST /api/v1/accounts', () => {
   let userToken;
   before((done) => {
     chai.request(app)
-      .post('/api/v1/auth/signin')
+      .post('/api/v2/auth/signin')
       .send(user)
       .end((err, res) => {
         userToken = res.body.data.token;
@@ -33,7 +33,7 @@ describe('POST /api/v1/accounts', () => {
       openingBalance: '1000.00',
     };
     chai.request(app)
-      .post('/api/v1/accounts')
+      .post('/api/v2/accounts')
       .set('authorization', userToken)
       .send(create)
       .end((err, res) => {
@@ -48,7 +48,7 @@ describe('POST /api/v1/accounts', () => {
       type: '',
     };
     chai.request(app)
-      .post('/api/v1/accounts')
+      .post('/api/v2/accounts')
       .set('authorization', userToken)
       .send(create, user2)
       .end((err, res) => {
@@ -63,7 +63,7 @@ describe('POST /api/v1/accounts', () => {
       type: 'savin',
     };
     chai.request(app)
-      .post('/api/v1/accounts')
+      .post('/api/v2/accounts')
       .set('authorization', userToken)
       .send(create, user2)
       .end((err, res) => {
@@ -74,7 +74,7 @@ describe('POST /api/v1/accounts', () => {
   });
 });
 
-describe('PATCH /api/v1/accounts', () => {
+describe('PATCH /api/v2/accounts', () => {
   const staff = {
     email: 'emekaike@gmail.com',
     password: '123456789',
@@ -87,7 +87,7 @@ describe('PATCH /api/v1/accounts', () => {
   let adminToken;
   before((done) => {
     chai.request(app)
-      .post('/api/v1/auth/signin')
+      .post('/api/v2/auth/signin')
       .send(admin)
       .end((err, res) => {
         adminToken = res.body.data.token;
@@ -98,7 +98,7 @@ describe('PATCH /api/v1/accounts', () => {
   let staffToken;
   before((done) => {
     chai.request(app)
-      .post('/api/v1/auth/signin')
+      .post('/api/v2/auth/signin')
       .send(staff)
       .end((err, res) => {
         staffToken = res.body.data.token;
@@ -108,7 +108,7 @@ describe('PATCH /api/v1/accounts', () => {
 
   it('should successfully activate or deactivate an account', (done) => {
     chai.request(app)
-      .patch('/api/v1/accounts/1102345679')
+      .patch('/api/v2/accounts/1102345679')
       .set('authorization', adminToken)
       .end((err, res) => {
         expect(res.body.status).to.equal(200);
@@ -119,7 +119,7 @@ describe('PATCH /api/v1/accounts', () => {
 
   it('should allow staff to successfully activate or deactivate an account', (done) => {
     chai.request(app)
-      .patch('/api/v1/accounts/1102345679')
+      .patch('/api/v2/accounts/1102345679')
       .set('authorization', staffToken)
       .end((err, res) => {
         expect(res.body.status).to.equal(200);
@@ -130,7 +130,7 @@ describe('PATCH /api/v1/accounts', () => {
 
   it('should not update status if the account is not found', (done) => {
     chai.request(app)
-      .patch('/api/v1/accounts/9701234568565')
+      .patch('/api/v2/accounts/9701234568565')
       .set('authorization', adminToken)
       .end((err, res) => {
         expect(res.body.status).to.equal(404);
@@ -140,7 +140,7 @@ describe('PATCH /api/v1/accounts', () => {
   });
 });
 
-describe('DELETE /api/v1/accounts', () => {
+describe('DELETE /api/v2/accounts', () => {
   const staff = {
     email: 'emekaike@gmail.com',
     password: '123456789',
@@ -153,7 +153,7 @@ describe('DELETE /api/v1/accounts', () => {
   let adminToken;
   before((done) => {
     chai.request(app)
-      .post('/api/v1/auth/signin')
+      .post('/api/v2/auth/signin')
       .send(admin)
       .end((err, res) => {
         adminToken = res.body.data.token;
@@ -164,7 +164,7 @@ describe('DELETE /api/v1/accounts', () => {
   let staffToken;
   before((done) => {
     chai.request(app)
-      .post('/api/v1/auth/signin')
+      .post('/api/v2/auth/signin')
       .send(staff)
       .end((err, res) => {
         staffToken = res.body.data.token;
@@ -175,7 +175,7 @@ describe('DELETE /api/v1/accounts', () => {
 
   it('should successfully delete an account', (done) => {
     chai.request(app)
-      .delete('/api/v1/accounts/1102345679')
+      .delete('/api/v2/accounts/1102345679')
       .set('authorization', adminToken)
       .end((err, res) => {
         expect(res.body.status).to.equal(200);
@@ -186,7 +186,7 @@ describe('DELETE /api/v1/accounts', () => {
 
   it('should allow staff to successfully delete an account', (done) => {
     chai.request(app)
-      .delete('/api/v1/accounts/1102345679')
+      .delete('/api/v2/accounts/1102345679')
       .set('authorization', staffToken)
       .end((err, res) => {
         expect(res.body.status).to.equal(200);
@@ -198,11 +198,53 @@ describe('DELETE /api/v1/accounts', () => {
 
   it('should not update status if Account is not found', (done) => {
     chai.request(app)
-      .delete('/api/v1/accounts/97012345686686')
+      .delete('/api/v2/accounts/97012345686686')
       .set('authorization', adminToken)
       .end((err, res) => {
         expect(res.body.status).to.equal(404);
         expect(res.body.message).to.equal('Account Not Found');
+        done();
+      });
+  });
+});
+
+describe('GET /api/v2/accounts/<account-number>/transactions', () => {
+  const staff = {
+    email: 'emekaike@gmail.com',
+    password: '123456789',
+  };
+
+  let staffToken;
+  before((done) => {
+    chai.request(app)
+      .post('/api/v2/auth/signin')
+      .send(staff)
+      .end((err, res) => {
+        staffToken = res.body.data.token;
+        done();
+      });
+  });
+
+
+  it('should successfully view an account transaction history', (done) => {
+    chai.request(app)
+      .get('/api/v2/accounts/1102345678/transactions')
+      .set('authorization', staffToken)
+      .end((err, res) => {
+        expect(res.body.status).to.equal(200);
+        expect(res.body.data).to.not.equal(null);
+        expect(res.body.message).to.equal('Ok');
+        done();
+      });
+  });
+
+  it('should flag an error if the account number does not exist', (done) => {
+    chai.request(app)
+      .get('/api/v2/accounts/1102345678008989/transactions')
+      .set('authorization', staffToken)
+      .end((err, res) => {
+        expect(res.body.message).to.equal('Account Not Found');
+        expect(res.statusCode).to.equal(404);
         done();
       });
   });

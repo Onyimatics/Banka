@@ -8,6 +8,9 @@ import AccountValidation from '../../middleaware/validation/accountValidation';
 // helpers
 import AuthMiddleware from '../../middleaware/authMiddleware/authMiddleware';
 
+import DoValidation from '../../middleaware/validation/dovalidation';
+
+
 // account routes
 const accountRoutes = Router();
 accountRoutes.post('/',
@@ -18,15 +21,22 @@ accountRoutes.post('/',
 
 accountRoutes.patch('/:accountNumber',
   AuthMiddleware.checkIfUserIsAuthenticated,
+  DoValidation.accountNumber,
   AccountValidation.staffChecker,
   AccountValidation.checkIfAccountExist,
   AccountController.updateAccountStatus);
 
 accountRoutes.delete('/:accountNumber',
   AuthMiddleware.checkIfUserIsAuthenticated,
+  DoValidation.accountNumber,
   AccountValidation.staffChecker,
   AccountValidation.checkIfAccountExist,
   AccountController.deleteAccount);
 
+accountRoutes.get('/:accountNumber/transactions',
+  AuthMiddleware.checkIfUserIsAuthenticated,
+  DoValidation.accountNumber,
+  AccountValidation.checkIfAccountExist,
+  AccountController.getAccountTransactions);
 
 export default accountRoutes;
