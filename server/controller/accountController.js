@@ -132,5 +132,29 @@ class AccountController {
       return response(res, 500, 'Server error');
     }
   }
+
+  static async getAllBankAccounts(req, res) {
+    let accounts;
+    try {
+      accounts = await pool.query('SELECT email, accounts.* FROM users JOIN accounts on users.id = accounts.OWNER');
+    } catch (error) {
+      return response(res, 500, 'Server error');
+    }
+    const data = accounts.rows.map((account) => {
+      const {
+        createdon, accountnumber, email, type, status, balance,
+      } = account;
+      return {
+        createdOn: createdon,
+        accountNumber: accountnumber,
+        ownerEmail: email,
+        type,
+        status,
+        Balance: balance,
+      };
+    });
+
+    return response(res, 200, 'Ok', data);
+  }
 }
 export default AccountController;

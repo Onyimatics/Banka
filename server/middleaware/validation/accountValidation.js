@@ -28,12 +28,12 @@ class AccountValidation {
 
   static async staffChecker(req, res, next) {
     const { type } = req.userDetails;
-    (type === 'staff') ? next() : response(res, 401, 'Unauthorised');
+    (type === 'staff') ? next() : response(res, 401, 'Unauthorized');
   }
 
   static async adminChecker(req, res, next) {
     const { isAdmin } = req.userDetails;
-    !isAdmin ? next() : response(res, 401, 'Unauthorised');
+    !isAdmin ? next() : response(res, 401, 'Unauthorized');
   }
 
   static async type(req, res, next) {

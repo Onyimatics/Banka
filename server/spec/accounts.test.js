@@ -355,3 +355,60 @@ describe('GET api/v2/accounts/:accountNumber', () => {
       });
   });
 });
+
+describe('GET api/v2/accounts', () => {
+  const staff = {
+    email: 'emekaike@gmail.com',
+    password: '123456789',
+  };
+  const user = {
+    email: 'markzuckerberg@gmail.com',
+    password: '123456789',
+  };
+
+  let staffToken;
+  before((done) => {
+    chai.request(app)
+      .post('/api/v2/auth/signin')
+      .send(staff)
+      .end((err, res) => {
+        staffToken = res.body.data.token;
+        done();
+      });
+  });
+
+  let userToken;
+  before((done) => {
+    chai.request(app)
+      .post('/api/v2/auth/signin')
+      .send(user)
+      .end((err, res) => {
+        userToken = res.body.data.token;
+        done();
+      });
+  });
+
+
+  it('should successfully get a list of all bank accounts', (done) => {
+    chai.request(app)
+      .get('/api/v2/accounts')
+      .set('authorization', staffToken)
+      .end((err, res) => {
+        expect(res.body.status).to.equal(200);
+        expect(res.body.data).to.not.equal(null);
+        expect(res.body.message).to.equal('Ok');
+        done();
+      });
+  });
+
+  it('should not allow a client to get a list of all bank accounts', (done) => {
+    chai.request(app)
+      .get('/api/v2/accounts')
+      .set('authorization', userToken)
+      .end((err, res) => {
+        expect(res.body.message).to.equal('Unauthorized');
+        expect(res.status).to.equal(401);
+        done();
+      });
+  });
+});

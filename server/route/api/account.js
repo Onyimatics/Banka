@@ -45,4 +45,9 @@ accountRoutes.get('/:accountNumber',
   AccountValidation.checkIfAccountExist,
   AccountController.getSpecificAccountDetails);
 
+accountRoutes.get('/',
+  AuthMiddleware.checkIfUserIsAuthenticated,
+  AccountValidation.staffChecker,
+  AccountController.getAllBankAccounts);
+
 export default accountRoutes;
