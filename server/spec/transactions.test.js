@@ -159,4 +159,15 @@ describe('GET /api/v2/transactions/:id>', () => {
         done();
       });
   });
+
+  it('should flag an error for an incorrectly typed id', (done) => {
+    chai.request(app)
+      .get('/api/v2/transactions/ter')
+      .set('authorization', staffToken)
+      .end((err, res) => {
+        expect(res.body.status).to.equal(400);
+        expect(res.body.message).to.equal('Invalid id, id must be a number');
+        done();
+      });
+  });
 });

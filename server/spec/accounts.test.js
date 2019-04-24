@@ -248,4 +248,57 @@ describe('GET /api/v2/accounts/<account-number>/transactions', () => {
         done();
       });
   });
+
+  it('should flag an error if the account number is invalid', (done) => {
+    chai.request(app)
+      .get('/api/v2/accounts/11fbkfur4/transactions')
+      .set('authorization', staffToken)
+      .end((err, res) => {
+        expect(res.body.message).to.equal('Enter a valid Account Number');
+        expect(res.statusCode).to.equal(400);
+        done();
+      });
+  });
+});
+
+describe('GET /api/v2/user/<user-email>/accounts', () => {
+  const staff = {
+    email: 'emekaike@gmail.com',
+    password: '123456789',
+  };
+
+  let staffToken;
+  before((done) => {
+    chai.request(app)
+      .post('/api/v2/auth/signin')
+      .send(staff)
+      .end((err, res) => {
+        staffToken = res.body.data.token;
+        done();
+      });
+  });
+
+
+  it('should successfully get all accounts owned by a specific user', (done) => {
+    chai.request(app)
+      .get('/api/v2/user/emekaike@gmail.com/accounts')
+      .set('authorization', staffToken)
+      .end((err, res) => {
+        expect(res.body.status).to.equal(200);
+        expect(res.body.data).to.not.equal(null);
+        expect(res.body.message).to.equal('Ok');
+        done();
+      });
+  });
+
+  it('should flag an error if the email is incorrect', (done) => {
+    chai.request(app)
+      .get('/api/v2/user/olusholaoderigmail.com/accounts')
+      .set('authorization', staffToken)
+      .end((err, res) => {
+        expect(res.body.message).to.equal('Enter a valid email.');
+        expect(res.statusCode).to.equal(400);
+        done();
+      });
+  });
 });
