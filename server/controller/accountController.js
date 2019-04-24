@@ -138,8 +138,16 @@ class AccountController {
     try {
       const { status } = req.query;
       if (status === 'active') {
-        accounts = await pool.query('SELECT email, accounts.* FROM users JOIN accounts on users.id = accounts.OWNER where status = \'active\'');
-      } else { accounts = await pool.query('SELECT email, accounts.* FROM users JOIN accounts on users.id = accounts.OWNER'); }
+        accounts = await pool.query(`SELECT email, accounts.* 
+        FROM users JOIN accounts on users.id = accounts.OWNER where status = 'active'`);
+      } else
+      if (status === 'dormant') {
+        accounts = await pool.query(`SELECT email, accounts.* 
+        FROM users JOIN accounts on users.id = accounts.OWNER where status = 'dormant'`);
+      } else {
+        accounts = await pool.query(`SELECT email, accounts.* 
+      FROM users JOIN accounts on users.id = accounts.OWNER`);
+      }
     } catch (error) {
       return response(res, 500, 'Server error');
     }
