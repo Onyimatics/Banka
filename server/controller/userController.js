@@ -77,6 +77,28 @@ class UserController {
 
     return response(res, 400, 'Invalid Password or Email');
   }
+
+  static async getAllUserAccounts(req, res) {
+    try {
+      const { params: { email } } = req;
+      const accounts = await pool.query('SELECT email, accounts.* FROM users JOIN accounts on users.id = accounts.OWNER WHERE users.email = $1', [email]);
+      const data = accounts.rows.map((account) => {
+        const {
+          createdon, accountnumber, type, status, balance,
+        } = account;
+        return {
+          createdOn: createdon,
+          accountNumber: accountnumber,
+          type,
+          status,
+          Balance: balance,
+        };
+      });
+      return response(res, 200, 'Ok', data);
+    } catch (error) {
+      return response(res, 500, 'Server error');
+    }
+  }
 }
 
 export default UserController;
