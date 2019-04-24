@@ -39,4 +39,10 @@ accountRoutes.get('/:accountNumber/transactions',
   AccountValidation.checkIfAccountExist,
   AccountController.getAccountTransactions);
 
+accountRoutes.get('/:accountNumber',
+  AuthMiddleware.checkIfUserIsAuthenticated,
+  DoValidation.accountNumber,
+  AccountValidation.checkIfAccountExist,
+  AccountController.getSpecificAccountDetails);
+
 export default accountRoutes;

@@ -111,5 +111,26 @@ class AccountController {
       return response(res, 500, 'Server error');
     }
   }
+
+  static async getSpecificAccountDetails(req, res) {
+    try {
+      const { params: { accountNumber } } = req;
+      const account = await pool.query('SELECT email, accounts.* FROM users JOIN accounts on users.id = accounts.OWNER WHERE accounts.accountnumber = $1', [accountNumber]);
+      const {
+        createdon, accountnumber, email, type, status, balance,
+      } = account.rows[0];
+      const data = {
+        createdOn: createdon,
+        accountNumber: accountnumber,
+        ownerEmail: email,
+        type,
+        status,
+        Balance: balance,
+      };
+      return response(res, 200, 'Ok', data);
+    } catch (error) {
+      return response(res, 500, 'Server error');
+    }
+  }
 }
 export default AccountController;
