@@ -27,11 +27,12 @@ To get started with this project you need a basic knowledge of :
 - ### Useful Links
 ## Screenshot(UI template)
 ![alt](./screenShot/home-page.jpg)
+
 Preview UI templates : [Github Pages](https://onyimatics.github.io/Banka/)
 
 View Project Management: [Pivotal Tracker](https://www.pivotaltracker.com/n/projects/2320392)
 
-Deployed to Heroku: [Heroku](https://bankaapp.herokuapp.com/)
+Deployed to Heroku: [Heroku](https://bankaapp.herokuapp.com/api/v2)
 
 - ### Technology Stack
 1. HTML & CSS
@@ -90,14 +91,21 @@ npm run test
  ## *API Endpoints*
 |Endpoint                                           | Functionality                     |HTTP method 
 |---------------------------------------------------|:-----------------------------------:|-------------:
-|/api/v1/                                |Welcome to Banka API        |POST
-|/api/v1/auth/signup                               |Sign up a new user         |POST
-|/api/v1/auth/signin                               |Sign in an existing user        |POST 
-|/api/v1/accounts                               |Create bank account        |POST 
-|/api/v1/accounts/*account-number*                    |Admin/Staff can activate or deactivate an account|PATCH
-|/api/v1/transactions/*account-number*             |Admin/Staff can delete an account             |DELETE
-|/api/v1/transactions/*account-number*/debit             |Staff (cashier) can credit an account              |POST
-|/api/v1/transactions/*account-number*/credit              |Staff (cashier) can debit an account     |POST
+|/api/v2/                                |Welcome to Banka API        |GET
+|/api/v2/auth/signup                               |Sign up a new user         |POST
+|/api/v2/auth/signin                               |Sign in an existing user        |POST 
+|/api/v2/accounts                               |Create bank account        |POST 
+|/api/v2/accounts/*account-number*                    |Admin/Staff can activate or deactivate an account|PATCH
+|/api/v2/transactions/*account-number*             |Admin/Staff can delete an account             |DELETE
+|/api/v2/transactions/*account-number*/debit             |Staff (cashier) can credit an account              |POST
+|/api/v2/transactions/*account-number*/credit              |Staff (cashier) can debit an account     |POST
+|/api/v2/accounts/*account-number*/transactions              |View an account’s transaction history     |GET
+|/api/v2//transactions/*transaction-id*              |View a specific transaction     |GET
+|/api/v2/user/*user-email-address*/accounts              |View all accounts owned by a specific user (client)     |GET
+|/api/v2/accounts/*account-number*              |View a specific account’s details     |GET
+|/api/v2/accounts              |View a list of all bank accounts     |GET
+|/api/v2/accounts?status=active              |View a list of all active bank accounts     |GET
+|/api/v2/accounts?status=dormant              |View a list of all active bank accounts     |GET
 
 ## Acknowledgments :
 
