@@ -9,7 +9,7 @@ describe('Banka tests', () => {
   describe('Display welcome message', () => {
     it('should display welcome message on start', (done) => {
       chai.request(app)
-        .get('/')
+        .get('/api/v2')
         .end((err, res) => {
           expect(res.body.message).to.equal('Welcome to Banka API');
           expect(res).to.have.status(200);
