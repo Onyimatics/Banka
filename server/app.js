@@ -1,19 +1,19 @@
 // eslint-disable-next-line no-console
 import express from 'express';
 import bodyparser from 'body-parser';
+import swaggerUi from 'swagger-ui-express';
+import cors from 'cors';
 import routes from './route/index';
+import swaggerdoc from '../swagger.json';
+
 
 const app = express();
+app.use(cors());
 app.use(bodyparser.json());
 app.use(bodyparser.urlencoded({ extended: true }));
 app.use('/api/v2/', routes);
+app.use('/swagger', swaggerUi.serve, swaggerUi.setup(swaggerdoc));
 
-app.get('/', (req, res) => {
-  res.status(200).json({
-    status: '200',
-    message: 'Welcome to Banka API',
-  });
-});
 app.all('*', (req, res) => {
   res.status(404).json({
     status: '404',

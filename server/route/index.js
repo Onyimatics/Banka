@@ -8,6 +8,12 @@ import UserController from '../controller/userController';
 
 const routes = Router();
 
+routes.get('/', (req, res) => {
+  res.status(200).json({
+    status: '200',
+    message: 'Welcome to Banka API',
+  });
+});
 routes.use('/auth', userRoutes);
 routes.use('/accounts', accountRoutes);
 routes.use('/transactions', transactionRoutes);
