@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 // Get the modal
 const modal = document.querySelector('#myModal');
 const deleteModal = document.querySelector('#deleteModal');
@@ -12,7 +13,7 @@ const triggerDeleteModal = () => {
 };
 
 
-let closeModal = () => {
+const closeModal = () => {
   modal.style.display = 'none';
 };
 
@@ -35,4 +36,3 @@ hamburgerBtn.addEventListener('click', function toggleMenu() {
   this.classList.toggle('menu-open');
   menu.classList.toggle('menu-open');
 });
-
