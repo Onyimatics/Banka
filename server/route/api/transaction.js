@@ -16,14 +16,14 @@ const transactionRoutes = Router();
 transactionRoutes.post('/:accountNumber/debit',
   AuthMiddleware.checkIfUserIsAuthenticated,
   AccountValidation.checkIfAccountExist,
-  AccountValidation.adminChecker,
+  AccountValidation.strictlyStaff,
   AccountValidation.checkAmount,
   TransactionController.debitAccount);
 
 transactionRoutes.post('/:accountNumber/credit',
   AuthMiddleware.checkIfUserIsAuthenticated,
   AccountValidation.checkIfAccountExist,
-  AccountValidation.adminChecker,
+  AccountValidation.strictlyStaff,
   AccountValidation.checkAmount,
   TransactionController.creditAccount);
 

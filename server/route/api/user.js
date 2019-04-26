@@ -4,6 +4,8 @@ import { Router } from 'express';
 // controllers
 import UserController from '../../controller/userController';
 import DoValidation from '../../middleaware/validation/dovalidation';
+import AccountValidation from '../../middleaware/validation/accountValidation';
+import AuthMiddleware from '../../middleaware/authMiddleware/authMiddleware';
 
 
 // user routes
@@ -17,6 +19,19 @@ userRoutes.post(
   DoValidation.userName,
   UserController.register,
 );
+
+// admin create account for another admin or staff
+userRoutes.post(
+  '/signup/admin',
+  AuthMiddleware.checkIfUserIsAuthenticated,
+  AccountValidation.adminChecker,
+  DoValidation.email,
+  DoValidation.password,
+  DoValidation.userName,
+  DoValidation.isAdmin,
+  UserController.signupAdminStaff,
+);
+
 // signin route
 userRoutes.post(
   '/signin',
@@ -24,6 +39,4 @@ userRoutes.post(
   DoValidation.password,
   UserController.signin,
 );
-
-
 export default userRoutes;

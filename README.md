@@ -32,7 +32,9 @@ Preview UI templates : [Github Pages](https://onyimatics.github.io/Banka/)
 
 View Project Management: [Pivotal Tracker](https://www.pivotaltracker.com/n/projects/2320392)
 
-Deployed to Heroku: [Heroku](https://bankaapp.herokuapp.com/api/v2)
+Hosted on Heroku: [Heroku](https://bankaapp.herokuapp.com/api/v2)
+
+This app is documented at: [API Documentation](https://bankaapp.herokuapp.com/swagger)
 
 - ### Technology Stack
 1. HTML & CSS
@@ -93,6 +95,7 @@ npm run test
 |---------------------------------------------------|:-----------------------------------:|-------------:
 |/api/v2/                                |Welcome to Banka API        |GET
 |/api/v2/auth/signup                               |Sign up a new user         |POST
+|/api/v2/auth/signup/admin                               |Admin Sign up a new Admin or Staff         |POST
 |/api/v2/auth/signin                               |Sign in an existing user        |POST 
 |/api/v2/accounts                               |Create bank account        |POST 
 |/api/v2/accounts/*account-number*                    |Admin/Staff can activate or deactivate an account|PATCH

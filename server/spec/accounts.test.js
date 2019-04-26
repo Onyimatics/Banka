@@ -175,7 +175,7 @@ describe('DELETE /api/v2/accounts', () => {
 
   it('should successfully delete an account', (done) => {
     chai.request(app)
-      .delete('/api/v2/accounts/1102345679')
+      .delete('/api/v2/accounts/1102345687')
       .set('authorization', adminToken)
       .end((err, res) => {
         expect(res.body.status).to.equal(200);

@@ -19,6 +19,9 @@ class AccountValidation {
     const { accountNumber } = req.params;
     try {
       const { rows } = await pool.query('select * from accounts where accountnumber = $1', [Number(accountNumber)]);
+      if (!rows[0]) {
+        return response(res, 404, 'Account Not Found');
+      }
       req.accountDetails = rows[0];
       return next();
     } catch (error) {
@@ -26,14 +29,22 @@ class AccountValidation {
     }
   }
 
-  static async staffChecker(req, res, next) {
+  static staffChecker(req, res, next) {
     const { type } = req.userDetails;
     (type === 'staff') ? next() : response(res, 401, 'Unauthorized');
   }
 
-  static async adminChecker(req, res, next) {
-    const { isAdmin } = req.userDetails;
-    !isAdmin ? next() : response(res, 401, 'Unauthorized');
+  static adminChecker(req, res, next) {
+    const { isadmin } = req.userDetails;
+    isadmin === 'true' ? next() : response(res, 401, 'Unauthorized');
+  }
+
+  static strictlyStaff(req, res, next) {
+    const { isadmin, type } = req.userDetails;
+    if (isadmin === 'true' || type === 'client') {
+      return response(res, 401, 'Unauthorized');
+    }
+    return next();
   }
 
   static async type(req, res, next) {

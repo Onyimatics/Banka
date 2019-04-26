@@ -1,705 +1,50 @@
 {
-    "openapi": "3.0.0",
-    "info": {
-      "version": "1.0",
-      "title": "Banka",
-      "description": "Banka is a light-weight core banking application that powers banking operations like account creation, customer deposit and withdrawals. This app is meant to support a single bank, where users can signup and create bank accounts online, but must visit the branch to withdraw or deposit money."
+  "openapi": "3.0.0",
+  "info": {
+    "version": "1.0",
+    "title": "Banka",
+    "description": "Banka is a light-weight core banking application that powers banking operations like account creation, customer deposit and withdrawals. This app is meant to support a single bank, where users can signup and create bank accounts online, but must visit the branch to withdraw or deposit money."
+  },
+  "servers": [
+    {
+      "url": "https://bankaapp.herokuapp.com/api/v2"
     },
-    "servers": [
-      {
-        "url": "https://bankaapp.herokuapp.com/api/v2"
-      },
-      {
-        "url": "http://localhost:3000/api/v2"
-      }
-    ],
-    "tags": [
-      {
-        "name": "Welcome",
-        "description": "API for api welcome test"
-      },
-      {
-        "name": "Users",
-        "description": "API for users in the app"
-      },
-      {
-        "name": "Accounts",
-        "description": "API for accounts in the app"
-      },
-      {
-        "name": "Transactions",
-        "description": "API for Transactions in the app"
-      },
-      {
-        "name": "Image",
-        "description": "API image upload in the app"
-      }
-    ],
-    "paths": {
-      "/": {
-        "get": {
-          "tags": [
-            "Welcome"
-          ],
-          "summary": "Test get request",
-          "responses": {
-            "201": {
-              "description": "Created",
-              "content": {
-                "application/json": {
-                  "schema": {
-                    "$ref": "#/components/schemas/response"
-                  }
-                }
-              }
-            }
-          }
-        }
-      },
-      "/auth/signup": {
-        "post": {
-          "tags": [
-            "Users"
-          ],
-          "summary": "Sign up a new user",
-          "requestBody": {
-            "required": true,
+    {
+      "url": "http://localhost:3000/api/v2"
+    }
+  ],
+  "tags": [
+    {
+      "name": "Welcome",
+      "description": "API for api welcome test"
+    },
+    {
+      "name": "Users",
+      "description": "API for users in the app"
+    },
+    {
+      "name": "Accounts",
+      "description": "API for accounts in the app"
+    },
+    {
+      "name": "Transactions",
+      "description": "API for Transactions in the app"
+    }
+  ],
+  "paths": {
+    "/": {
+      "get": {
+        "tags": [
+          "Welcome"
+        ],
+        "summary": "Test get request",
+        "responses": {
+          "201": {
+            "description": "Created",
             "content": {
               "application/json": {
                 "schema": {
-                  "type": "object",
-                  "properties": {
-                    "firstName": {
-                      "type": "string"
-                    },
-                    "lastName": {
-                      "type": "string"
-                    },
-                    "email": {
-                      "type": "string"
-                    },
-                    "password": {
-                      "type": "string"
-                    }
-                  }
-                }
-              }
-            }
-          },
-          "responses": {
-            "201": {
-              "description": "Created",
-              "content": {
-                "application/json": {
-                  "schema": {
-                    "$ref": "#/components/schemas/users"
-                  }
-                }
-              }
-            },
-            "400": {
-              "description": "Bad request",
-              "content": {
-                "application/json": {
-                  "schema": {
-                    "$ref": "#/components/schemas/response"
-                  }
-                }
-              }
-            }
-          }
-        }
-      },
-      "/auth/signin": {
-        "post": {
-          "tags": [
-            "Users"
-          ],
-          "summary": "Sign's in an existing user",
-          "requestBody": {
-            "required": true,
-            "content": {
-              "application/json": {
-                "schema": {
-                  "type": "object",
-                  "properties": {
-                    "email": {
-                      "type": "string"
-                    },
-                    "password": {
-                      "type": "string"
-                    }
-                  }
-                }
-              }
-            }
-          },
-          "responses": {
-            "200": {
-              "description": "Created",
-              "content": {
-                "application/json": {
-                  "schema": {
-                    "$ref": "#/components/schemas/users"
-                  }
-                }
-              }
-            },
-            "400": {
-              "description": "Bad request",
-              "content": {
-                "application/json": {
-                  "schema": {
-                    "$ref": "#/components/schemas/response"
-                  }
-                }
-              }
-            }
-          }
-        }
-      },
-      "/accounts/{Accountnumber}": {
-        "get": {
-          "tags": [
-            "Accounts"
-          ],
-          "summary": "Gets a specific account",
-          "security": [
-            {
-              "ApiKeyAuth": []
-            }
-          ],
-          "parameters": [
-            {
-              "name": "Accountnumber",
-              "in": "path",
-              "required": true,
-              "description": "accountnumber",
-              "schema": {
-                "type": "integer",
-                "minimum": 10
-              }
-            }
-          ],
-          "responses": {
-            "201": {
-              "description": "Created",
-              "content": {
-                "application/json": {
-                  "schema": {
-                    "$ref": "#/components/schemas/accounts"
-                  }
-                }
-              }
-            },
-            "400": {
-              "description": "Bad request",
-              "content": {
-                "application/json": {
-                  "schema": {
-                    "$ref": "#/components/schemas/response"
-                  }
-                }
-              }
-            }
-          }
-        },
-        "delete": {
-          "tags": [
-            "Accounts"
-          ],
-          "summary": "deletes a specific account",
-          "security": [
-            {
-              "ApiKeyAuth": []
-            }
-          ],
-          "parameters": [
-            {
-              "name": "Accountnumber",
-              "in": "path",
-              "required": true,
-              "description": "accountnumber",
-              "schema": {
-                "type": "integer",
-                "minimum": 10
-              }
-            }
-          ],
-          "responses": {
-            "200": {
-              "description": "Ok",
-              "content": {
-                "application/json": {
-                  "schema": {
-                    "$ref": "#/components/schemas/accounts"
-                  }
-                }
-              }
-            },
-            "400": {
-              "description": "Bad request",
-              "content": {
-                "application/json": {
-                  "schema": {
-                    "$ref": "#/components/schemas/response"
-                  }
-                }
-              }
-            }
-          }
-        }
-      },
-      "/user/{email}/accounts": {
-        "get": {
-          "tags": [
-            "Accounts"
-          ],
-          "summary": "Return all the accounts belonging to a user",
-          "security": [
-            {
-              "ApiKeyAuth": []
-            }
-          ],
-          "parameters": [
-            {
-              "name": "email",
-              "in": "path",
-              "required": true,
-              "description": "users email",
-              "schema": {
-                "type": "string"
-              }
-            }
-          ],
-          "responses": {
-            "201": {
-              "description": "Created",
-              "content": {
-                "application/json": {
-                  "schema": {
-                    "$ref": "#/components/schemas/accounts"
-                  }
-                }
-              }
-            },
-            "400": {
-              "description": "Bad request",
-              "content": {
-                "application/json": {
-                  "schema": {
-                    "$ref": "#/components/schemas/response"
-                  }
-                }
-              }
-            }
-          }
-        }
-      },
-      "/accounts": {
-        "get": {
-          "tags": [
-            "Accounts"
-          ],
-          "summary": "Gets all accounts",
-          "security": [
-            {
-              "ApiKeyAuth": []
-            }
-          ],
-          "responses": {
-            "201": {
-              "description": "Created",
-              "content": {
-                "application/json": {
-                  "schema": {
-                    "$ref": "#/components/schemas/accounts"
-                  }
-                }
-              }
-            },
-            "400": {
-              "description": "Bad request",
-              "content": {
-                "application/json": {
-                  "schema": {
-                    "$ref": "#/components/schemas/response"
-                  }
-                }
-              }
-            }
-          }
-        },
-        "post": {
-          "tags": [
-            "Accounts"
-          ],
-          "summary": "Creates a new user accounts",
-          "security": [
-            {
-              "ApiKeyAuth": []
-            }
-          ],
-          "requestBody": {
-            "required": true,
-            "content": {
-              "application/json": {
-                "schema": {
-                  "type": "object",
-                  "properties": {
-                    "type": {
-                      "type": "string"
-                    },
-                    "openingBalance": {
-                      "type": "number"
-                    }
-                  }
-                }
-              }
-            }
-          },
-          "responses": {
-            "201": {
-              "description": "Created",
-              "content": {
-                "application/json": {
-                  "schema": {
-                    "$ref": "#/components/schemas/accounts"
-                  }
-                }
-              }
-            },
-            "400": {
-              "description": "Bad request",
-              "content": {
-                "application/json": {
-                  "schema": {
-                    "$ref": "#/components/schemas/response"
-                  }
-                }
-              }
-            }
-          }
-        }
-      },
-      "/account/{Accountnumber}": {
-        "patch": {
-          "tags": [
-            "Accounts"
-          ],
-          "summary": "Updates the account status",
-          "security": [
-            {
-              "ApiKeyAuth": []
-            }
-          ],
-          "requestBody": {
-            "required": true,
-            "content": {
-              "application/json": {
-                "schema": {
-                  "type": "object",
-                  "properties": {
-                    "status": {
-                      "type": "string"
-                    }
-                  }
-                }
-              }
-            }
-          },
-          "parameters": [
-            {
-              "name": "Accountnumber",
-              "in": "path",
-              "required": true,
-              "description": "accountnumber",
-              "schema": {
-                "type": "integer",
-                "minimum": 10
-              }
-            }
-          ],
-          "responses": {
-            "201": {
-              "description": "Created",
-              "content": {
-                "application/json": {
-                  "schema": {
-                    "$ref": "#/components/schemas/accounts"
-                  }
-                }
-              }
-            },
-            "400": {
-              "description": "Bad request",
-              "content": {
-                "application/json": {
-                  "schema": {
-                    "$ref": "#/components/schemas/response"
-                  }
-                }
-              }
-            }
-          }
-        }
-      },
-      "/transactions/{id}": {
-        "get": {
-          "tags": [
-            "Transactions"
-          ],
-          "summary": "Gets a specific transaction",
-          "security": [
-            {
-              "ApiKeyAuth": []
-            }
-          ],
-          "parameters": [
-            {
-              "name": "id",
-              "in": "path",
-              "required": true,
-              "description": "id",
-              "schema": {
-                "type": "integer"
-              }
-            }
-          ],
-          "responses": {
-            "200": {
-              "description": "Ok",
-              "content": {
-                "application/json": {
-                  "schema": {
-                    "$ref": "#/components/schemas/transactions"
-                  }
-                }
-              }
-            },
-            "400": {
-              "description": "Bad request",
-              "content": {
-                "application/json": {
-                  "schema": {
-                    "$ref": "#/components/schemas/response"
-                  }
-                }
-              }
-            }
-          }
-        }
-      },
-      "/accounts/{Accountnumber}/transactions": {
-        "get": {
-          "tags": [
-            "Transactions"
-          ],
-          "summary": "Get all transactions for an account",
-          "security": [
-            {
-              "ApiKeyAuth": []
-            }
-          ],
-          "parameters": [
-            {
-              "name": "Accountnumber",
-              "in": "path",
-              "required": true,
-              "description": "accountnumber",
-              "schema": {
-                "type": "integer",
-                "minimum": 10
-              }
-            }
-          ],
-          "responses": {
-            "200": {
-              "description": "Ok",
-              "content": {
-                "application/json": {
-                  "schema": {
-                    "$ref": "#/components/schemas/transactions"
-                  }
-                }
-              }
-            },
-            "400": {
-              "description": "Bad request",
-              "content": {
-                "application/json": {
-                  "schema": {
-                    "$ref": "#/components/schemas/response"
-                  }
-                }
-              }
-            }
-          }
-        }
-      },
-      "/transactions/{accountNumber}/credit": {
-        "post": {
-          "tags": [
-            "Transactions"
-          ],
-          "summary": "Credits a user account",
-          "security": [
-            {
-              "ApiKeyAuth": []
-            }
-          ],
-          "requestBody": {
-            "required": true,
-            "content": {
-              "application/json": {
-                "schema": {
-                  "type": "object",
-                  "properties": {
-                    "amount": {
-                      "type": "number"
-                    }
-                  }
-                }
-              }
-            }
-          },
-          "parameters": [
-            {
-              "name": "accountNumber",
-              "in": "path",
-              "required": true,
-              "description": "accountnumber",
-              "schema": {
-                "type": "number",
-                "minimum": 10
-              }
-            }
-          ],
-          "responses": {
-            "200": {
-              "description": "Ok",
-              "content": {
-                "application/json": {
-                  "schema": {
-                    "$ref": "#/components/schemas/transactions"
-                  }
-                }
-              }
-            },
-            "400": {
-              "description": "Bad request",
-              "content": {
-                "application/json": {
-                  "schema": {
-                    "$ref": "#/components/schemas/response"
-                  }
-                }
-              }
-            }
-          }
-        }
-      },
-      "/transactions/{accountNumber}/debit": {
-        "post": {
-          "tags": [
-            "Transactions"
-          ],
-          "summary": "Debits a user account",
-          "security": [
-            {
-              "ApiKeyAuth": []
-            }
-          ],
-          "requestBody": {
-            "required": true,
-            "content": {
-              "application/json": {
-                "schema": {
-                  "type": "object",
-                  "properties": {
-                    "amount": {
-                      "type": "number"
-                    }
-                  }
-                }
-              }
-            }
-          },
-          "parameters": [
-            {
-              "name": "accountNumber",
-              "in": "path",
-              "required": true,
-              "description": "accountnumber",
-              "schema": {
-                "type": "number",
-                "minimum": 10
-              }
-            }
-          ],
-          "responses": {
-            "200": {
-              "description": "Ok",
-              "content": {
-                "application/json": {
-                  "schema": {
-                    "$ref": "#/components/schemas/accounts"
-                  }
-                }
-              }
-            },
-            "400": {
-              "description": "Bad request",
-              "content": {
-                "application/json": {
-                  "schema": {
-                    "$ref": "#/components/schemas/response"
-                  }
-                }
-              }
-            }
-          }
-        }
-      },
-      "/image": {
-        "patch": {
-          "tags": [
-            "Image"
-          ],
-          "summary": "Updates the account status",
-          "security": [
-            {
-              "ApiKeyAuth": []
-            }
-          ],
-          "requestBody": {
-            "required": true,
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/image"
-                }
-              }
-            }
-          },
-          "responses": {
-            "200": {
-              "description": "Ok",
-              "content": {
-                "application/json": {
-                  "schema": {
-                    "$ref": "#/components/schemas/response"
-                  }
-                }
-              }
-            },
-            "400": {
-              "description": "Bad request",
-              "content": {
-                "application/json": {
-                  "schema": {
-                    "$ref": "#/components/schemas/response"
-                  }
+                  "$ref": "#/components/schemas/response"
                 }
               }
             }
@@ -707,97 +52,752 @@
         }
       }
     },
-    "components": {
-      "securitySchemes": {
-        "ApiKeyAuth": {
-          "type": "apiKey",
-          "in": "header",
-          "name": "Authorization"
+    "/auth/signup": {
+      "post": {
+        "tags": [
+          "Users"
+        ],
+        "summary": "Sign up a new user",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "firstName": {
+                    "type": "string"
+                  },
+                  "lastName": {
+                    "type": "string"
+                  },
+                  "email": {
+                    "type": "string"
+                  },
+                  "password": {
+                    "type": "string"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Created",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/users"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/response"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/auth/signup/admin": {
+      "post": {
+        "tags": [
+          "Users"
+        ],
+        "summary": "Admin Sign up a new Admin or Staff",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "isAdmin": {
+                    "type": "string"
+                  },
+                  "firstName": {
+                    "type": "string"
+                  },
+                  "lastName": {
+                    "type": "string"
+                  },
+                  "email": {
+                    "type": "string"
+                  },
+                  "password": {
+                    "type": "string"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Created",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/users"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/response"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/auth/signin": {
+      "post": {
+        "tags": [
+          "Users"
+        ],
+        "summary": "Sign's in an existing user",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "email": {
+                    "type": "string"
+                  },
+                  "password": {
+                    "type": "string"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Created",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/users"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/response"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/accounts/{Accountnumber}": {
+      "get": {
+        "tags": [
+          "Accounts"
+        ],
+        "summary": "Gets a specific account",
+        "security": [
+          {
+            "ApiKeyAuth": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "Accountnumber",
+            "in": "path",
+            "required": true,
+            "description": "accountnumber",
+            "schema": {
+              "type": "integer",
+              "minimum": 10
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "Created",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/accounts"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/response"
+                }
+              }
+            }
+          }
         }
       },
-      "schemas": {
-        "accounts": {
-          "type": "object",
-          "properties": {
-            "accountNumber": {
-              "type": "integer"
-            },
-            "type": {
-              "type": "string"
-            },
-            "createdOn": {
-              "type": "string"
-            },
-            "status": {
-              "type": "string"
-            },
-            "balance": {
-              "type": "number"
+      "delete": {
+        "tags": [
+          "Accounts"
+        ],
+        "summary": "deletes a specific account",
+        "security": [
+          {
+            "ApiKeyAuth": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "Accountnumber",
+            "in": "path",
+            "required": true,
+            "description": "accountnumber",
+            "schema": {
+              "type": "integer",
+              "minimum": 10
             }
           }
-        },
-        "transactions": {
-          "type": "object",
-          "properties": {
-            "transactionId": {
-              "type": "integer"
-            },
-            "accountNumber": {
-              "type": "integer"
-            },
-            "createdOn": {
-              "type": "string"
-            },
-            "status": {
-              "type": "string"
-            },
-            "oldBalance": {
-              "type": "integer"
-            },
-            "newBalance": {
-              "type": "integer"
+        ],
+        "responses": {
+          "200": {
+            "description": "Ok",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/accounts"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/response"
+                }
+              }
             }
           }
-        },
-        "image": {
-          "type": "object",
-          "properties": {
-            "profilePic": {
-              "type": "string"
-            }
+        }
+      }
+    },
+    "/user/{email}/accounts": {
+      "get": {
+        "tags": [
+          "Accounts"
+        ],
+        "summary": "Return all the accounts belonging to a user",
+        "security": [
+          {
+            "ApiKeyAuth": []
           }
-        },
-        "users": {
-          "type": "object",
-          "properties": {
-            "token": {
-              "type": "string"
-            },
-            "firstName": {
-              "type": "string"
-            },
-            "lastName": {
-              "type": "string"
-            },
-            "email": {
-              "type": "string"
-            },
-            "profilePic": {
+        ],
+        "parameters": [
+          {
+            "name": "email",
+            "in": "path",
+            "required": true,
+            "description": "users email",
+            "schema": {
               "type": "string"
             }
           }
+        ],
+        "responses": {
+          "201": {
+            "description": "Created",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/accounts"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/response"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/accounts": {
+      "get": {
+        "tags": [
+          "Accounts"
+        ],
+        "summary": "Gets all accounts",
+        "security": [
+          {
+            "ApiKeyAuth": []
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "Created",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/accounts"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/response"
+                }
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "Accounts"
+        ],
+        "summary": "Creates a new user accounts",
+        "security": [
+          {
+            "ApiKeyAuth": []
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "type": {
+                    "type": "string"
+                  },
+                  "openingBalance": {
+                    "type": "number"
+                  }
+                }
+              }
+            }
+          }
         },
-        "response": {
-          "type": "object",
-          "properties": {
-            "status": {
-              "type": "number"
-            },
-            "message": {
-              "type": "string"
+        "responses": {
+          "201": {
+            "description": "Created",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/accounts"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/response"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/account/{Accountnumber}": {
+      "patch": {
+        "tags": [
+          "Accounts"
+        ],
+        "summary": "Updates the account status",
+        "security": [
+          {
+            "ApiKeyAuth": []
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "status": {
+                    "type": "string"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "Accountnumber",
+            "in": "path",
+            "required": true,
+            "description": "accountnumber",
+            "schema": {
+              "type": "integer",
+              "minimum": 10
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "Created",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/accounts"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/response"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/transactions/{id}": {
+      "get": {
+        "tags": [
+          "Transactions"
+        ],
+        "summary": "Gets a specific transaction",
+        "security": [
+          {
+            "ApiKeyAuth": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "description": "id",
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Ok",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/transactions"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/response"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/accounts/{Accountnumber}/transactions": {
+      "get": {
+        "tags": [
+          "Transactions"
+        ],
+        "summary": "Get all transactions for an account",
+        "security": [
+          {
+            "ApiKeyAuth": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "Accountnumber",
+            "in": "path",
+            "required": true,
+            "description": "accountnumber",
+            "schema": {
+              "type": "integer",
+              "minimum": 10
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Ok",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/transactions"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/response"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/transactions/{accountNumber}/credit": {
+      "post": {
+        "tags": [
+          "Transactions"
+        ],
+        "summary": "Credits a user account",
+        "security": [
+          {
+            "ApiKeyAuth": []
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "amount": {
+                    "type": "number"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "accountNumber",
+            "in": "path",
+            "required": true,
+            "description": "accountnumber",
+            "schema": {
+              "type": "number",
+              "minimum": 10
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Ok",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/transactions"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/response"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/transactions/{accountNumber}/debit": {
+      "post": {
+        "tags": [
+          "Transactions"
+        ],
+        "summary": "Debits a user account",
+        "security": [
+          {
+            "ApiKeyAuth": []
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "amount": {
+                    "type": "number"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "accountNumber",
+            "in": "path",
+            "required": true,
+            "description": "accountnumber",
+            "schema": {
+              "type": "number",
+              "minimum": 10
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Ok",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/accounts"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/response"
+                }
+              }
             }
           }
         }
       }
     }
+  },
+  "components": {
+    "securitySchemes": {
+      "ApiKeyAuth": {
+        "type": "apiKey",
+        "in": "header",
+        "name": "Authorization"
+      }
+    },
+    "schemas": {
+      "accounts": {
+        "type": "object",
+        "properties": {
+          "accountNumber": {
+            "type": "integer"
+          },
+          "type": {
+            "type": "string"
+          },
+          "createdOn": {
+            "type": "string"
+          },
+          "status": {
+            "type": "string"
+          },
+          "balance": {
+            "type": "number"
+          }
+        }
+      },
+      "transactions": {
+        "type": "object",
+        "properties": {
+          "transactionId": {
+            "type": "integer"
+          },
+          "accountNumber": {
+            "type": "integer"
+          },
+          "createdOn": {
+            "type": "string"
+          },
+          "status": {
+            "type": "string"
+          },
+          "oldBalance": {
+            "type": "integer"
+          },
+          "newBalance": {
+            "type": "integer"
+          }
+        }
+      },
+      "users": {
+        "type": "object",
+        "properties": {
+          "token": {
+            "type": "string"
+          },
+          "firstName": {
+            "type": "string"
+          },
+          "lastName": {
+            "type": "string"
+          },
+          "email": {
+            "type": "string"
+          },
+          "profilePic": {
+            "type": "string"
+          }
+        }
+      },
+      "response": {
+        "type": "object",
+        "properties": {
+          "status": {
+            "type": "number"
+          },
+          "message": {
+            "type": "string"
+          }
+        }
+      }
+    }
   }
+}

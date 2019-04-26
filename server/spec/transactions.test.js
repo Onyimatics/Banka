@@ -7,7 +7,7 @@ const { expect } = chai;
 chai.use(chaihttp);
 describe('POST /api/v2/transactions/:accountNumber/debit', () => {
   const staff = {
-    email: 'johndumelo@gmail.com',
+    email: 'emekaike@gmail.com',
     password: '123456789',
   };
 
@@ -21,6 +21,7 @@ describe('POST /api/v2/transactions/:accountNumber/debit', () => {
         done();
       });
   });
+
 
   it('should successfully debit an account', (done) => {
     const debit = {
@@ -43,6 +44,21 @@ describe('POST /api/v2/transactions/:accountNumber/debit', () => {
     };
     chai.request(app)
       .post('/api/v2/transactions/94012356783376483/debit')
+      .set('authorization', staffToken)
+      .send(debitss)
+      .end((err, res) => {
+        expect(res.body.status).to.equal(404);
+        expect(res.body.message).to.equal('Account Not Found');
+        done();
+      });
+  });
+
+  it('should not debit an account if account does not exist', (done) => {
+    const debitss = {
+      amount: '10000',
+    };
+    chai.request(app)
+      .post('/api/v2/transactions/1102345700/debit')
       .set('authorization', staffToken)
       .send(debitss)
       .end((err, res) => {
@@ -83,9 +99,40 @@ describe('POST /api/v2/transactions/:accountNumber/debit', () => {
   });
 });
 
+const admin = {
+  email: 'ezikeonyinyefavour@gmail.com',
+  password: '123456789',
+};
+
+let adminToken;
+before((done) => {
+  chai.request(app)
+    .post('/api/v2/auth/signin')
+    .send(admin)
+    .end((err, res) => {
+      adminToken = res.body.data.token;
+      done();
+    });
+});
+
+it('should not allow an admin to debit an account', (done) => {
+  const debitss = {
+    amount: '10000',
+  };
+  chai.request(app)
+    .post('/api/v2/transactions/1102345678/debit')
+    .set('authorization', adminToken)
+    .send(debitss)
+    .end((err, res) => {
+      expect(res.body.status).to.equal(401);
+      expect(res.body.message).to.equal('Unauthorized');
+      done();
+    });
+});
+
 describe('POST /api/v2/transactions/:accountNumber/credit', () => {
   const staff = {
-    email: 'johndumelo@gmail.com',
+    email: 'emekaike@gmail.com',
     password: '123456789',
   };
 

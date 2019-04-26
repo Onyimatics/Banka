@@ -14,6 +14,7 @@ class RegularExpression {
       password: /[a-zA-Z0-9]{8,}/,
       status: /(active|dormant|draft)$/i,
       accountType: /(current|savings)$/i,
+      isAdmin: /(true|false)$/i,
     };
   }
 }
