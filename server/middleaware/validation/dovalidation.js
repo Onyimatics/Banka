@@ -51,6 +51,15 @@ class DoValidation {
     }
     return next();
   }
+
+  static isAdmin(req, res, next) {
+    const { isAdmin } = req.body;
+    const validate = RegularExpression.validate();
+    if (!validate.isAdmin.test(isAdmin)) {
+      return response(res, 400, ValidationMessages.isAdmin);
+    }
+    return next();
+  }
 }
 
 export default DoValidation;
