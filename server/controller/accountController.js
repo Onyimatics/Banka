@@ -13,18 +13,29 @@ class AccountController {
     * @memberof AccountController
     */
   static async createAccount(req, res) {
-    const { body: { type, openingBalance }, userDetails: { id: userid } } = req;
+    const {
+      body: { type, openingBalance },
+      userDetails: { id: userid },
+    } = req;
+
     let accountDetails;
     if (!type) { return response(res, 400, 'Enter a valid account type'); }
     try {
-      const lastAccNum = await pool.query('SELECT accountnumber FROM accounts ORDER BY accountnumber DESC LIMIT 1;');
+      const lastAccNum = await pool.query(`SELECT accountnumber 
+      FROM accounts ORDER BY accountnumber DESC LIMIT 1;`);
       const { accountnumber } = lastAccNum.rows[0];
-      accountDetails = await pool.query('insert into accounts (accountnumber, owner, type, status, balance) values ($1, $2, $3, $4, $5) returning *', [
-        accountnumber + 1, userid, type, 'active', openingBalance,
+      accountDetails = await pool.query(`insert into accounts 
+      (accountnumber, owner, type, status, balance) values ($1, $2, $3, $4, $5) returning *`, [
+        accountnumber + 1,
+        userid,
+        type,
+        'active',
+        openingBalance,
       ]);
     } catch (error) {
       return response(res, 500, 'Server error');
-    } const { accountnumber, balance } = accountDetails.rows[0]; const { firstname, lastname, email } = req.customer;
+    }
+    const { accountnumber, balance } = accountDetails.rows[0]; const { firstname, lastname, email } = req.customer;
     return response(res, 201, 'Successfully created a new bank account', {
       accountNumber: accountnumber, firstName: firstname, lastName: lastname, email, type, openingBalance: balance,
     });
@@ -108,7 +119,8 @@ class AccountController {
   static async getSpecificAccountDetails(req, res) {
     try {
       const { params: { accountNumber } } = req;
-      const account = await pool.query('SELECT email, accounts.* FROM users JOIN accounts on users.id = accounts.OWNER WHERE accounts.accountnumber = $1', [accountNumber]);
+      const account = await pool.query(`SELECT email, accounts.* 
+      FROM users JOIN accounts on users.id = accounts.OWNER WHERE accounts.accountnumber = $1`, [accountNumber]);
       const {
         createdon, accountnumber, email, type, status, balance,
       } = account.rows[0];

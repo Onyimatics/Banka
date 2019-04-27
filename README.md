@@ -34,7 +34,7 @@ View Project Management: [Pivotal Tracker](https://www.pivotaltracker.com/n/proj
 
 Hosted on Heroku: [Heroku](https://bankaapp.herokuapp.com/api/v2)
 
-This app is documented at: [API Documentation](https://bankaapp.herokuapp.com/swagger)
+API Documentation: [Swagger](https://bankaapp.herokuapp.com/swagger)
 
 - ### Technology Stack
 1. HTML & CSS

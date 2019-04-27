@@ -30,7 +30,8 @@ class UserController {
       if (userDetails.rows[0]) {
         return response(res, 409, 'Email already in use');
       }
-      newUser = await pool.query('insert into users (firstName, lastName, email, password, type, isAdmin) values ($1, $2, $3, $4, $5, $6) returning id', [
+      newUser = await pool.query(`insert into users (firstName, lastName, email, password, type, isAdmin) 
+      values ($1, $2, $3, $4, $5, $6) returning id`, [
         firstName, lastName, email, hashPassword, 'client', 'false',
       ]);
     } catch (error) {
@@ -61,7 +62,8 @@ class UserController {
       if (userDetails.rows[0]) {
         return response(res, 409, 'Email already in use');
       }
-      newUser = await pool.query('insert into users (firstName, lastName, email, password, type, isAdmin) values ($1, $2, $3, $4, $5, $6) returning id', [
+      newUser = await pool.query(`insert into users (firstName, lastName, email, password, type, isAdmin) 
+      values ($1, $2, $3, $4, $5, $6) returning id`, [
         firstName, lastName, email, hashPassword, 'staff', isAdmin]);
     } catch (error) {
       return response(res, 500, 'Server error');
@@ -99,7 +101,8 @@ class UserController {
   static async getAllUserAccounts(req, res) {
     try {
       const { params: { email } } = req;
-      const accounts = await pool.query('SELECT email, accounts.* FROM users JOIN accounts on users.id = accounts.OWNER WHERE users.email = $1', [email]);
+      const accounts = await pool.query(`SELECT email, accounts.* FROM users 
+      JOIN accounts on users.id = accounts.OWNER WHERE users.email = $1`, [email]);
       const data = accounts.rows.map((account) => {
         const {
           createdon, accountnumber, type, status, balance,
