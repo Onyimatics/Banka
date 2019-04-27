@@ -297,12 +297,14 @@ td.issue {
 .column .circle-icon {
   align-self: center;
   margin-bottom: 20px;
+  margin: auto;
 }
 
 .section-title,
 .section-text {
   position: relative;
   margin-bottom: 15px;
+  text-align: center;
 }
 
 .section-title::after {
