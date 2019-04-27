@@ -23,7 +23,8 @@ class UserController {
   static async register(req, res) {
     const {
       firstName, lastName, email, password,
-    } = req.body; let newUser;
+    } = req.body;
+    let newUser;
     try {
       const hashPassword = await PasswordManager.hashPassword(password);
       const userDetails = await pool.query('select * from users where email = $1', [email]);
@@ -55,7 +56,8 @@ class UserController {
   static async signupAdminStaff(req, res) {
     const {
       firstName, lastName, email, password, isAdmin,
-    } = req.body; let newUser;
+    } = req.body;
+    let newUser;
     try {
       const hashPassword = await PasswordManager.hashPassword(password);
       const userDetails = await pool.query('select * from users where email = $1', [email]);
@@ -67,16 +69,19 @@ class UserController {
         firstName, lastName, email, hashPassword, 'staff', isAdmin]);
     } catch (error) {
       return response(res, 500, 'Server error');
-    } const { id } = newUser.rows[0];
+    }
+    const { id } = newUser.rows[0];
+    const token = TokenManager.sign({ id, type: 'staff', isAdmin });
     return response(res, 201, 'Successfully created a new account for Admin or Staff', {
-      id, firstName, lastName, email,
+      id, firstName, lastName, email, isAdmin, token,
     });
   }
 
   // login controller
   static async signin(req, res) {
     const { email, password } = req.body;
-    let userDetails; let isPasswordValid;
+    let userDetails;
+    let isPasswordValid;
     try {
       userDetails = await pool.query('select * from users where email = $1', [email]);
       if (!userDetails.rows[0]) {
