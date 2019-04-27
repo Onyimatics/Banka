@@ -330,7 +330,7 @@ describe('POST/auth signup/admin', () => {
       .end((err, res) => {
         expect(res.body).to.be.an('object');
         expect(res.body.status).to.equal(400);
-        expect(res.body.message).to.equal('This user must be a staff');
+        expect(res.body.message).to.equal('Indicate Administrative Post');
         done();
       });
   });

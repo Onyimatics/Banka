@@ -7,5 +7,5 @@ ValidationMessages.firstName = 'Enter a valid firstName.';
 ValidationMessages.lastName = 'Enter a valid lastName.';
 ValidationMessages.accountNumber = 'Enter a valid Account Number';
 ValidationMessages.id = 'Invalid id, id must be a number';
-ValidationMessages.isAdmin = 'This user must be a staff';
+ValidationMessages.isAdmin = 'Indicate Administrative Post';
 export default ValidationMessages;

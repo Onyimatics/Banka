@@ -104,7 +104,7 @@ class TransactionController {
         oldBalance: oldbalance,
         newBalance: newbalance,
       };
-      return response(res, 200, 'Ok', data);
+      return response(res, 200, 'Transaction Details Successfully Retrieved', data);
     } catch (error) {
       return response(res, 500, 'Server error');
     }
