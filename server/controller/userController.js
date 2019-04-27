@@ -115,7 +115,7 @@ class UserController {
           Balance: balance,
         };
       });
-      return response(res, 200, 'Ok', data);
+      return response(res, 200, 'All User Accounts Successfully Retrieved', data);
     } catch (error) {
       return response(res, 500, 'Server error');
     }

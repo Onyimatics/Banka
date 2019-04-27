@@ -233,7 +233,7 @@ describe('GET /api/v2/accounts/<account-number>/transactions', () => {
       .end((err, res) => {
         expect(res.body.status).to.equal(200);
         expect(res.body.data).to.not.equal(null);
-        expect(res.body.message).to.equal('Ok');
+        expect(res.body.message).to.equal('Transactions Successfully Retrieved');
         done();
       });
   });
@@ -286,7 +286,7 @@ describe('GET /api/v2/user/<user-email>/accounts', () => {
       .end((err, res) => {
         expect(res.body.status).to.equal(200);
         expect(res.body.data).to.not.equal(null);
-        expect(res.body.message).to.equal('Ok');
+        expect(res.body.message).to.equal('All User Accounts Successfully Retrieved');
         done();
       });
   });
@@ -328,7 +328,7 @@ describe('GET api/v2/accounts/:accountNumber', () => {
       .end((err, res) => {
         expect(res.body.status).to.equal(200);
         expect(res.body.data).to.not.equal(null);
-        expect(res.body.message).to.equal('Ok');
+        expect(res.body.message).to.equal('Account Details Successfully Retrieved');
         done();
       });
   });
@@ -396,7 +396,7 @@ describe('GET api/v2/accounts', () => {
       .end((err, res) => {
         expect(res.body.status).to.equal(200);
         expect(res.body.data).to.not.equal(null);
-        expect(res.body.message).to.equal('Ok');
+        expect(res.body.message).to.equal('All Bank Accounts Successfully Retrieved');
         done();
       });
   });

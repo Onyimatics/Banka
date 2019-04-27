@@ -110,7 +110,7 @@ class AccountController {
           newBalance: newbalance,
         };
       });
-      return response(res, 200, 'Ok', data);
+      return response(res, 200, 'Transactions Successfully Retrieved', data);
     } catch (error) {
       return response(res, 500, 'Server error');
     }
@@ -132,7 +132,7 @@ class AccountController {
         status,
         Balance: balance,
       };
-      return response(res, 200, 'Ok', data);
+      return response(res, 200, 'Account Details Successfully Retrieved', data);
     } catch (error) {
       return response(res, 500, 'Server error');
     }
@@ -162,7 +162,7 @@ class AccountController {
       };
     });
 
-    return response(res, 200, 'Ok', data);
+    return response(res, 200, 'All Bank Accounts Successfully Retrieved', data);
   }
 }
 export default AccountController;

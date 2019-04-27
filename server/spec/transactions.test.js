@@ -202,7 +202,7 @@ describe('GET /api/v2/transactions/:id>', () => {
       .end((err, res) => {
         expect(res.body.status).to.equal(200);
         expect(res.body.data).to.not.equal(null);
-        expect(res.body.message).to.equal('Ok');
+        expect(res.body.message).to.equal('Transaction Details Successfully Retrieved');
         done();
       });
   });
