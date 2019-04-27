@@ -25,10 +25,10 @@ class DoValidation {
   static userName(req, res, next) {
     const { firstName, lastName } = req.body;
     const validate = RegularExpression.validate();
-    if (!validate.userName.test(firstName)) {
+    if (!validate.userName.test(firstName.trim())) {
       return response(res, 400, ValidationMessages.firstName);
     }
-    if (!validate.userName.test(lastName)) {
+    if (!validate.userName.test(lastName.trim())) {
       return response(res, 400, ValidationMessages.lastName);
     }
     return next();
@@ -37,7 +37,7 @@ class DoValidation {
   static accountNumber(req, res, next) {
     const { accountNumber } = req.params;
     const validate = RegularExpression.validate();
-    if (!validate.accountNumber.test(accountNumber)) {
+    if (!validate.accountNumber.test(accountNumber.trim())) {
       return response(res, 400, ValidationMessages.accountNumber);
     }
     return next();
