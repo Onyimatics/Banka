@@ -24,7 +24,6 @@ class AuthMiddleware {
       }
       const token = authorization;
       const decoded = await TokenManager.verify(token);
-
       if (decoded) {
         req.userDetails = decoded;
         return next();
