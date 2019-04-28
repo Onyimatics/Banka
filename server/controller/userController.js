@@ -5,7 +5,7 @@ import PasswordManager from '../helper/passwordManager';
 import pool from '../db/config';
 
 /**
-   * @class
+   * @class UserController
    * @description UserController
    * @param {object} req - Request object
    * @param {object} res - Response object
@@ -13,7 +13,7 @@ import pool from '../db/config';
    */
 class UserController {
   /**
-   * @static
+   * @static register
    * @description Allow a user to signup
    * @param {object} req - Request object
    * @param {object} res - Response object
@@ -46,8 +46,8 @@ class UserController {
   }
 
   /**
-   * @static
-   * @description Allow a user to signup
+   * @static signupAdminStaff
+   * @description Allows an Admin to signup another Admin or Staff
    * @param {object} req - Request object
    * @param {object} res - Response object
    * @returns {object} Json
@@ -77,7 +77,14 @@ class UserController {
     });
   }
 
-  // login controller
+  /**
+   * @static signin
+   * @description Allows a user to sign in
+   * @param {object} req - Request object
+   * @param {object} res - Response object
+   * @returns {object} Json
+   * @memberof UserControllers
+   */
   static async signin(req, res) {
     const { email, password } = req.body;
     let userDetails;
@@ -85,9 +92,12 @@ class UserController {
     try {
       userDetails = await pool.query('select * from users where email = $1', [email]);
       if (!userDetails.rows[0]) {
-        return response(res, 400, 'Invalid Password or Email');
+        return response(res, 400, 'User doesn\'t exist');
       }
       isPasswordValid = PasswordManager.verifyPassword(password, userDetails.rows[0].password);
+      if (!isPasswordValid) {
+        return response(res, 400, 'Incorrect Password or Email');
+      }
     } catch (error) {
       return response(res, 500, 'Server error');
     }
@@ -103,6 +113,14 @@ class UserController {
     return response(res, 400, 'Invalid Password or Email');
   }
 
+  /**
+   * @static getAllUserAccounts
+   * @description Allows Admin/Staff to get all User's accounts
+   * @param {object} req - Request object
+   * @param {object} res - Response object
+   * @returns {object} Json
+   * @memberof UserControllers
+   */
   static async getAllUserAccounts(req, res) {
     try {
       const { params: { email } } = req;

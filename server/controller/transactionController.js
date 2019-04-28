@@ -3,7 +3,7 @@ import pool from '../db/config';
 
 class TransactionController {
   /**
-    * @static
+    * @static debitAccount
     * @description Allows User to fetch transactions
     * @param {object} req - Request object
     * @param {object} res - Response object
@@ -50,7 +50,7 @@ class TransactionController {
   }
 
   /**
-    * @static
+    * @static creditAccount
     * @description Allows Staff credit an account
     * @param {object} req - Request object
     * @param {object} res - Response object
@@ -88,10 +88,21 @@ class TransactionController {
     }
   }
 
+  /**
+    * @static getSpecificTransaction
+    * @description Allows User to get a specific transaction details
+    * @param {object} req - Request object
+    * @param {object} res - Response object
+    * @returns {object} Json
+    * @memberof TransactionController
+    */
   static async getSpecificTransaction(req, res) {
     try {
       const { params: { id } } = req;
       const transaction = await pool.query('select * from transactions where id = $1', [id]);
+      // if (!transaction[0]) {
+      //   return response(res, 404, 'Transaction not found');
+      // }
       const {
         createdon, type, accountnumber, amount, oldbalance, newbalance,
       } = transaction.rows[0];

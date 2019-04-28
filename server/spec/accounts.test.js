@@ -4,7 +4,7 @@ import app from '../app';
 
 const { expect } = chai;
 chai.use(chaihttp);
-
+const invalidToken = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTMsImlhdCI6MTU1NTc3MDA1M30.6J7Lmugkww_bSoqKArodoQM4su96QtUrhxA500OxEpg';
 describe('POST /api/v2/accounts', () => {
   const user = {
     email: 'johndumelo@gmail.com',
@@ -57,6 +57,22 @@ describe('POST /api/v2/accounts', () => {
         done();
       });
   });
+
+  it('should not create account for an invalid token', (done) => {
+    const create = {
+      type: 'savings',
+    };
+    chai.request(app)
+      .post('/api/v2/accounts')
+      .set('authorization', invalidToken)
+      .send(create, user2)
+      .end((err, res) => {
+        expect(res.body.status).to.equal(401);
+        expect(res.body.message).to.equal('You are not signed in.');
+        done();
+      });
+  });
+
 
   it('should not create account if account type is not valid', (done) => {
     const create = {
