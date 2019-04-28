@@ -3,9 +3,16 @@
 import response from '../helper/response/index';
 import pool from '../db/config';
 
+/**
+    * @class AccountController
+    * @description Allow a user to create bank account
+    * @param {object} req - Request object
+    * @param {object} res - Response object
+    * @returns {object} Json
+    */
 class AccountController {
   /**
-    * @static
+    * @static createAccount
     * @description Allow a user to create bank account
     * @param {object} req - Request object
     * @param {object} res - Response object
@@ -44,7 +51,7 @@ class AccountController {
 
   static async updateAccountStatus(req, res) {
     /**
-    * @static
+    * @static updateAccountStatus
     * @description Allow Admin/Staff to activate or deactivate an account
     * @param {object} req - Request object
     * @param {object} res - Response object
@@ -67,7 +74,7 @@ class AccountController {
   }
 
   /**
-  * @static
+  * @static deleteAccount
   * @description Allow Admin/Staff to delete an account
   * @param {object} req - Request object
   * @param {object} res - Response object
@@ -85,8 +92,8 @@ class AccountController {
   }
 
   /**
-    * @static
-    * @description Allows users to get all accounts for a user
+    * @static getAccountTransactions
+    * @description Allows users to get an account's transactions
     * @param {object} req - Request object
     * @param {object} res - Response object
     * @returns {object} Json
@@ -116,6 +123,14 @@ class AccountController {
     }
   }
 
+  /**
+  * @static getSpecificAccountDetails
+  * @description Allow Admin/Staff get a specific account details
+  * @param {object} req - Request object
+  * @param {object} res - Response object
+  * @returns {object} Json
+  * @memberof AccountController
+  */
   static async getSpecificAccountDetails(req, res) {
     try {
       const { params: { accountNumber } } = req;
@@ -138,6 +153,14 @@ class AccountController {
     }
   }
 
+  /**
+  * @static getAllBankAccounts
+  * @description Allow Admin/Staff get all bank accounts
+  * @param {object} req - Request object
+  * @param {object} res - Response object
+  * @returns {object} Json
+  * @memberof AccountController
+  */
   static async getAllBankAccounts(req, res) {
     let accounts; try {
       const { status } = req.query;

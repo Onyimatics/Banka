@@ -8,7 +8,7 @@ import pool from '../../db/config';
  */
 class AuthMiddleware {
   /**
-     * @static
+     * @static checkIfUserIsAuthenticated
      * @description a middleware function checking if a user is authenticated
      * @param {object} req HTTP request object
      * @param {object} res HTTP response object
@@ -39,6 +39,14 @@ class AuthMiddleware {
   }
 
   static async checkUserById(req, res, next) {
+    /**
+     * @static checkUserById
+     * @description a middleware function checking if a user is authenticated
+     * @param {object} req HTTP request object
+     * @param {object} res HTTP response object
+     * @param {function} next next middleware function
+     * @returns {object} returns error message if user is not authenticated
+     */
     try {
       const userDetails = await pool.query('select * from users where id = $1', [req.userDetails.id]);
       if (!userDetails.rows[0]) {
