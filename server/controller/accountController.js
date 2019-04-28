@@ -101,8 +101,18 @@ class AccountController {
     */
   static async getAccountTransactions(req, res) {
     try {
-      const { params: { accountNumber } } = req;
+      const { params: { accountNumber }, userDetails } = req;
+      let checkAccount;
+      if (userDetails.type === 'client') {
+        checkAccount = await pool.query(`SELECT users.id, accounts.* FROM users INNER JOIN accounts ON users.id = accounts.OWNER 
+        WHERE accounts.accountnumber = $1 AND users.id = $2`, [accountNumber, userDetails.id]);
+        if (!checkAccount.rows[0]) {
+          return response(res, 401, 'This account does not belong to you');
+        }
+      }
       const transactions = await pool.query('select * from transactions where accountnumber = $1', [accountNumber]);
+
+
       const data = transactions.rows.map((transaction) => {
         const {
           id, createdon, type, accountnumber, amount, oldbalance, newbalance,

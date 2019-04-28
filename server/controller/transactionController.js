@@ -98,14 +98,25 @@ class TransactionController {
     */
   static async getSpecificTransaction(req, res) {
     try {
-      const { params: { id } } = req;
-      const transaction = await pool.query('select * from transactions where id = $1', [id]);
-      // if (!transaction[0]) {
-      //   return response(res, 404, 'Transaction not found');
-      // }
+      let transactions;
+      const { params: { id }, userDetails } = req;
+      if (userDetails.type === 'staff') {
+        transactions = await pool.query('select * from transactions where id = $1', [id]);
+      } else {
+        transactions = await pool.query(`SELECT transactions.* FROM transactions INNER JOIN accounts 
+        ON transactions.accountnumber = accounts.accountnumber 
+        WHERE transactions.id = $1 AND accounts.OWNER = $2`, [id, userDetails.id]);
+        if (!transactions.rows[0]) {
+          return response(res, 401, 'This account does not belong to you');
+        }
+      }
+
+      if (!transactions.rows[0]) {
+        return response(res, 404, 'Transaction Not Found');
+      }
       const {
         createdon, type, accountnumber, amount, oldbalance, newbalance,
-      } = transaction.rows[0];
+      } = transactions.rows[0];
       const data = {
         transactionId: id,
         createdOn: createdon,
