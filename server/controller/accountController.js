@@ -143,9 +143,20 @@ class AccountController {
   */
   static async getSpecificAccountDetails(req, res) {
     try {
-      const { params: { accountNumber } } = req;
-      const account = await pool.query(`SELECT email, accounts.* 
-      FROM users JOIN accounts on users.id = accounts.OWNER WHERE accounts.accountnumber = $1`, [accountNumber]);
+      const { params: { accountNumber }, userDetails } = req;
+      let account;
+
+      if (userDetails.type === 'staff') {
+        account = await pool.query(`SELECT email, accounts.* 
+        FROM users JOIN accounts on users.id = accounts.OWNER WHERE accounts.accountnumber = $1`, [accountNumber]);
+      } else {
+        account = await pool.query(`SELECT accounts.* FROM accounts INNER JOIN users ON users.id = accounts.owner
+         WHERE accounts.accountnumber = $1 AND accounts.OWNER = $2`, [accountNumber, userDetails.id]);
+      }
+
+      if (!account.rows[0]) {
+        return response(res, 404, 'Account Not Found');
+      }
       const {
         createdon, accountnumber, email, type, status, balance,
       } = account.rows[0];

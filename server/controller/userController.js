@@ -107,7 +107,7 @@ class UserController {
     if (isPasswordValid) {
       const token = TokenManager.sign({ id, type, isadmin });
       return response(res, 200, 'Successfully signed in', {
-        id, firstName: firstname, lastName: lastname, email, token,
+        id, firstName: firstname, lastName: lastname, email, token, type, isadmin,
       });
     }
     return response(res, 400, 'Invalid Password or Email');
@@ -122,10 +122,19 @@ class UserController {
    * @memberof UserControllers
    */
   static async getAllUserAccounts(req, res) {
+    let accounts;
     try {
-      const { params: { email } } = req;
-      const accounts = await pool.query(`SELECT email, accounts.* FROM users 
-      JOIN accounts on users.id = accounts.OWNER WHERE users.email = $1`, [email]);
+      const { params: { email }, userDetails } = req;
+      if (userDetails.type === 'staff') {
+        accounts = await pool.query(`SELECT email, accounts.* FROM users 
+        JOIN accounts on users.id = accounts.OWNER WHERE users.email = $1`, [email]);
+      } else {
+        accounts = await pool.query(`SELECT accounts.* FROM users INNER JOIN accounts ON users.id = accounts.owner
+         WHERE users.email = $1 AND accounts.owner = $2`, [email, userDetails.id]);
+      }
+      if (!accounts.rows[0]) {
+        return response(res, 404, 'Accounts Not Found');
+      }
       const data = accounts.rows.map((account) => {
         const {
           createdon, accountnumber, type, status, balance,
