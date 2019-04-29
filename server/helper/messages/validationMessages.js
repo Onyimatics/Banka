@@ -8,4 +8,5 @@ ValidationMessages.lastName = 'Enter a valid lastName.';
 ValidationMessages.accountNumber = 'Enter a valid Account Number';
 ValidationMessages.id = 'Invalid id, id must be a number';
 ValidationMessages.isAdmin = 'Indicate Administrative Post';
+ValidationMessages.openingBalance = 'Opening Balance is required and must be a number';
 export default ValidationMessages;

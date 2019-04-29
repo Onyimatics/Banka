@@ -15,6 +15,7 @@ class RegularExpression {
       status: /(active|dormant|draft)$/i,
       accountType: /(current|savings)$/i,
       isAdmin: /(true|false)$/i,
+      openingBalance: /^\d+$/,
     };
   }
 }

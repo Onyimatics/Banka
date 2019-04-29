@@ -17,6 +17,7 @@ accountRoutes.post('/',
   AuthMiddleware.checkIfUserIsAuthenticated,
   AuthMiddleware.checkUserById,
   AccountValidation.type,
+  DoValidation.openingBalance,
   AccountController.createAccount);
 
 accountRoutes.patch('/:accountNumber',
