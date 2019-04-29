@@ -39,5 +39,23 @@ const users = [
     type: '\'client\'', // client or staff
     isAdmin: '\'false\'', // must be a staff user account
   },
+
+  {
+    firstName: '\'Blessing\'',
+    lastName: '\'Onwughara\'',
+    email: '\'bgirlohara@gmail.com\'',
+    password: '\'$2a$10$2Sm23gSh7yPMZfFCHAEOhOF./dfvNx9zDb8vCX6VabRTe4/1SC7EG\'',
+    type: '\'client\'', // client or staff
+    isAdmin: '\'false\'', // must be a staff user account
+  },
+
+  {
+    firstName: '\'Ajibola\'',
+    lastName: '\'Hussain\'',
+    email: '\'ajibolahussain@gmail.com\'',
+    password: '\'$2a$10$2Sm23gSh7yPMZfFCHAEOhOF./dfvNx9zDb8vCX6VabRTe4/1SC7EG\'',
+    type: '\'staff\'', // client or staff
+    isAdmin: '\'false\'', // must be a staff user account
+  },
 ];
 export default users;

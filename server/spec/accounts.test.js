@@ -283,6 +283,11 @@ describe('GET /api/v2/user/<user-email>/accounts', () => {
     password: '123456789',
   };
 
+  const user = {
+    email: 'markzuckerberg@gmail.com',
+    password: '123456789',
+  };
+
   let staffToken;
   before((done) => {
     chai.request(app)
@@ -294,11 +299,22 @@ describe('GET /api/v2/user/<user-email>/accounts', () => {
       });
   });
 
+  let userToken;
+  before((done) => {
+    chai.request(app)
+      .post('/api/v2/auth/signin')
+      .send(user)
+      .end((err, res) => {
+        userToken = res.body.data.token;
+        done();
+      });
+  });
+
 
   it('should successfully get all accounts owned by a specific user', (done) => {
     chai.request(app)
-      .get('/api/v2/user/emekaike@gmail.com/accounts')
-      .set('authorization', staffToken)
+      .get('/api/v2/user/markzuckerberg@gmail.com/accounts')
+      .set('authorization', userToken)
       .end((err, res) => {
         expect(res.body.status).to.equal(200);
         expect(res.body.data).to.not.equal(null);
@@ -314,6 +330,17 @@ describe('GET /api/v2/user/<user-email>/accounts', () => {
       .end((err, res) => {
         expect(res.body.message).to.equal('Enter a valid email.');
         expect(res.statusCode).to.equal(400);
+        done();
+      });
+  });
+
+  it('should flag an error if the email does not belong to the user', (done) => {
+    chai.request(app)
+      .get('/api/v2/user/femiotedola@gmail.com/accounts')
+      .set('authorization', userToken)
+      .end((err, res) => {
+        expect(res.body.message).to.equal('Accounts Not Found');
+        expect(res.statusCode).to.equal(404);
         done();
       });
   });

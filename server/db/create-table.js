@@ -61,7 +61,7 @@ const createAllTables = async () => {
     await create(users, 'users');
     await create(accounts, 'accounts');
     await create(transactions, 'transactions');
-    console.log('all tables has been created');
+    console.log('all tables have been created');
   } catch (error) {
     console.log(error);
   }

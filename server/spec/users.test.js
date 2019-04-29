@@ -12,10 +12,10 @@ describe('POST/auth signup', () => {
     chai.request(app)
       .post(signupUrl)
       .send({
-        firstName: 'Blessing',
-        lastName: 'Onwughara',
-        email: 'bgirlohara@gmail.com',
-        password: 'Blessing',
+        firstName: 'Chinoso',
+        lastName: 'Jude',
+        email: 'chinosojude@gmail.com',
+        password: 'Chinosojude',
       })
       .end((err, res) => {
         expect(res.body).to.be.an('object');
@@ -29,7 +29,7 @@ describe('POST/auth signup', () => {
         expect(res.body.data).to.have.property('lastName');
         expect(res.body.data).to.have.property('email');
         expect(res.body.data.token).to.be.a('string');
-        expect(res.body.data.email).to.equal('bgirlohara@gmail.com');
+        expect(res.body.data.email).to.equal('chinosojude@gmail.com');
         done();
       });
   });
@@ -165,10 +165,10 @@ describe('POST/auth signup/admin', () => {
 
   it('should signup a new admin or staff', (done) => {
     const one = {
-      firstName: 'Ajibola',
-      lastName: 'Hussain',
-      email: 'ajibolahussain@gmail.com',
-      password: 'Ajibolahussain',
+      firstName: 'Atiku',
+      lastName: 'Abubakar',
+      email: 'atikuabubakar@gmail.com',
+      password: 'Atikuabubakar',
       isAdmin: 'false',
     };
     chai.request(app)
