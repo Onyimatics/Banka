@@ -60,6 +60,15 @@ class DoValidation {
     }
     return next();
   }
+
+  static openingBalance(req, res, next) {
+    const { openingBalance } = req.body;
+    const validate = RegularExpression.validate();
+    if (!validate.openingBalance.test(openingBalance)) {
+      return response(res, 400, ValidationMessages.openingBalance);
+    }
+    return next();
+  }
 }
 
 export default DoValidation;

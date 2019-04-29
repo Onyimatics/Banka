@@ -30,7 +30,7 @@ describe('POST /api/v2/accounts', () => {
   it('should successfully create an account', (done) => {
     const create = {
       type: 'savings',
-      openingBalance: '1000.00',
+      openingBalance: '1000',
     };
     chai.request(app)
       .post('/api/v2/accounts')
@@ -39,6 +39,22 @@ describe('POST /api/v2/accounts', () => {
       .end((err, res) => {
         expect(res.body.status).to.equal(201);
         expect(res.body.message).to.equal('Successfully created a new bank account');
+        done();
+      });
+  });
+
+  it('should not create account if openingBalance is missing', (done) => {
+    const create = {
+      type: 'savings',
+      openingBalance: '',
+    };
+    chai.request(app)
+      .post('/api/v2/accounts')
+      .set('authorization', userToken)
+      .send(create)
+      .end((err, res) => {
+        expect(res.body.status).to.equal(400);
+        expect(res.body.message).to.equal('Opening Balance is required and must be a number');
         done();
       });
   });

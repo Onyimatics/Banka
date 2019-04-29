@@ -111,8 +111,9 @@ class AccountController {
         }
       }
       const transactions = await pool.query('select * from transactions where accountnumber = $1', [accountNumber]);
-
-
+      if (!transactions.rows[0]) {
+        return response(res, 404, 'Transactions Not Found');
+      }
       const data = transactions.rows.map((transaction) => {
         const {
           id, createdon, type, accountnumber, amount, oldbalance, newbalance,
