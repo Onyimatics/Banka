@@ -27,13 +27,14 @@
     <main>
         <section class="container form-container">
             <h2 class="section-title">SignIn</h2>
-            <form class="form-card" action="./user-dashboard.html">
+            <form class="form-card">
+                <div id="signin-error"></div>
                 <label for="email">Enter Email<span>*</span></label>
-                <input type="email" name="email" id="email" class="form-element" placeholder="onyimatics@gmail.com" required />
+                <input type="email" name="email" id="email" class="form-element" placeholder="onyimatics@gmail.com"required/>
                 <label for="password">Enter Password<span>*</span></label>
-                <input type="password" name="password" id="password" class="form-element" placeholder="........"required />
+                <input type="password" name="password" id="password" class="form-element"placeholder="........"required />
                 <div class="forgot--reset"><a href="./password-reset.html" class="text--color--grey"><u>Forgot Password?</u></a></div>
-                <input type="submit" class="btn btn-primary user-form" value="Login">
+                <button id="button-submit" class="btn btn-primary user-form">Signin</button>
                 <div class="margin--top--10 margin--below ">
                     <p class="text--primary1">Dont have an account?
                         <a href="./signup.html" class="text--color--grey"><u>Sign Up</u></a>
@@ -48,7 +49,8 @@
         <p class="credits">Banka | Copyright &copy; Andela 2019</p>
     </footer>
     <!-- End Footer -->
-    <script src="./assets/js/main.js"></script>
+    <script src="./assets/js/helper.js"></script>
+    <script src="./assets/js/signin.js"></script>
 </body>
 
 </html>
