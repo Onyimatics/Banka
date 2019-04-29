@@ -3,7 +3,7 @@
 const emailRegex = /[a-z0-9\._%+!$&*=^|~#%'`?{}/\-]+@([a-z0-9\-]+\.){1,}([a-z]{2,16})/;
 const passwordRegex = /^[a-zA-Z0-9]{8,}$/;
 
-const errorDiv = document.querySelector('#signin-error');
+const errorDiv = document.querySelector('#erorrDiv');
 
 const handleInputChange = (message) => {
   errorDiv.innerHTML = message;
@@ -29,16 +29,19 @@ signInForm.addEventListener('submit', async (event) => {
   errorDiv.innerHTML = '';
   const response = await fetchData(`${baseUrl}/auth/signin`, 'post', { email, password });
   if (!response || response.status === 500) {
+    errorDiv.style.color = 'red';
     handleInputChange('Error connecting to server');
     return false;
   } if (response.status === 400) {
+    errorDiv.style.color = 'red';
     handleInputChange('Username or password is incorrect');
     return false;
   } else {
+    errorDiv.style.color = 'green';
     handleInputChange('Welcome');
   }
   const { data } = response;
   if (data.type === 'client') { window.location.href = 'user-dashboard.html'; }
   if (data.isadmin === 'true') { window.location.href = 'admin-dashboard.html'; }
-  window.href = 'staff-dashboard.html';
+  window.location.href = 'staff-dashboard.html';
 });
