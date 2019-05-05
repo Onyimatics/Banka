@@ -53,7 +53,7 @@ button {
 .btn {
   padding: 12px 25px;
   border-radius: 7px;
-  font-weight: 600;
+  font-weight: 200;
   display: inline-block;
   min-width: 110px;
   text-align: center;
@@ -333,7 +333,15 @@ td.issue {
 }
 
 #delete-account {
-  background-color: #ee0d0d;
+  /* background-color: #ee0d0d; */
+
+  border: #eef0f3;
+  color: red;
+}
+
+#delete-account:hover {
+  background-color: rgb(175, 80, 175);
+  color: #eef0f3;
 }
 
 /* Form Card */
@@ -344,7 +352,7 @@ td.issue {
   flex-direction: column;
   padding: 50px 40px;
   margin-top: 25px;
-  box-shadow: 10px 10px 15px grey;
+  box-shadow: 5px 5px 10px grey;
 }
 
 
@@ -364,7 +372,7 @@ td.issue {
   align-items: center;
   padding: 20px;
   margin-top: 20px;
-  box-shadow: 10px 10px 15px grey;
+  box-shadow: 5px 5px 10px grey;
 }
 
 /* Profile Picture with overlay */
@@ -465,7 +473,7 @@ p.stat-value {
   margin-top: 20px;
   background: #fffffa;
   width: 100%;
-  box-shadow: 10px 10px 15px grey;
+  box-shadow: 5px 5px 10px grey;
 }
 
 .profile-table {
@@ -697,7 +705,7 @@ font-weight: 600;
     right: 0;
     padding: 0;
     width: 100%;
-    background: #8B008B;
+    background: #1de6f5;
     overflow: hidden;
     transition: all 250ms ease-in;
     z-index: 1000;
@@ -713,7 +721,7 @@ font-weight: 600;
   }
 
   .navbar-link a {
-    color: #fffffa;
+    color: #0a0a01;
     padding: 20px;
   }
 

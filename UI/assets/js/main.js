@@ -21,12 +21,34 @@ const closeDeleteModal = () => {
   deleteModal.style.display = 'none';
 };
 
+
 // When the user clicks anywhere outside of the modal, close it
 window.onclick = function (event) {
   if (event.target === modal) {
     modal.style.display = 'none';
   }
 };
+
+// window.onclick = function (event) {
+//   if (event.target === hamburgerBtn) {
+//     hamburgerBtn.style.display = 'none';
+//   }
+// };
+
+// window.addEventListener('click', (event) => {
+//   const hamburger = document.querySelector('.navbar');
+//   if (event.target !== hamburger) {
+//     hamburger.style.display = 'none';
+//   }
+// });
+
+
+// window.addEventListener('click', (event) => {
+//   const hamburger = document.querySelector('.hamburger-menu');
+//   if (event.target !== hamburger && event.target.parentNode !== hamburger) {
+//     hamburger.style.display = 'none';
+//   }
+// });
 
 
 // Event handler for toggling menu of mobile devices
