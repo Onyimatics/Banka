@@ -167,7 +167,7 @@ class AccountController {
         ownerEmail: email,
         type,
         status,
-        Balance: balance,
+        balance,
       };
       return response(res, 200, 'Account Details Successfully Retrieved', data);
     } catch (error) {
@@ -203,7 +203,7 @@ class AccountController {
       const {
         createdon, accountnumber, email, type, status, balance,
       } = account; return {
-        createdOn: createdon, accountNumber: accountnumber, ownerEmail: email, type, status, Balance: balance,
+        createdOn: createdon, accountNumber: accountnumber, ownerEmail: email, type, status, balance,
       };
     });
 

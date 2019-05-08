@@ -16,7 +16,6 @@ class TransactionController {
       userDetails: { id },
       params: { accountNumber },
     } = req;
-
     if (accountDetails.status !== 'active') {
       return response(res, 400, 'Account is currently dormant');
     }
@@ -33,7 +32,6 @@ class TransactionController {
           oldBalance,
           newBalance,
         };
-
         const query = `WITH transactions AS (
           update accounts set balance = ${newBalance} where accountnumber = ${accountNumber}  
           )
@@ -41,7 +39,19 @@ class TransactionController {
           values (${[...Object.values(newTransactions)]}) returning *
           `;
         const transaction = await pool.query(query);
-        return response(res, 200, 'Account has been successfully debited', transaction.rows[0]);
+
+        const {
+          type,
+        } = transaction.rows[0];
+        return response(res, 200, 'Account has been successfully debited', {
+          transactionId: transaction.rows[0].id,
+          accountNumber,
+          amount,
+          cashier: id,
+          transactionType: type,
+          oldBalance: oldBalance.toFixed(2),
+          newBalance: newBalance.toFixed(2),
+        });
       } catch (error) {
         return response(res, 500, 'Server error');
       }
@@ -82,7 +92,18 @@ class TransactionController {
         values (${[...Object.values(newTransactions)]}) returning * `;
 
       const transaction = await pool.query(query);
-      return response(res, 200, 'Account has been successfully credited', transaction.rows[0]);
+      const {
+        type,
+      } = transaction.rows[0];
+      return response(res, 200, 'Account has been successfully credited', {
+        transactionId: transaction.rows[0].id,
+        accountNumber,
+        amount,
+        cashier: id,
+        transactionType: type,
+        oldBalance: oldBalance.toFixed(2),
+        newBalance: newBalance.toFixed(2),
+      });
     } catch (error) {
       return response(res, 500, 'Server error');
     }
