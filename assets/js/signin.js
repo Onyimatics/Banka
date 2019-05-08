@@ -41,7 +41,7 @@ signInForm.addEventListener('submit', async (event) => {
     handleInputChange('Welcome');
   }
   const { data } = response;
-  if (data.type === 'client') { window.location.href = 'user-dashboard.html'; }
-  if (data.isadmin === 'true') { window.location.href = 'admin-dashboard.html'; }
+  if (data.type === 'client') { window.location.href = 'user-dashboard.html'; return window.location.href; }
+  if (data.isadmin === 'true') { window.location.href = 'admin-dashboard.html'; return window.location.href; }
   window.location.href = 'staff-dashboard.html';
 });
