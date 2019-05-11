@@ -366,7 +366,7 @@ td.issue {
 
 .profile-card {
   background: #fffffa;
-  display: flex;
+  display: inline-flex;
   flex-basis: 25%;
   flex-direction: column;
   align-items: center;
@@ -495,6 +495,10 @@ tr > td:nth-child(5) {
 
 tr > td:last-child {
   text-align: center;
+}
+
+#view-user {
+  color: #fffffa;
 }
 
 

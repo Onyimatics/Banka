@@ -20,7 +20,7 @@
                 <a href="./index.html" class="navbar-logo">Banka</a>
             <button class="hamburger-menu"><a class="hamburger"></a></button>
             <ul class="navbar-menu">
-                <li class="navbar-link"><a href="./create-admin-staff-account.html">Create Admin/Staff Account</a</li>
+                <li class="navbar-link" id="superuser"><a href="./create-admin-staff-account.html">Create Admin/Staff Account</a</li>
                 <li class="navbar-link"><a href="./index.html">Log Out</a></li>
             </ul>
         </nav>
@@ -46,88 +46,95 @@
                                             </li>
                                 </div>
                               </div>
-                        <p class="profile-name">Onyinye Ezike: Admin</p></div>
+                        <p class="profile-name"><h2 id="user-name"></h2></p>
+                        <table class="profile-tab">
+                                <tr>
+                                        <td>Role</td>
+                                        <td id="role"></td> 
+                                      </tr>
+                    </table>
+                    </div>
                 <div class="profile-table">
                     <table class="stats-table">
                             <tbody>
                                     <tr>
                                         <th>S/N</th>
-                                        <th>First Name</th>
-                                        <th>Last Name</th>
                                         <th>CreatedOn</th>
+                                        <th>OwnerEmail</th>
+                                        <th>Status</th>
                                         <th>View User</th>
                                         <th>Activate/Deactivate</th>
                                         <th>Delete</th>
                                     </tr>
                                     <tr>
                                         <td>1.</td>
-                                        <td>Onyinye</td>
-                                        <td>Ezike</td>
                                         <td>Monday 16-02-2011</td>
-                                        <td><button id="translate2d" type="button" class="btn btn-primary" onclick="triggerModal()">View</button></td>
+                                        <td>markzuckerberg@gmail</td>
+                                        <td>Active</td>
+                                        <td><button id="translate2d" type="button" class="btn btn-primary"><a id="view-user" href="./view-user-details.html">View</a></button></td>
                                         <td><button class="btn btn-warning">Deactivate</button></td>
                                         <td><button id= "delete-account" class="btn btn-warning delete-account" onclick="triggerDeleteModal()">Delete</button></td>
                                     </tr>
                                     <tr>
                                             <td>2.</td>
-                                            <td>Onyinye</td>
-                                            <td>Ezike</td>
                                             <td>Monday 16-02-2011</td>
-                                            <td><button id="translate2d" type="button" class="btn btn-primary" onclick="triggerModal()">View</button></td>
+                                            <td>markzuckerberg@gmail</td>
+                                            <td>Active</td>
+                                            <td><button id="translate2d" type="button" class="btn btn-primary"><a id="view-user" href="./view-user-details.html">View</a></button></td>
                                             <td><button class="btn btn-warning">Deactivate</button></td>
                                             <td><button id= "delete-account" class="btn btn-warning delete-account" onclick="triggerDeleteModal()">Delete</button></td>
                                     </tr>
                                     <tr>
                                             <td>3.</td>
-                                            <td>Onyinye</td>
-                                            <td>Ezike</td>
                                             <td>Monday 16-02-2011</td>
-                                            <td><button id="translate2d" type="button" class="btn btn-primary" onclick="triggerModal()">View</button></td>
+                                            <td>markzuckerberg@gmail</td>
+                                            <td>Dormant</td>
+                                            <td><button id="translate2d" type="button" class="btn btn-primary"><a id="view-user" href="./view-user-details.html">View</a></button></td>
                                             <td><button class="btn btn-warning1">Activate</button></td>
                                             <td><button id= "delete-account" class="btn btn-warning delete-account" onclick="triggerDeleteModal()">Delete</button></td>
                                     </tr>
                                     <tr>
                                         <td>4.</td>
-                                            <td>Onyinye</td>
-                                            <td>Ezike</td>
                                             <td>Monday 16-02-2011</td>
-                                            <td><button id="translate2d" type="button" class="btn btn-primary" onclick="triggerModal()">View</button></td>
+                                            <td>markzuckerberg@gmail</td>
+                                            <td>Active</td>
+                                            <td><button id="translate2d" type="button" class="btn btn-primary"><a id="view-user" href="./view-user-details.html">View</a></button></td>
                                             <td><button class="btn btn-warning delete-account">Deactivate</button></td>
                                             <td><button id= "delete-account" class="btn btn-warning delete-account" onclick="triggerDeleteModal()">Delete</button></td>
                                     </tr>
                                     <tr>
                                         <td>5.</td>
-                                            <td>Onyinye</td>
-                                            <td>Ezike</td>
                                             <td>Monday 16-02-2011</td>
-                                            <td><button id="translate2d" type="button" class="btn btn-primary" onclick="triggerModal()">View</button></td>
+                                            <td>markzuckerberg@gmail</td>
+                                            <td>Dormant</td>
+                                            <td><button id="translate2d" type="button" class="btn btn-primary"><a id="view-user" href="./view-user-details.html">View</a></button></td>
                                             <td><button class="btn btn-warning1">Activate</button></td>
                                             <td><button id= "delete-account" class="btn btn-warning delete-account" onclick="triggerDeleteModal()">Delete</button></td>
                                     </tr>
                                     <tr>
                                             <td>6.</td>
-                                            <td>Onyinye</td>
-                                            <td>Ezike</td>
                                             <td>Monday 16-02-2011</td>
-                                            <td><button id="translate2d" type="button" class="btn btn-primary" onclick="triggerModal()">View</button></td>
-                                            <td><button class="btn btn-warning delete-account">Deactivate</button></td>
-                                            <td><button id= "delete-account" class="btn btn-warning delete-account" onclick="triggerDeleteModal()">Delete</button></td>
-                                    </tr>
-                                    <tr>
-                                        <td>7.</td>
-                                            <td>Onyinye</td>
-                                            <td>Ezike</td>
-                                            <td>Monday 16-02-2011</td>
-                                            <td><button id="translate2d" type="button" class="btn btn-primary" onclick="triggerModal()">View</button></td>
+                                            <td>markzuckerberg@gmail</td>
+                                            <td>Active</td>
+                                            <td><button id="translate2d" type="button" class="btn btn-primary"><a id="view-user" href="./view-user-details.html">View</a></button></td>
                                             <td><button class="btn btn-warning deactivate-account">Deactivate</button></td>
                                             <td><button id= "delete-account" class="btn btn-warning delete-account" onclick="triggerDeleteModal()">Delete</button></td>
                                     </tr>
                                     <tr>
-                                            <td>8.</td>
-                                            <td>Onyinye</td>
-                                            <td>Ezike</td>
+                                        <td>7.</td>
                                             <td>Monday 16-02-2011</td>
-                                            <td><button id="translate2d" type="button" class="btn btn-primary" onclick="triggerModal()">View</button></td>
+                                            <td>markzuckerberg@gmail</td>
+                                            <td>Dormant</td>
+                                            <td><button id="translate2d" type="button" class="btn btn-primary"><a id="view-user" href="./view-user-details.html">View</a></button></td>
+                                            <td><button class="btn btn-warning1">Activate</button></td>
+                                            <td><button id= "delete-account" class="btn btn-warning delete-account" onclick="triggerDeleteModal()">Delete</button></td>
+                                    </tr>
+                                    <tr>
+                                            <td>8.</td>
+                                            <td>Monday 16-02-2011</td>
+                                            <td>markzuckerberg@gmail</td>
+                                            <td>Active</td>
+                                            <td><button id="translate2d" type="button" class="btn btn-primary"><a id="view-user" href="./view-user-details.html">View</a></button></td>
                                             <td><button class="btn btn-warning deactivate-account">Deactivate</button></td>
                                             <td><button id= "delete-account" class="btn btn-warning delete-account" onclick="triggerDeleteModal()">Delete</button></td>
                                     </tr>
@@ -233,6 +240,7 @@
     </footer>
     <!-- End Footer -->
     <script src="./assets/js/main.js"></script>
+    <script src="./assets/js/user.js"></script>
 </body>
 
 

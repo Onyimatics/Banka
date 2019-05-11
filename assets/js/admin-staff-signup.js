@@ -1,12 +1,13 @@
 /* eslint-disable no-useless-escape */
 /* eslint-disable consistent-return */
 
-const url = 'https://bankaapp.herokuapp.com/api/v2/auth/signup';
-// const url = 'http://localhost:3000/api/v2/auth/signup';
+const url = 'https://bankaapp.herokuapp.com/api/v2/auth/signup/admin';
+// const url = 'http://localhost:3000/api/v2/auth/signup/admin';
 
 const errorDiv = document.querySelector('.erorrs');
 const errorContainer = document.querySelector('.erorrs ul');
 const { token } = localStorage;
+const isAdminRegex = /(true|false)$/i;
 const firstnameRegex = /^[a-zA-Z]{3,25}$/;
 const lastnameRegex = /^[a-zA-Z]{3,25}$/;
 const emailRegex = /[a-z0-9\._%+!$&*=^|~#%'`?{}/\-]+@([a-z0-9\-]+\.){1,}([a-z]{2,16})/;
@@ -16,10 +17,14 @@ const firstNameError = document.querySelector('#firstName-error');
 const lastNameError = document.querySelector('#lastName-error');
 const emailError = document.querySelector('#email-error');
 const passwordError = document.querySelector('#password-error');
+const isAdminError = document.querySelector('#isadmin-error');
 
-const signUp = (firstname, lastname, email, password) => {
+const signUp = (isadmin, firstname, lastname, email, password) => {
   let value = 1;
-  if (!emailRegex.test(email)) {
+  if (!isAdminRegex.test(isadmin)) {
+    isAdminError.innerHTML = 'Indicate Administrative Post.';
+    value -= 1;
+  } if (!emailRegex.test(email)) {
     emailError.innerHTML = 'email should be of the form name@domain.com.';
     value -= 1;
   } if (!firstnameRegex.test(firstname)) {
@@ -43,23 +48,26 @@ const append = (parent, el) => parent.appendChild(el);
 signUpForm.addEventListener('submit', async (e) => {
   e.preventDefault();
 
+  const isAdmin = document.getElementById('isAdmin').value;
   const firstName = document.getElementById('firstName').value;
   const lastName = document.getElementById('lastName').value;
   const email = document.getElementById('email').value;
   const password = document.getElementById('password').value;
 
+  isAdminError.innerHTML = '';
   emailError.innerHTML = '';
   firstNameError.innerHTML = '';
   lastNameError.innerHTML = '';
   passwordError.innerHTML = '';
 
-  if (signUp(firstName, lastName, email, password) < 1) {
+  if (signUp(isAdmin, firstName, lastName, email, password) < 1) {
     return false;
   }
 
   await fetch(url, {
     method: 'POST',
     body: JSON.stringify({
+      isAdmin,
       firstName,
       lastName,
       email,
@@ -88,12 +96,8 @@ signUpForm.addEventListener('submit', async (e) => {
         li.innerHTML = `${response.message}, Welcome!!! <br>`;
         append(errorContainer, li);
         setTimeout(() => {
-          window.location = './user-dashboard.html';
+          window.location = './admin-dashboard.html';
         }, 3000);
-        const { data } = response;
-        localStorage.setItem('token', data.token);
-        localStorage.setItem('userDetails', JSON.stringify(data));
-        localStorage.setItem('loggedIn', true);
       }
     })
     .catch((error) => {

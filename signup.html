@@ -25,8 +25,12 @@
     <main>
             <section class="container form-container">
               <h2 class="section-title">Sign Up</h2>
-              <form class="form-card" action="">
-                <div id="erorrDiv"></div>
+              <form class="form-card" action="" method="POST">
+                <div class="erorrs">
+                  <ul>
+
+                  </ul>
+                </div>
                 <label for="firstname">Enter First Name<span>*</span></label>
                 <input
                   type="text"
@@ -51,7 +55,7 @@
                   id="email"
                   name="email"
                   class="form-element"
-                  placeholder="onyimatics@gmail.com"
+                  placeholder="email@gmail.com"
                   required/>
                   <div class="error" id="email-error"></div>
                 <label for="password">Enter Password<span>*</span></label>
@@ -63,7 +67,7 @@
                   placeholder=".........."
                   required/>
                   <div class="error" id="password-error"></div>
-                <button type="submit" class="btn btn-primary">Sign Up</button>
+                <button type="submit" id="signup" class="btn btn-primary">Sign Up</button>
                 <!-- <div class="message-box"></div> -->
                 <div class="margin--top--10 margin--below ">
                     <p class="text--primary1">Already have an account?
@@ -79,7 +83,7 @@
         <p class="credits">Banka | Copyright &copy; Andela 2019</p>
     </footer>
     <!-- End Footer -->
-    <script src="./assets/js/helper.js"></script>
+    <!-- <script src="./assets/js/helper.js"></script> -->
     <script src="./assets/js/signup.js"></script>
     <script src="./assets/js/main.js"></script>
 </body>
