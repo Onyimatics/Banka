@@ -32,7 +32,7 @@ Preview UI templates : [Github Pages](https://onyimatics.github.io/Banka/)
 
 View Project Management: [Pivotal Tracker](https://www.pivotaltracker.com/n/projects/2320392)
 
-Hosted on Heroku: [Heroku](https://bankaapp.herokuapp.com/api/v2)
+Hosted on Heroku: [Heroku](https://bankaapp.herokuapp.com/)
 
 API Documentation: [Swagger](https://bankaapp.herokuapp.com/swagger)
 

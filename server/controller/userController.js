@@ -72,7 +72,7 @@ class UserController {
     }
     const { id } = newUser.rows[0];
     const token = TokenManager.sign({ id, type: 'staff', isAdmin });
-    return response(res, 201, 'Successfully created a new account for Admin or Staff', {
+    return response(res, 201, 'Account Successfully Created.', {
       id, firstName, lastName, email, isAdmin, token,
     });
   }

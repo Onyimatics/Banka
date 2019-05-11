@@ -27,12 +27,28 @@
     <main>
         <section class="container form-container">
             <h2 class="section-title">SignIn</h2>
-            <form class="form-card">
-                <div class="error" id="erorrDiv"></div>
+            <form class="form-card" action="" method="POST">
+                    <div class="errors">
+                            <ul>
+          
+                            </ul>
+                          </div>
                 <label for="email">Enter Email<span>*</span></label>
-                <input type="email" name="email" id="email" class="form-element" placeholder="onyimatics@gmail.com"required/>
+                <input type="email" 
+                name="email" 
+                id="email" 
+                class="form-element" 
+                placeholder="email@gmail.com"
+                required/>
+                <div class="error" id="email-error"></div>
+
                 <label for="password">Enter Password<span>*</span></label>
-                <input type="password" name="password" id="password" class="form-element"placeholder="........"required />
+                <input type="password" 
+                name="password" 
+                id="password" 
+                class="form-element"placeholder="........"
+                required />
+                <div class="error" id="password-error"></div>
                 <div class="forgot--reset"><a href="./password-reset.html" class="text--color--grey"><u>Forgot Password?</u></a></div>
                 <button id="button-submit" class="btn btn-primary user-form">Signin</button>
                 <div class="margin--top--10 margin--below ">

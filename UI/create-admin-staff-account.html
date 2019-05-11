@@ -26,18 +26,21 @@
           <main>
             <section class="container form-container">
               <h2 class="section-title">Create Admin/Staff User Account</h2>
-              <form class="form-card" action="">
-                  <label for="transaction">Admin/Staff<span>*</span></label>
-                  <select
-                    type="text"
-                    id="transaction"
-                    name="transaction"
-                    class="form-element"
-                    required>
-                    <option default>-- Admin/Staff ? --</option>
-                    <option value="admin">Admin</option>
-                    <option value="staff">Staff</option>
-                  </select> 
+              <form class="form-card" action="" method="POST">
+                  <div class="erorrs">
+                      <ul>
+    
+                      </ul>
+                    </div>
+                    <label for="firstname">isAdmin?<span>*</span></label>
+                    <input
+                      type="text"
+                      id="isAdmin"
+                      name="isAdmin"
+                      class="form-element"
+                      placeholder="true/false?"
+                      required/>
+                  <div class="error" id="isadmin-error"></div>
                 <label for="firstname">Enter First Name<span>*</span></label>
                 <input
                   type="text"
@@ -46,6 +49,7 @@
                   class="form-element"
                   placeholder="Onyinye"
                   required/>
+                  <div class="error" id="firstName-error"></div>
                 <label for="lastName">Enter Last name<span>*</span></label>
                 <input
                   type="text"
@@ -54,14 +58,16 @@
                   class="form-element"
                   placeholder="Ezike"
                   required/>
+                  <div class="error" id="lastName-error"></div>
                 <label for="email">Enter Email<span>*</span></label>
                 <input
                   type="text"
                   id="email"
                   name="email"
                   class="form-element"
-                  placeholder="ezikeonyinyefavour@gmail.com"
+                  placeholder="email@gmail.com"
                   required/>
+                  <div class="error" id="email-error"></div>
                   <label for="password">Enter Password<span>*</span></label>
                   <input
                   type="password"
@@ -70,6 +76,7 @@
                   class="form-element"
                   placeholder=".........."
                   required/>
+                  <div class="error" id="password-error"></div>
                 <button type="submit" class="btn btn-primary">Create Acount</button>
                 <!-- <div class="message-box"></div> -->
                 <div class="margin--top--10 margin--below ">
@@ -87,5 +94,6 @@
     </footer>
     <!-- End Footer -->
     <script src="./assets/js/main.js"></script>
+    <script src="./assets/js/admin-staff-signup.js"></script>
 </body>
 </html>
