@@ -1,47 +1,75 @@
+/* eslint-disable consistent-return */
 /* eslint-disable no-else-return */
-/* eslint-disable no-undef */
-const emailRegex = /[a-z0-9\._%+!$&*=^|~#%'`?{}/\-]+@([a-z0-9\-]+\.){1,}([a-z]{2,16})/;
-const passwordRegex = /^[a-zA-Z0-9]{8,}$/;
 
-const errorDiv = document.querySelector('#erorrDiv');
+const url = 'https://bankaapp.herokuapp.com/api/v2/auth/signin';
+// const url = 'http://localhost:3000/api/v2/auth/signin';
 
-const handleInputChange = (message) => {
-  errorDiv.innerHTML = message;
-};
-
-
-const signin = (email, password) => {
-  if (!emailRegex.test(email) || !passwordRegex.test(password)) {
-    errorDiv.innerHTML = 'Invalid Email or password.';
-    return false;
-  }
-  return true;
-};
+const { token } = localStorage;
+const errorDiv = document.querySelector('.errors');
+const errorContainer = document.querySelector('.errors ul');
 
 const signInForm = document.querySelector('.form-card');
-signInForm.addEventListener('submit', async (event) => {
-  event.preventDefault();
-  const email = document.querySelector('#email').value;
-  const password = document.querySelector('#password').value;
-  if (!signin(email, password)) {
-    return false;
-  }
-  errorDiv.innerHTML = '';
-  const response = await fetchData(`${baseUrl}/auth/signin`, 'post', { email, password });
-  if (!response || response.status === 500) {
-    errorDiv.style.color = 'red';
-    handleInputChange('Error connecting to server');
-    return false;
-  } if (response.status === 400) {
-    errorDiv.style.color = 'red';
-    handleInputChange('Username or password is incorrect');
-    return false;
-  } else {
-    errorDiv.style.color = 'green';
-    handleInputChange('Welcome');
-  }
-  const { data } = response;
-  if (data.type === 'client') { window.location.href = 'user-dashboard.html'; return window.location.href; }
-  if (data.isadmin === 'true') { window.location.href = 'admin-dashboard.html'; return window.location.href; }
-  window.location.href = 'staff-dashboard.html';
+const createNode = element => document.createElement(element);
+
+const append = (parent, el) => parent.appendChild(el);
+signInForm.addEventListener('submit', async (e) => {
+  e.preventDefault();
+
+  const email = document.getElementById('email').value;
+  const password = document.getElementById('password').value;
+
+  await fetch(url, {
+    method: 'POST',
+    body: JSON.stringify({
+      email,
+      password,
+    }),
+    headers: new Headers({
+      'content-Type': 'application/json',
+      Authorization: token,
+    }),
+  })
+    .then(res => res.json())
+    .then((response) => {
+      if (response.status === 400) {
+        errorDiv.style.display = 'block';
+        const li = createNode('li');
+        li.innerHTML = `${response.message}<br>`;
+        append(errorContainer, li);
+        return setTimeout(() => {
+          errorDiv.style.display = 'none';
+          errorContainer.innerHTML = '';
+        }, 5000);
+      }
+      const { data } = response;
+      if (response.status === 200) {
+        errorDiv.style.display = 'block';
+        const li = createNode('li');
+        li.innerHTML = `${response.message}, Welcome Back!!! <br>`;
+        append(errorContainer, li);
+        setTimeout(() => {
+          if (data.type === 'client') {
+            window.location = './user-dashboard.html'; return window.location;
+          }
+          if (data.isadmin === 'true') {
+            window.location = './admin-dashboard.html'; return window.location;
+          } else {
+            window.location = './staff-dashboard.html';
+          }
+        }, 3000);
+        localStorage.setItem('token', data.token);
+        localStorage.setItem('userDetails', JSON.stringify(data));
+        localStorage.setItem('loggedIn', true);
+      }
+    })
+    .catch((error) => {
+      errorDiv.style.display = 'block';
+      const msg = createNode('li');
+      msg.innerHTML = error.message || 'Error in connecting, Please check your internet connection and try again';
+      append(errorContainer, msg);
+      setTimeout(() => {
+        errorDiv.style.display = 'none';
+        errorContainer.innerHTML = '';
+      }, 5000);
+    });
 });

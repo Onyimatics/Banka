@@ -179,7 +179,7 @@ describe('POST/auth signup/admin', () => {
         expect(res.body).to.be.an('object');
         expect(res).to.have.status(201);
         expect(res.body.status).to.equal(201);
-        expect(res.body.message).to.equal('Successfully created a new account for Admin or Staff');
+        expect(res.body.message).to.equal('Account Successfully Created.');
         done();
       });
   });
