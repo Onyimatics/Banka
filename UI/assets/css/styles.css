@@ -911,3 +911,7 @@ font-weight: 600;
   color: red;
   margin-bottom: 5px;
 }
+
+.errors ul {
+  margin-bottom: 10px;
+}

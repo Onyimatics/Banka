@@ -1,8 +1,8 @@
 /* eslint-disable consistent-return */
 /* eslint-disable no-else-return */
 
-const url = 'https://bankaapp.herokuapp.com/api/v2/auth/signin';
-// const url = 'http://localhost:3000/api/v2/auth/signin';
+// const url = 'https://bankaapp.herokuapp.com/api/v2/auth/signin';
+const url = 'http://localhost:3000/api/v2/auth/signin';
 
 const { token } = localStorage;
 const errorDiv = document.querySelector('.errors');
@@ -33,6 +33,7 @@ signInForm.addEventListener('submit', async (e) => {
     .then((response) => {
       if (response.status === 400) {
         errorDiv.style.display = 'block';
+        errorDiv.style.color = 'red';
         const li = createNode('li');
         li.innerHTML = `${response.message}<br>`;
         append(errorContainer, li);
@@ -44,6 +45,7 @@ signInForm.addEventListener('submit', async (e) => {
       const { data } = response;
       if (response.status === 200) {
         errorDiv.style.display = 'block';
+        errorDiv.style.color = 'green';
         const li = createNode('li');
         li.innerHTML = `${response.message}, Welcome Back!!! <br>`;
         append(errorContainer, li);
@@ -64,6 +66,7 @@ signInForm.addEventListener('submit', async (e) => {
     })
     .catch((error) => {
       errorDiv.style.display = 'block';
+      errorDiv.style.color = 'red';
       const msg = createNode('li');
       msg.innerHTML = error.message || 'Error in connecting, Please check your internet connection and try again';
       append(errorContainer, msg);
