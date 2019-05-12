@@ -74,6 +74,7 @@ signUpForm.addEventListener('submit', async (e) => {
     .then((response) => {
       if (response.status === 409) {
         errorDiv.style.display = 'block';
+        errorDiv.style.color = 'red';
         const li = createNode('li');
         li.innerHTML = `${response.message}, please specify a new email <br>`;
         append(errorContainer, li);
@@ -84,6 +85,7 @@ signUpForm.addEventListener('submit', async (e) => {
       }
       if (response.status === 201) {
         errorDiv.style.display = 'block';
+        errorDiv.style.color = 'green';
         const li = createNode('li');
         li.innerHTML = `${response.message}, Welcome!!! <br>`;
         append(errorContainer, li);
@@ -98,6 +100,7 @@ signUpForm.addEventListener('submit', async (e) => {
     })
     .catch((error) => {
       errorDiv.style.display = 'block';
+      errorDiv.style.color = 'red';
       const msg = createNode('li');
       msg.innerHTML = error.message || 'Error in connecting, Please check your internet connection and try again';
       append(errorContainer, msg);

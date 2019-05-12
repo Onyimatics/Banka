@@ -26,19 +26,20 @@
           <main>
             <section class="container form-container">
               <h2 class="section-title">Create Account</h2>
-              <form class="form-card" action="">
-                  <div id="erorrDiv"></div>
-                    <label for="account-type">Account Type</label>
-                    <select
-                      type="text"
-                      id="account-type"
-                      name="account-type"
-                      class="form-element"
-                      >
-                      <option default>-- Select Account Type --</option>
-                      <option value="savings">Savings</option>
-                      <option value="current">Current</option>
-                    </select>
+              <form class="form-card" action="" method="POST">
+                  <div class="errors">
+                  <ul>
+
+                  </ul>
+                </div>
+                <label for="account-type">Account Type</label>
+                <input
+                  type="text"
+                  id="account-type"
+                  name="account-type"
+                  class="form-element"
+                  placeholder="savings or current"
+                  required/>
                     <div class="error" id="account-type-error"></div>
 
                     <label for="opening-amount">Opening Amount</label>
@@ -60,9 +61,9 @@
         <p class="credits">Banka | Copyright &copy; Andela 2019</p>
     </footer>
     <!-- End Footer -->
-    <script src="./assets/js/helper.js"></script>
-    <script src="./assets/js/users.js"></script>
+    <script src="./assets/js/user.js"></script>
     <script src="./assets/js/main.js"></script>
+    <script src="./assets/js/create-account.js"></script>
 </body>
 
 </html>
