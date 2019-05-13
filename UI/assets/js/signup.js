@@ -4,8 +4,8 @@
 const url = 'https://bankaapp.herokuapp.com/api/v2/auth/signup';
 // const url = 'http://localhost:3000/api/v2/auth/signup';
 
-const errorDiv = document.querySelector('.erorrs');
-const errorContainer = document.querySelector('.erorrs ul');
+const errorDiv = document.querySelector('.errors');
+const errorContainer = document.querySelector('.errors ul');
 const { token } = localStorage;
 const firstnameRegex = /^[a-zA-Z]{3,25}$/;
 const lastnameRegex = /^[a-zA-Z]{3,25}$/;
@@ -83,6 +83,7 @@ signUpForm.addEventListener('submit', async (e) => {
           errorContainer.innerHTML = '';
         }, 5000);
       }
+      const { data } = response;
       if (response.status === 201) {
         errorDiv.style.display = 'block';
         errorDiv.style.color = 'green';
@@ -92,7 +93,6 @@ signUpForm.addEventListener('submit', async (e) => {
         setTimeout(() => {
           window.location = './user-dashboard.html';
         }, 3000);
-        const { data } = response;
         localStorage.setItem('token', data.token);
         localStorage.setItem('userDetails', JSON.stringify(data));
         localStorage.setItem('loggedIn', true);
