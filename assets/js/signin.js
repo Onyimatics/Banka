@@ -1,8 +1,8 @@
 /* eslint-disable consistent-return */
 /* eslint-disable no-else-return */
 
-// const url = 'https://bankaapp.herokuapp.com/api/v2/auth/signin';
-const url = 'http://localhost:3000/api/v2/auth/signin';
+const url = 'https://bankaapp.herokuapp.com/api/v2/auth/signin';
+// const url = 'http://localhost:3000/api/v2/auth/signin';
 
 const { token } = localStorage;
 const errorDiv = document.querySelector('.errors');
