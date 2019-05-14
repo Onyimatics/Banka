@@ -43,8 +43,8 @@ const signUp = (isadmin, firstname, lastname, email, password) => {
 
 const signUpForm = document.querySelector('.form-card');
 const createNode = element => document.createElement(element);
-
 const append = (parent, el) => parent.appendChild(el);
+
 signUpForm.addEventListener('submit', async (e) => {
   e.preventDefault();
 
