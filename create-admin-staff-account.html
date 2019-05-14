@@ -32,15 +32,19 @@
     
                       </ul>
                     </div>
-                    <label for="firstname">isAdmin?<span>*</span></label>
-                    <input
-                      type="text"
-                      id="isAdmin"
-                      name="isAdmin"
-                      class="form-element"
-                      placeholder="true/false?"
-                      required/>
-                  <div class="error" id="isadmin-error"></div>
+                <label for="isAdmin">Account Type</label>
+                <select
+                  type="text"
+                  id="isAdmin"
+                  name="isAdmin"
+                  class="form-element"
+                  required>
+                  <option default>isAdmin?</option>
+                  <option value="true">True</option>
+                  <option value="false">False</option>
+                </select>
+                <div class="error" id="isadmin-error"></div>
+
                 <label for="firstname">Enter First Name<span>*</span></label>
                 <input
                   type="text"
@@ -50,6 +54,7 @@
                   placeholder="Onyinye"
                   required/>
                   <div class="error" id="firstName-error"></div>
+
                 <label for="lastName">Enter Last name<span>*</span></label>
                 <input
                   type="text"
@@ -59,6 +64,7 @@
                   placeholder="Ezike"
                   required/>
                   <div class="error" id="lastName-error"></div>
+
                 <label for="email">Enter Email<span>*</span></label>
                 <input
                   type="text"
@@ -68,6 +74,7 @@
                   placeholder="email@gmail.com"
                   required/>
                   <div class="error" id="email-error"></div>
+
                   <label for="password">Enter Password<span>*</span></label>
                   <input
                   type="password"

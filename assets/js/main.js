@@ -29,28 +29,6 @@ window.onclick = function (event) {
   }
 };
 
-// window.onclick = function (event) {
-//   if (event.target === hamburgerBtn) {
-//     hamburgerBtn.style.display = 'none';
-//   }
-// };
-
-// window.addEventListener('click', (event) => {
-//   const hamburger = document.querySelector('.navbar');
-//   if (event.target !== hamburger) {
-//     hamburger.style.display = 'none';
-//   }
-// });
-
-
-// window.addEventListener('click', (event) => {
-//   const hamburger = document.querySelector('.hamburger-menu');
-//   if (event.target !== hamburger && event.target.parentNode !== hamburger) {
-//     hamburger.style.display = 'none';
-//   }
-// });
-
-
 // Event handler for toggling menu of mobile devices
 const hamburgerBtn = document.querySelector('.hamburger-menu');
 hamburgerBtn.addEventListener('click', function toggleMenu() {

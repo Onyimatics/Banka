@@ -25,27 +25,34 @@
           <main>
             <section class="container form-container">
               <h2 class="section-title">Credit/Debit Slip</h2>
-              <form class="form-card" action="./staff-dashboard.html">
-
-                <label for="todaysDate">Date</label>
-                    <input
-                      type="date"
-                      id="todaysDate"
-                      name="todaysDate"
-                      class="form-element"
-                      required/>
-
+              <form class="form-card" action="POST">
+                  <div class="errors">
+                      <ul>
+    
+                      </ul>
+                    </div>
                 <label for="transaction">Credit/Debit</label>
                 <select
                   type="text"
-                  id="transaction"
-                  name="transaction"
+                  id="type"
+                  name="type"
                   class="form-element"
                   required>
                   <option default>-- Credit or Debit? --</option>
                   <option value="credit">Credit</option>
                   <option value="debit">Debit</option>
-                </select> 
+                </select>
+                <div class="error" id="transaction-type-error"></div>
+
+                <label for="account-number">Account Number</label>
+                <input
+                  type="number"
+                  id="account-number"
+                  name="account-number"
+                  class="form-element"
+                  placeholder="Enter account number"
+                  required/>
+                  <div class="error" id="account-number-error"></div>
 
                   <label for="amount">Amount(NGN)</label>
                 <input
@@ -55,7 +62,7 @@
                   class="form-element"
                   placeholder="Amount In Figure"
                   required/>
-
+                  <div class="error" id="amount-error"></div>
                   <button type="submit" class="btn btn-primary">Submit</button>
                 </form>
                 </section>
@@ -68,4 +75,5 @@
     <!-- End Footer -->
 </body>
 <script src="./assets/js/main.js"></script>
+<script src="./assets/js/transactions.js"></script>
 </html>
