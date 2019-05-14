@@ -1,11 +1,15 @@
-/* eslint-disable consistent-return */
 /* eslint-disable no-undef */
+/* eslint-disable consistent-return */
 // const url = 'http://localhost:3000/api/v2/accounts';
 const url = 'https://bankaapp.herokuapp.com/api/v2/accounts';
+const token = localStorage.getItem('token');
+// const userDetails = JSON.parse(localStorage.getItem('userDetails'));
 
 const accountTypeRegex = /(current|savings)$/i;
 const openingBalanceRegex = /^\d+$/;
 
+const errorDiv = document.querySelector('.errors');
+const errorContainer = document.querySelector('.errors ul');
 const accountTypeError = document.querySelector('#account-type-error');
 const openingBalanceError = document.querySelector('#opening-amount-error');
 
@@ -23,7 +27,7 @@ const create = (type, openingBalance) => {
 const createAcct = document.querySelector('.form-card');
 
 const append = (parent, el) => parent.appendChild(el);
-
+const createNode = element => document.createElement(element);
 createAcct.addEventListener('submit', async (e) => {
   e.preventDefault();
   const type = document.getElementById('account-type').value;

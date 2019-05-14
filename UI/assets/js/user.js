@@ -11,7 +11,7 @@ const role = document.getElementById('role');
 const superUserBtn = document.getElementById('superuser');
 const accountsTabContent = document.getElementById('account');
 
-
+const append = (parent, el) => parent.appendChild(el);
 const createNode = element => document.createElement(element);
 const options = {
   method: 'GET',
