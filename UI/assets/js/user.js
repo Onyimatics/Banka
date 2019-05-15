@@ -43,6 +43,7 @@ const loadAccounts = () => {
                 <td>${account.accountNumber}</td>
                 <td>${account.type}</td>
                 <td>${account.Balance}</td>
+                <td><button id="view-transactions" type="button" class="btn btn-primary" onclick="loadTransactionDetails('${account.accountNumber}')">View</button></td>
                 </tr>
                 
           </table>
@@ -68,17 +69,5 @@ const loadAccounts = () => {
     });
 };
 
-const loadAccountDetails = (accountNumber, type, Balance) => {
-  window.location = './user-dashboard.html';
-  localStorage.setItem('accNumber', accountNumber);
-  localStorage.setItem('accType', type);
-  localStorage.setItem('accBalance', Balance);
-};
-
-// if (userDetails.type === 'client') {
-//   loadAccounts();
-// }
-
 loadAccounts();
-
 loadProfileDetails();
