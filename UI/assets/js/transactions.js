@@ -1,5 +1,5 @@
 /* eslint-disable consistent-return */
-// const userDetails = JSON.parse(localStorage.getItem('userDetails'));
+
 const errorDiv = document.querySelector('.errors');
 const errorContainer = document.querySelector('.errors ul');
 const { token } = localStorage;
@@ -43,7 +43,7 @@ createTransaction.addEventListener('submit', (e) => {
   if (create(type, amount, accountNumber) < 1) {
     return false;
   }
-  //   const url = `http://localhost:3000/api/v2/transactions/${accountNumber}/${type}`;
+  // const url = `http://localhost:3000/api/v2/transactions/${accountNumber}/${type}`;
   const url = `https://bankaapp.herokuapp.com/api/v2/transactions/${accountNumber}/${type.value}`;
   const options = {
     method: 'POST',

@@ -3,7 +3,6 @@
 // const url = 'http://localhost:3000/api/v2/accounts';
 const url = 'https://bankaapp.herokuapp.com/api/v2/accounts';
 const token = localStorage.getItem('token');
-// const userDetails = JSON.parse(localStorage.getItem('userDetails'));
 
 const accountTypeRegex = /(current|savings)$/i;
 const openingBalanceRegex = /^\d+$/;
