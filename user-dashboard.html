@@ -29,7 +29,7 @@
     <!-- Begin Main Section -->
     <main>
         <section class="container">
-            <h2 class="feature">Transaction History</h2>
+            <!-- <h2 class="feature">Transaction History</h2> -->
             <div class="profile">
                 <div class="card profile-card">
                     <!-- Copied and edited from https://www.w3schools.com/howto/howto_css_image_overlay.asp -->
@@ -55,6 +55,7 @@
                                         <th>Account Number</th>
                                         <th>Account Type</th>
                                         <th>Bal(&#x20A6;)</th>
+                                        <th>View Transactions</th>
                                         
                                     </tr>
                                     
@@ -63,24 +64,21 @@
                               <div id="account"></div>
                 </div>
                 <div class="profile-table">
+                        <div class="errors">
+                                <ul>
+              
+                                </ul>
+                              </div>
                     <table id="transaction-table" class="stats-table" >
-                        <tbody>
                             <tr>
-                                <th>Account Number</th>
+                                <th>Date</th>
                                 <th>Transaction type</th>
                                 <th>Amount(&#x20A6;)</th>
-                                <th>Balance(&#x20A6;)</th>
-                                <th>View Transaction</th>
+                                <th>Old Balance(&#x20A6;)</th>
+                                <th>New Balance(&#x20A6;)</th>
                             </tr>
-                            <!-- <tr>
-                                <td>1928354758</td>
-                                <td>Credit</td>
-                                <td>100,000.00</td>
-                                <td>150,000.00</td>
-                                <td><button id="translate2d" type="button" class="btn btn-primary" onclick="triggerModal()">View</button></td>
-                            </tr> -->
-                        </tbody>
                     </table>
+                    <div id="transaction"></div>
                 </div>
             </div>
             <!-- Modal Section -->
@@ -157,6 +155,7 @@
     <!-- End Footer -->
     <script src="./assets/js/main.js"></script>
     <script src="./assets/js/user.js"></script>
+    <script src="./assets/js/account-details.js"></script>
 </body>
 
 
