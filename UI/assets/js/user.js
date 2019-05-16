@@ -23,9 +23,9 @@ const options = {
 
 const loadProfileDetails = () => {
   userName.innerText = `${userDetails.firstName} ${userDetails.lastName}`;
-  if (userDetails.type === 'staff') {
-    role.innerText = userDetails.isadmin === 'true' ? 'Admin' : 'Cashier';
-  }
+  // if (userDetails.type === 'staff') {
+  //   role.innerText = userDetails.isadmin === 'true' ? 'Admin' : 'Cashier';
+  // }
 };
 
 const loadAccounts = () => {
@@ -38,7 +38,7 @@ const loadAccounts = () => {
       if (response.status === 200) {
         response.data.forEach((account) => {
           accountList += `
-          <table id="account-content" class="profile-tab">
+          <table id="account-content" class="stats-table">
                 <tr>
                 <td>${account.accountNumber}</td>
                 <td>${account.type}</td>
