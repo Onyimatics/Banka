@@ -23,9 +23,6 @@ const options = {
 
 const loadProfileDetails = () => {
   userName.innerText = `${userDetails.firstName} ${userDetails.lastName}`;
-  // if (userDetails.type === 'staff') {
-  //   role.innerText = userDetails.isadmin === 'true' ? 'Admin' : 'Cashier';
-  // }
 };
 
 const loadAccounts = () => {
