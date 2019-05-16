@@ -29,7 +29,6 @@
     <!-- Begin Main Section -->
     <main>
             <section class="container form-container">
-                <h2 class="section-title">Clients Account Details</h2>
                 <div class="profile">
                     <div class="card profile-card">
                         <!-- Copied and edited from https://www.w3schools.com/howto/howto_css_image_overlay.asp -->
@@ -50,35 +49,20 @@
                                   <p class="profile-name"><h2 id="user-name"></h2></p>
                                   <table class="profile-tab">
                                         <tr>
-                                                <td>Role</td>
+                                                <td>Role: &nbsp;</td>
                                                 <td id="role"></td> 
                                               </tr>
                             </table>
                                 </div>
-<div class="profile-table">
-    <table class="stats-table">
-            <tbody>
-                    <tr>
-                        <th>S/N</th>
-                        <th>CreatedOn</th>
-                        <th>OwnerEmail</th>
-                        <th>Status</th>
-                        <th>View User</th>
-                        <th>Activate/Deactivate</th>
-                        <th>Delete</th>
-                    </tr>
-                    <!-- <tr>
-                        <td>1.</td>
-                        <td>Monday 16-02-2011</td>
-                        <td>markzuckerberg@gmail</td>
-                        <td>Active</td>
-                        <td><button id="translate2d" type="button" class="btn btn-primary"><a id="view-user" href="./view-user-details.html">View</a></button></td>
-                        <td><button class="btn btn-warning">Deactivate</button></td>
-                        <td><button id= "delete-account" class="btn btn-warning delete-account" onclick="triggerDeleteModal()">Delete</button></td>
-                    </tr> -->
-                </tbody>
-    </table>
-</div>
+                                <div class="profile-table">
+                                        <h2 class="section-title">Clients Account Details</h2>
+                                        <div class="errors">
+                                                <ul>
+                              
+                                                </ul>
+                                              </div>
+                                    <div id="all-accounts" class="stats-table"></div>
+                                </div>
                 </div>
                 <!-- Modal Section -->
     
@@ -176,7 +160,8 @@
     </footer>
     <!-- End Footer -->
     <script src="./assets/js/main.js"></script>
-    <script src="./assets/js/user.js"></script>
+    <script src="./assets/js/admin.js"></script>
+    <script src="./assets/js/transactions.js"></script>
 </body>
 
 </html>
