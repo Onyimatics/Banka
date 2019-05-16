@@ -193,7 +193,7 @@ class AccountController {
         accounts = await pool.query(`SELECT email, accounts.* 
         FROM users JOIN accounts on users.id = accounts.OWNER where status = 'dormant'`);
       } else {
-        accounts = await pool.query(`SELECT email, accounts.* 
+        accounts = await pool.query(`SELECT email, firstname, lastname, accounts.* 
       FROM users JOIN accounts on users.id = accounts.OWNER`);
       }
     } catch (error) {
@@ -201,9 +201,9 @@ class AccountController {
     }
     const data = accounts.rows.map((account) => {
       const {
-        createdon, accountnumber, email, type, status, balance,
+        createdon, accountnumber, email, firstname, lastname, type, status, balance,
       } = account; return {
-        createdOn: createdon, accountNumber: accountnumber, ownerEmail: email, type, status, balance,
+        createdOn: createdon, accountNumber: accountnumber, ownerEmail: email, ownerFirstName: firstname, ownerLastName: lastname, type, status, balance,
       };
     });
 

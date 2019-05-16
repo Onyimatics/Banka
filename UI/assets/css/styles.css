@@ -57,11 +57,13 @@ button {
   display: inline-block;
   min-width: 110px;
   text-align: center;
+  align-self: center;
 }
 
 .btn-primary {
   background: #8B008B;
   color: #fffffa;
+  align-self: center;
 }
 
 .btn-primary2 {
@@ -80,13 +82,19 @@ button {
 .btn-warning {
   color: #fffffa;
   background: #8B008B;
-  width: 100%;
+  width: 50%;
+  text-align: center;
+  align-self: center;
 }
 
 .btn-warning1 {
   color: #fffffa;
   background: #bcc6d9;
   width: 100%;
+}
+
+#adjust {
+  margin-left: 50px;
 }
 .reset-password {
   text-align: center;
@@ -268,10 +276,15 @@ td .form-element {
   margin-bottom: 0;
 }
 
-td,
+td
+ {
+  /* padding: 20px 10px; */
+  border-bottom: 1px solid #dddddd;
+}
+
 th {
   padding: 20px 10px;
-  border-bottom: 1px solid #dddddd;
+  margin-left: 50px;
 }
 
 

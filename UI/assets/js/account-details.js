@@ -2,7 +2,7 @@
 
 const transactionContainer = document.getElementById('transaction');
 const loadTransactionDetails = (accountNumber) => {
-  const url = `https://bankaapp.herokuapp.com/api/v2/account/${accountNumber}/transactions`;
+  const url = `https://bankaapp.herokuapp.com/api/v2/accounts/${accountNumber}/transactions`;
   // const url = `http://localhost:3000/api/v2/accounts/${accountNumber}/transactions`;
   fetch(url, options)
     .then(res => res.json())
