@@ -148,7 +148,7 @@ class AccountController {
       let account;
 
       if (userDetails.type === 'staff') {
-        account = await pool.query(`SELECT email, accounts.* 
+        account = await pool.query(`SELECT email, firstname, lastname, accounts.* 
         FROM users JOIN accounts on users.id = accounts.OWNER WHERE accounts.accountnumber = $1`, [accountNumber]);
       } else {
         account = await pool.query(`SELECT accounts.* FROM accounts INNER JOIN users ON users.id = accounts.owner
@@ -159,11 +159,13 @@ class AccountController {
         return response(res, 404, 'Account Not Found');
       }
       const {
-        createdon, accountnumber, email, type, status, balance,
+        createdon, accountnumber, email, type, status, balance, firstname, lastname,
       } = account.rows[0];
       const data = {
         createdOn: createdon,
         accountNumber: accountnumber,
+        ownerFirstName: firstname,
+        ownerLastName: lastname,
         ownerEmail: email,
         type,
         status,
