@@ -12,7 +12,8 @@
     <link href="https://fonts.googleapis.com/css?family=PT+Sans" rel="stylesheet" />
 </head>
 
-<body onload="loadAllAccounts(), loadAdminProfile()">
+<!-- <body onload="loadAdminProfile()"> -->
+<body onload="loadAccountDetails(accountNumber), loadAdminProfile(), loadTransactionDetails(accountNumber)">
 <div class="modal-toggle"></div>
     <!-- Begin Header -->
     <header>
@@ -31,10 +32,10 @@
             <div class="profile">
                 <div class="card profile-card">
                     <!-- Copied and edited from https://www.w3schools.com/howto/howto_css_image_overlay.asp -->
-                        <div class="profile-picture">
+                         <div class="profile-picture">
                                 <img src="https://res.cloudinary.com/onyimatics/image/upload/v1553475100/Banka/Onyii.jpg" alt="Avatar" class="image" style="width:100%">
-                                <div class="middle">
-                                    <!-- copied and edited from http://jsfiddle.net/a4Jtz/6/ -->
+                                <div class="middle"> 
+                                     <!-- copied and edited from http://jsfiddle.net/a4Jtz/6/  -->
                                         <li class="upload">
                                                 <form>
                                              <div class="fupload">
@@ -44,7 +45,7 @@
                                             </form>
                                             </li>
                                 </div>
-                              </div>
+                              </div> 
                         <p class="profile-name"><h2 id="user-name"></h2></p>
                         <table class="profile-tab">
                                 <tr>
@@ -52,37 +53,34 @@
                                         <td id="role"></td> 
                                       </tr>
                     </table>
-                    <div id="single-account" class="stats-table"></div>
-
-                    <div id="transactions" class="stats-table"></div>
-                    </div>
+                      
+                      <div class="errors">
+                            <ul>
+          
+                            </ul>
+                          </div>       
+                    </div>      
                     
-                
                 <div class="profile-table">
-                        <h2 class="section-title">Clients Account Details</h2>
-                        <div class="errors">
-                                <ul>
-              
-                                </ul>
-                              </div>
-                    
-                    <div id="all-accounts" class="stats-table"></div>
+                        <div id="single-account" class="stats-table"></div>
+                        <h3 class="section-title">Transaction Details</h3>
+                        <div id="transactions" class="stats-table"></div>
+                        
+                        
+                    <!-- <div id="accountt"></div> -->
                 </div>
             </div>
             <!-- Modal Section -->
 
              <!-- The Modal -->
-    <div id="myModal" class="modal">
-            <!-- Modal content -->
+    <!-- <div id="myModal" class="modal">
             <div class="modal-content">
                 <span class="close-modal" onclick="closeModal()">&times;</span>
                 <div>
                     <div class="modal-header">
                         <h1>Account Record</h1>
                     </div>
-                    <div class="modal-body">
-                        
-                        <!-- <div></div> -->
+                    <div class="modal-body"> 
                         <div class="modal-account-details">
                             <div class="words">
                                 <div class="meaning">
@@ -136,11 +134,10 @@
                             </div>
                         </div>
                     </div>
-    </div>
+    </div> -->
 
         <div id="deleteModal" class="modal">
-                <!-- Modal content -->
-                <div class="modal-content">
+                 <div class="modal-content">
                     <span class="close-modal" onclick="closeDeleteModal()">&times;</span>
                     <div>
 
@@ -157,7 +154,7 @@
     </div>
     </div>
     </div>
-    </div>
+    </div> 
         </section>
     </main>
     <!-- End Main Section -->
@@ -167,7 +164,7 @@
     </footer>
     <!-- End Footer -->
     <script src="./assets/js/main.js"></script>
-    <script src="./assets/js/admin.js"></script>
+    <script src="./assets/js/admin2.js"></script>
 </body>
 
 

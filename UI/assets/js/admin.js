@@ -1,5 +1,6 @@
 /* eslint-disable no-unused-vars */
-/* eslint-disable no-undef */
+/* eslint-disable max-len */
+
 const userDetails = JSON.parse(localStorage.getItem('userDetails'));
 const token = localStorage.getItem('token');
 const errorDiv = document.querySelector('.errors');
@@ -7,10 +8,12 @@ const errorContainer = document.querySelector('.errors ul');
 const createNode = element => document.createElement(element);
 const append = (parent, el) => parent.appendChild(el);
 const userName = document.getElementById('user-name');
-const userEmail = document.getElementById('user-email');
+// const userEmail = document.getElementById('user-email');
 const role = document.getElementById('role');
-const superUserBtn = document.getElementById('superuser');
+// const superUserBtn = document.getElementById('superuser');
 const accountsContainer = document.getElementById('all-accounts');
+// const accounts = document.getElementsByClassName('account-details');
+const accountsTabContent = document.getElementById('single-account');
 
 const options = {
   method: 'GET',
@@ -19,7 +22,7 @@ const options = {
     Authorization: token,
   }),
 };
-loadAdminProfile = () => {
+const loadAdminProfile = () => {
   if (userDetails.type === 'staff') {
     userName.innerText = `${userDetails.firstName} ${userDetails.lastName}`;
     role.innerText = userDetails.isadmin === 'true' ? 'Admin' : 'Cashier';
@@ -27,16 +30,17 @@ loadAdminProfile = () => {
 };
 
 const loadAllAccounts = () => {
-//   const url = 'http://localhost:3000/api/v2/accounts';
+  // const url = 'http://localhost:3000/api/v2/accounts';
   const url = 'https://bankaapp.herokuapp.com/api/v2/accounts';
   fetch(url, options)
     .then(res => res.json())
     .then((response) => {
+      const nextURL = './view-account-details.html';
       let htmlList = '';
       if (response.status === 200) {
         response.data.forEach((account) => {
           htmlList += `
-            <table id="all-accounts" class="stats-table"> 
+            <table class="stats-table"> 
         <tr>
         <th>Account Owner</th>
         <th>Account Number</th>
@@ -49,8 +53,11 @@ const loadAllAccounts = () => {
                 <td>${account.ownerFirstName} ${account.ownerLastName}</td>
                 <td>${account.accountNumber}</td>
                 <td>${account.status}</td>
-                <td><button id="translate2d" type="button" class="btn btn-primary">View</button></td>
-                <td><button class="btn btn-warning">Deactivate</button></td>
+                <td>
+                <button type="button" class="btn btn-primary"
+                 onclick="variab(${account.accountNumber})">
+                 View</button></td>
+                <td><button id="activate" class="btn btn-warning">Deactivate</button></td>
                 <td><button id= "delete-account" class="btn btn-warning delete-account" onclick="triggerDeleteModal()">Delete</button></td>
             </tr>
             </table>
@@ -71,6 +78,7 @@ const loadAllAccounts = () => {
       }, 5000);
     });
 };
-
-loadAllAccounts();
-loadAdminProfile();
+const variab = (accountNumber) => {
+  sessionStorage.setItem('account', accountNumber);
+  window.location.href = './view-account-details.html';
+};
