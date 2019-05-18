@@ -12,7 +12,7 @@
     <link href="https://fonts.googleapis.com/css?family=PT+Sans" rel="stylesheet" />
 </head>
 
-<body>
+<body onload="loadAllAccounts(), loadAdminProfile()">
     <div class="modal-toggle"></div>
     <!-- Begin Header -->
     <header>
@@ -67,69 +67,6 @@
                 <!-- Modal Section -->
     
                  <!-- The Modal -->
-        <div id="myModal" class="modal">
-                <!-- Modal content -->
-                <div class="modal-content">
-                    <span class="close-modal" onclick="closeModal()">&times;</span>
-                    <div>
-                        <div class="modal-header">
-                            <h1>Account Record</h1>
-                        </div>
-                        <div class="modal-body">
-                            <div class="modal-account-details">
-                                <div class="words">
-                                    <div class="meaning">
-                                        <h3>User ID</h3>
-                                    </div>
-                                    <div class="meaning">
-                                        014
-                                    </div>
-                                </div>
-                                <div class="words">
-                                    <div class="meaning">
-                                        <h3>Owner</h3>
-                                    </div>
-                                    <div class="meaning">
-                                        Onyinye Ezike
-                                    </div>
-                                </div>
-                                <div class="words">
-                                        <div class="meaning">
-                                            <h3>Account Number</h3>
-                                        </div>
-                                        <div class="meaning">
-                                            98755356457
-                                        </div>
-                                    </div>
-                                    <div class="words">
-                                            <div class="meaning">
-                                                <h3>Account Type</h3>
-                                            </div>
-                                            <div class="meaning">
-                                                Savings
-                                            </div>
-                                        </div>
-                                        <div class="words">
-                                                <div class="meaning">
-                                                    <h3>Balance</h3>
-                                                </div>
-                                                <div class="meaning">
-                                                    NGN100000
-                                                </div>
-                                            </div>
-                                            <div class="words">
-                                                    <div class="meaning">
-                                                        <h3>Status</h3>
-                                                    </div>
-                                                    <div class="meaning">
-                                                        Active
-                                                    </div>
-                                                </div>
-                                        </div>
-                                </div>
-                            </div>
-                        </div>
-        </div>
     
             <div id="deleteModal" class="modal">
                     <!-- Modal content -->
