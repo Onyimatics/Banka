@@ -31,12 +31,11 @@ const loadAdminProfile = () => {
 
 const loadAccountDetails = (accountNumber) => {
   const url = `https://bankaapp.herokuapp.com/api/v2/accounts/${accountNumber}`;
-  //   const url = `http://localhost:3000/api/v2/accounts/${accountNumber}`;
+  // const url = `http://localhost:3000/api/v2/accounts/${accountNumber}`;
   fetch(url, options)
     .then(res => res.json())
     .then((response) => {
       let accountList = '';
-      let account;
       if (response.status === 200) {
         accountList = `
         <h2 style="text-align: center; color: #161b33; margin-top: 20px;">Account Details</h2>
@@ -81,7 +80,7 @@ const loadAccountDetails = (accountNumber) => {
 
 const loadTransactionDetails = (accountNumber) => {
   const url = `https://bankaapp.herokuapp.com/api/v2/accounts/${accountNumber}/transactions`;
-  //   const url = `http://localhost:3000/api/v2/accounts/${accountNumber}/transactions`;
+  // const url = `http://localhost:3000/api/v2/accounts/${accountNumber}/transactions`;
   fetch(url, options)
     .then(res => res.json())
     .then((response) => {

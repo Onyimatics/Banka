@@ -66,80 +66,19 @@
                                 </ul>
                               </div>
                     
-                    <div id="all-accounts" class="stats-table"></div>
+                    <div id="all-accounts" class="stats-table">
+                        <table>
+                            <td><button id="activate-deactivate"></button></td>
+                        </table>
+                    </div>
+
                 </div>
             </div>
             <!-- Modal Section -->
-
-             <!-- The Modal -->
-    <div id="myModal" class="modal">
+    
             <!-- Modal content -->
-            <div class="modal-content">
-                <span class="close-modal" onclick="closeModal()">&times;</span>
-                <div>
-                    <div class="modal-header">
-                        <h1>Account Record</h1>
-                    </div>
-                    <div class="modal-body">
-                        
-                        <!-- <div></div> -->
-                        <div class="modal-account-details">
-                            <div class="words">
-                                <div class="meaning">
-                                    <h3>User ID</h3>
-                                </div>
-                                <div class="meaning">
-                                    014
-                                </div>
-                            </div>
-                            <div class="words">
-                                <div class="meaning">
-                                    <h3>Owner</h3>
-                                </div>
-                                <div class="meaning">
-                                    Onyinye Ezike
-                                </div>
-                            </div>
-                            <div class="words">
-                                    <div class="meaning">
-                                        <h3>Account Number</h3>
-                                    </div>
-                                    <div class="meaning">
-                                        98755356457
-                                    </div>
-                                </div>
-                                <div class="words">
-                                        <div class="meaning">
-                                            <h3>Account Type</h3>
-                                        </div>
-                                        <div class="meaning">
-                                            Savings
-                                        </div>
-                                    </div>
-                                    <div class="words">
-                                            <div class="meaning">
-                                                <h3>Balance</h3>
-                                            </div>
-                                            <div class="meaning">
-                                                NGN100000
-                                            </div>
-                                        </div>
-                                        <div class="words">
-                                                <div class="meaning">
-                                                    <h3>Status</h3>
-                                                </div>
-                                                <div class="meaning">
-                                                    Active
-                                                </div>
-                                            </div>
-                                    </div>
-                            </div>
-                        </div>
-                    </div>
-    </div>
-
+            
         <div id="deleteModal" class="modal">
-                <!-- Modal content -->
                 <div class="modal-content">
                     <span class="close-modal" onclick="closeDeleteModal()">&times;</span>
                     <div>
@@ -149,7 +88,7 @@
         <div>
             <h3 class="modal-message">Are You Sure You Want To Delete This Account?</h3>
             <div class="modal-group">
-            <button onclick="window.location='./admin-dashboard.html';" value="" class="btn-submit">Yes</button>
+            <button onclick="window.location='./admin-dashboard.html';" value="" class="btn-submit">Delete</button>
             <button onclick="window.location='./admin-dashboard.html';" value="" class="btn-remove">Cancel</button>
             </div>
             <br>
