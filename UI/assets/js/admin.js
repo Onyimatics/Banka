@@ -1,3 +1,4 @@
+/* eslint-disable no-shadow */
 /* eslint-disable consistent-return */
 /* eslint-disable no-unused-vars */
 /* eslint-disable max-len */
@@ -13,7 +14,10 @@ const role = document.getElementById('role');
 const accountsContainer = document.getElementById('all-accounts');
 const accountsTabContent = document.getElementById('single-account');
 const activateDeactivateButt = document.getElementById('activate-deactivate');
-const warningContainer = document.getElementById('deleteModal');
+const deleteAccount = document.getElementById('confirm');
+const accountNumber = sessionStorage.getItem('account');
+const errorModal = document.querySelector('.errorss');
+const errorModalContainer = document.querySelector('.errorss ul');
 
 const options = {
   method: 'GET',
@@ -30,8 +34,8 @@ const loadAdminProfile = () => {
 };
 
 const loadAllAccounts = () => {
-  const url = 'http://localhost:3000/api/v2/accounts';
-  // const url = 'https://bankaapp.herokuapp.com/api/v2/accounts';
+  // const url = 'http://localhost:3000/api/v2/accounts';
+  const url = 'https://bankaapp.herokuapp.com/api/v2/accounts';
   fetch(url, options)
     .then(res => res.json())
     .then((response) => {
@@ -57,7 +61,7 @@ const loadAllAccounts = () => {
                  onclick="variab(${account.accountNumber})">
                  View</button></td>
                 <td><button type="button" class="btn btn-warning" onclick="updateAccountStatus(${account.accountNumber})">Change Status</button></td>
-                <td><button id= "delete-account" class="btn btn-warning delete-account" onclick="triggerDeleteModal()">Delete</button></td>
+                <td><button class="btn btn-warning delete-account" onclick="triggerDeleteModal(${account.accountNumber})">Delete</button></td>
             </tr>
             </table>
             `;
@@ -123,3 +127,55 @@ const updateAccountStatus = (accountNumber, status) => {
       }, 5000);
     });
 };
+
+deleteAccount.addEventListener('click', async () => {
+  const url = `https://bankaapp.herokuapp.com/api/v2/accounts/${accountNumber}`;
+  // const url = `http://localhost:3000/api/v2/accounts/${accountNumber}`;
+  const option = {
+    method: 'DELETE',
+    headers: new Headers({
+      'Content-Type': 'application/json',
+      Authorization: token,
+    }),
+  };
+  await fetch(url, option)
+    .then(res => res.json())
+    .then((response) => {
+      if (response.status === 200) {
+        errorModal.style.display = 'block';
+        errorModal.style.color = 'green';
+        const li = createNode('li');
+        li.innerHTML = `${response.message} <br>`;
+        append(errorModalContainer, li);
+        setTimeout(() => {
+          if (userDetails.isadmin === 'true') {
+            window.location = './admin-dashboard.html'; return window.location;
+          }
+          window.location = './staff-dashboard.html';
+        }, 3000);
+      }
+      if (response.status === 404) {
+        errorModal.style.display = 'block';
+        errorModal.style.color = 'red';
+        const li = createNode('li');
+        li.innerHTML = `${response.message} <br>`;
+        append(errorModalContainer, li);
+        return setTimeout(() => {
+          if (userDetails.isadmin === 'true') {
+            window.location = './admin-dashboard.html'; return window.location;
+          }
+          window.location = './staff-dashboard.html';
+        }, 3000);
+      }
+    })
+    .catch((error) => {
+      errorModal.style.display = 'block';
+      const msg = createNode('li');
+      msg.innerHTML = error.message || 'Error in connecting, Please check your internet connection and try again';
+      append(errorModalContainer, msg);
+      setTimeout(() => {
+        errorModal.style.display = 'none';
+        errorModalContainer.innerHTML = '';
+      }, 5000);
+    });
+});
