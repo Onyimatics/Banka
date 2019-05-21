@@ -1,8 +1,6 @@
+/* eslint-disable no-undef */
 /* eslint-disable consistent-return */
 
-const errorDiv = document.querySelector('.errors');
-const errorContainer = document.querySelector('.errors ul');
-const { token } = localStorage;
 const transactionTypeRegex = /(debit|credit)$/i;
 const amountRegex = /^\d+$/;
 const accountNumberRegex = /^[0-9]*$/;
@@ -26,9 +24,6 @@ const create = (type, accountNumber, amount) => {
   }
   return value;
 };
-
-const append = (parent, el) => parent.appendChild(el);
-const createNode = element => document.createElement(element);
 
 const createTransaction = document.querySelector('.form-card');
 createTransaction.addEventListener('submit', (e) => {
