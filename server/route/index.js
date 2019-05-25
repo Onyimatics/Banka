@@ -18,6 +18,7 @@ routes.use('/auth', userRoutes);
 routes.use('/accounts', accountRoutes);
 routes.use('/transactions', transactionRoutes);
 
+
 routes.get('/user/:email/accounts',
   AuthMiddleware.checkIfUserIsAuthenticated,
   DoValidation.email,
