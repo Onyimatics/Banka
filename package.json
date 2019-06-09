@@ -36,7 +36,6 @@
     "@babel/polyfill": "^7.4.3",
     "@babel/register": "^7.4.0",
     "@babel/runtime": "^7.4.3",
-    "axios": "^0.18.0",
     "bcrypt": "^3.0.5",
     "bcrypt-nodejs": "0.0.3",
     "bcryptjs": "^2.4.3",
@@ -52,7 +51,7 @@
     "jsonwebtoken": "^8.5.1",
     "mocha": "^6.1.4",
     "morgan": "^1.9.1",
-    "nyc": "^13.3.0",
+    "nyc": "^14.1.1",
     "pg": "^7.10.0",
     "randomatic": "^3.1.1",
     "swagger-ui-express": "^4.0.2"

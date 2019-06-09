@@ -2,4 +2,4 @@ JWT_SECRET='my-very-long-jsonwebtoken-secret'
 PORT=3000
 
 
-DATABASE_URL = postgresql://postgres:thessy@localhost:5432/Banka-test
+DATABASE_URL = postgresql://postgres:thessy@localhost:5432/Banka
