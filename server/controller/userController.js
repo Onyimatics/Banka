@@ -5,12 +5,12 @@ import PasswordManager from '../helper/passwordManager';
 import pool from '../db/config';
 
 /**
-   * @class UserController
-   * @description UserController
-   * @param {object} req - Request object
-   * @param {object} res - Response object
-   * @returns {object} Json
-   */
+ * @class UserController
+ * @description UserController
+ * @param {object} req - Request object
+ * @param {object} res - Response object
+ * @returns {object} Json
+ */
 class UserController {
   /**
    * @static register
@@ -27,21 +27,36 @@ class UserController {
     let newUser;
     try {
       const hashPassword = await PasswordManager.hashPassword(password);
-      const userDetails = await pool.query('select * from users where email = $1', [email]);
+      const userDetails = await pool.query(
+        'select * from users where email = $1',
+        [email],
+      );
       if (userDetails.rows[0]) {
         return response(res, 409, 'Email already in use');
       }
-      newUser = await pool.query(`insert into users (firstName, lastName, email, password, type, isAdmin) 
-      values ($1, $2, $3, $4, $5, $6) returning id`, [
-        firstName, lastName, email, hashPassword, 'client', 'false',
-      ]);
+      newUser = await pool.query(
+        `insert into users (firstName, lastName, email, password, type, isAdmin) 
+      values ($1, $2, $3, $4, $5, $6) returning id`,
+        [firstName, lastName, email, hashPassword, 'client', 'false'],
+      );
     } catch (error) {
       return response(res, 500, 'Server error');
     }
     const { id } = newUser.rows[0];
-    const token = TokenManager.sign({ id, type: 'client', isAdmin: false });
+    const token = TokenManager.sign({
+      id,
+      type: 'client',
+      isAdmin: false,
+      email,
+      firstName,
+      lastName,
+    });
     return response(res, 201, 'Successfully created a new user account', {
-      id, firstName, lastName, email, token,
+      id,
+      firstName,
+      lastName,
+      email,
+      token,
     });
   }
 
@@ -60,20 +75,30 @@ class UserController {
     let newUser;
     try {
       const hashPassword = await PasswordManager.hashPassword(password);
-      const userDetails = await pool.query('select * from users where email = $1', [email]);
+      const userDetails = await pool.query(
+        'select * from users where email = $1',
+        [email],
+      );
       if (userDetails.rows[0]) {
         return response(res, 409, 'Email already in use');
       }
-      newUser = await pool.query(`insert into users (firstName, lastName, email, password, type, isAdmin) 
-      values ($1, $2, $3, $4, $5, $6) returning id`, [
-        firstName, lastName, email, hashPassword, 'staff', isAdmin]);
+      newUser = await pool.query(
+        `insert into users (firstName, lastName, email, password, type, isAdmin) 
+      values ($1, $2, $3, $4, $5, $6) returning id`,
+        [firstName, lastName, email, hashPassword, 'staff', isAdmin],
+      );
     } catch (error) {
       return response(res, 500, 'Server error');
     }
     const { id } = newUser.rows[0];
     const token = TokenManager.sign({ id, type: 'staff', isAdmin });
     return response(res, 201, 'Account Successfully Created.', {
-      id, firstName, lastName, email, isAdmin, token,
+      id,
+      firstName,
+      lastName,
+      email,
+      isAdmin,
+      token,
     });
   }
 
@@ -90,11 +115,16 @@ class UserController {
     let userDetails;
     let isPasswordValid;
     try {
-      userDetails = await pool.query('select * from users where email = $1', [email]);
+      userDetails = await pool.query('select * from users where email = $1', [
+        email,
+      ]);
       if (!userDetails.rows[0]) {
-        return response(res, 400, 'User doesn\'t exist');
+        return response(res, 400, "User doesn't exist");
       }
-      isPasswordValid = PasswordManager.verifyPassword(password, userDetails.rows[0].password);
+      isPasswordValid = PasswordManager.verifyPassword(
+        password,
+        userDetails.rows[0].password,
+      );
       if (!isPasswordValid) {
         return response(res, 400, 'Incorrect Password or Email');
       }
@@ -105,9 +135,17 @@ class UserController {
       id, firstname, lastname, type, isadmin,
     } = userDetails.rows[0];
     if (isPasswordValid) {
-      const token = TokenManager.sign({ id, type, isadmin });
+      const token = TokenManager.sign({
+        id, type, isadmin, email, firstname, lastname,
+      });
       return response(res, 200, 'Successfully signed in', {
-        id, firstName: firstname, lastName: lastname, email, token, type, isadmin,
+        id,
+        firstName: firstname,
+        lastName: lastname,
+        email,
+        token,
+        type,
+        isadmin,
       });
     }
     return response(res, 400, 'Invalid Password or Email');
@@ -124,13 +162,22 @@ class UserController {
   static async getAllUserAccounts(req, res) {
     let accounts;
     try {
-      const { params: { email }, userDetails } = req;
+      const {
+        params: { email },
+        userDetails,
+      } = req;
       if (userDetails.type === 'staff') {
-        accounts = await pool.query(`SELECT email, accounts.* FROM users 
-        JOIN accounts on users.id = accounts.OWNER WHERE users.email = $1`, [email]);
+        accounts = await pool.query(
+          `SELECT email, accounts.* FROM users 
+        JOIN accounts on users.id = accounts.OWNER WHERE users.email = $1`,
+          [email],
+        );
       } else {
-        accounts = await pool.query(`SELECT accounts.* FROM users INNER JOIN accounts ON users.id = accounts.owner
-         WHERE users.email = $1 AND accounts.owner = $2`, [email, userDetails.id]);
+        accounts = await pool.query(
+          `SELECT accounts.* FROM users INNER JOIN accounts ON users.id = accounts.owner
+         WHERE users.email = $1 AND accounts.owner = $2`,
+          [email, userDetails.id],
+        );
       }
       if (!accounts.rows[0]) {
         return response(res, 404, 'Accounts Not Found');
@@ -147,7 +194,12 @@ class UserController {
           Balance: balance,
         };
       });
-      return response(res, 200, 'All User Accounts Successfully Retrieved', data);
+      return response(
+        res,
+        200,
+        'All User Accounts Successfully Retrieved',
+        data,
+      );
     } catch (error) {
       return response(res, 500, 'Server error');
     }

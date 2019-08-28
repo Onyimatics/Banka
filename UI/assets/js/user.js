@@ -56,7 +56,8 @@ const loadAccounts = () => {
     .catch((error) => {
       errorDiv.style.display = 'block';
       const msg = createNode('li');
-      msg.innerHTML = error.message || 'Error in connecting, Please check your internet connection and try again';
+      msg.innerHTML = error.message
+        || 'Error in connecting, Please check your internet connection and try again';
       append(errorContainer, msg);
       setTimeout(() => {
         errorDiv.style.display = 'none';
