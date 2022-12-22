@@ -48,7 +48,7 @@
     "dotenv": "^7.0.0",
     "express": "^4.16.4",
     "joi": "^14.3.1",
-    "jsonwebtoken": "^8.5.1",
+    "jsonwebtoken": "^9.0.0",
     "mocha": "^6.1.4",
     "morgan": "^1.9.1",
     "nyc": "^14.1.1",
